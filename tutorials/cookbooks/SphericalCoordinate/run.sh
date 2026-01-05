@@ -1,0 +1,19 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=`getApplication`
+
+. clean.sh
+rm log.*
+
+# runApplication blockMesh
+gmsh gmsh/mesh.geo -3 -o gmsh/mesh.msh -format msh22
+gmshToFoam gmsh/mesh.msh
+changeDictionary
+
+runApplication $application
+# paraFoam
+# . extractPlumeT.sh

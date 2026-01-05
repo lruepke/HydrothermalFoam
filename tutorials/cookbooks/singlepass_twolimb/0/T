@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 288.15;     //278.15 K = 5 C
+
+boundaryField
+{
+    top
+    {
+        type            inletOutlet;
+        phi                     phi;
+        inletValue      uniform 288.15;
+        value           $internalField;
+    }
+    bottom
+    {
+        type            codedFixedValue;
+        value           uniform 673.15;
+        name            singlePassHeat;
+        code            #{
+                            double Tmin=473.15;
+                            double Tmax=673.15;
+                            double width_heatsource=250;
+
+                            scalarField x(this->patch().Cf().component(0)); 
+                            double xmax=max(x);
+                            double xmin=min(x);
+                            double x_left=xmax-width_heatsource;
+                            double L=x_left-xmin;
+                            double deltaT=Tmax-Tmin;
+                            scalarField T(x);
+                            forAll(x,i)
+                            {
+                                if(x[i]<x_left)
+                                {
+                                    T[i]=Tmin+(x[i]-xmin)/L*deltaT;
+                                }else
+                                {
+                                    T[i]=Tmax;
+                                }
+                            }
+                            operator==(T);
+                        #};
+    }
+    wall
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

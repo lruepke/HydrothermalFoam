@@ -1,0 +1,119 @@
+.. define short name variables
+
+.. _OpenFOAM: https://openfoam.org
+
+.. _Gmsh: http://gmsh.info
+
+.. _ASPECT: https://aspect.geodynamics.org
+
+.. _freesteam: http://freesteam.sourceforge.net
+
+.. _ParaView: https://www.paraview.org
+
+.. _Triangle: https://www.cs.cmu.edu/~quake/triangle.html
+
+.. _Tecplot: https://www.tecplot.com
+
+.. _dbsFoam: https://github.com/csoulain/porousMedia4Foam/tree/master/solvers/dbsFoam
+
+.. _hybridPorousInterFoam: https://github.com/Franjcf/hybridPorousInterFoam/tree/master/OpenFoamV7/solvers/hybridPorousInterFoam
+
+.. _triToFoam: https://gitlab.com/hydrothermal-openfoam/HydrothermalFoam/-/tree/master/utilities/triToFoam
+
+.. _tmux: https://github.com/tmux/tmux/wiki
+
+.. _HydrothermalFoam: https://gitlab.com/gmdpapers/hydrothermalfoam
+
+.. _htSinglePhaseDarcyFoam: https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/solvers/HydrothermalSinglePhaseDarcyFoam
+
+.. _buoyantPimpleFoam: http://dyfluid.com/buoyantPimpleFoam.html
+
+.. _fvMatrix: https://www.openfoam.com/documentation/guides/latest/api/classFoam_1_1fvMatrix.html
+
+.. _impesFoam: https://github.com/phorgue/porousMultiphaseFoam/tree/openfoam-v9/solvers/impesFoam
+
+.. _scons: https://scons.org
+
+.. _python 2: https://www.python.org/downloads/release/python-272/
+
+.. _GSL: https://www.gnu.org/software/gsl/doc/html/
+
+.. _freesteam-2.1: http://freesteam.sourceforge.net
+
+.. _IAPWS-IF97: http://www.iapws.org/relguide/IF97-Rev.html
+
+.. _porespy: https://github.com/PMEAL/porespy
+
+.. _meshio: https://github.com/nschloe/meshio
+
+.. _cookbooks: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks
+
+.. _benchmarks: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/benchmarks
+
+.. _cookbooks/helloworld: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/helloworld
+
+.. _cookbooks/nonUniformFixedValueBC: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/nonUniformFixedValueBC
+
+.. _cookbooks/timeDependentPerm: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/timeDependentPerm
+
+.. _cookbooks/gmsh: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/gmsh
+
+.. _cookbooks/3Dbox: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/3Dbox
+
+.. _cookbooks/3Dbox_par: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/3Dbox_par
+
+.. _cookbooks/pipe: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/pipe
+
+.. _cookbooks/pipe_3D: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/pipe_3D
+
+.. _cookbooks/singlepass: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/singlepass
+
+.. _cookbooks/singlepass_twolimb: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/singlepass_twolimb
+
+.. _cookbooks/singlepass_3D: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/singlepass_3D
+
+.. _cookbooks/porousMedia/snappyHexMesh_vti_2D: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/porousMedia/snappyHexMesh_vti_2D
+
+.. _cookbooks/porousMedia/snappyHexMesh_vti_3D: https://gitlab.com/hydrothermal-openfoam/hydrothermalfoam/-/tree/master/cookbooks/porousMedia/snappyHexMesh_vti_3D
+
+
+.. |helloworld| replace:: `cookbooks/helloworld`_
+
+.. |nonUniformFixedValueBC| replace:: `cookbooks/nonUniformFixedValueBC`_
+
+.. |timeDependentPerm| replace:: `cookbooks/timeDependentPerm`_
+
+.. |gmsh| replace:: `cookbooks/gmsh`_
+
+.. |3Dbox| replace:: `cookbooks/3Dbox`_
+
+.. |3Dbox_par| replace:: `cookbooks/3Dbox_par`_
+
+.. |pipe| replace:: `cookbooks/pipe`_
+
+.. |pipe_3D| replace:: `cookbooks/pipe_3D`_
+
+.. |singlepass| replace:: `cookbooks/singlepass`_
+
+.. |singlepass_twolimb| replace:: `cookbooks/singlepass_twolimb`_
+
+.. |singlepass_3D| replace:: `cookbooks/singlepass_3D`_
+
+.. |porousMedia2D| replace:: `cookbooks/porousMedia/snappyHexMesh_vti_2D`_
+
+.. |porousMedia3D| replace:: `cookbooks/porousMedia/snappyHexMesh_vti_3D`_
+
+
+.. |foam| replace:: HydrothermalFoam_
+
+.. |darcyfoam| replace:: HydrothermalSinglePhaseDarcyFoam
+
+.. |anhydritefoam| replace:: HydrothermalSinglePhaseDarcyAnhydriteFoam
+
+.. |paper_hydrothermalfoam| replace:: (Guo, Ruepke & Tao, 2020)
+
+.. |degC| replace:: :math:`^{\circ}\text{C}`
+
+.. |tri| replace:: Triangle_
+
+.. |triToFoam| replace:: triToFoam_

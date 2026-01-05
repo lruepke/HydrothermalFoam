@@ -1,0 +1,88 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      permeability;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 0 0 0 0 0];
+
+internalField #codeStream
+{
+    codeInclude
+    #{
+        #include "fvCFD.H"
+    #};
+    codeOptions
+    #{
+        -I$(LIB_SRC)/finiteVolume/lnInclude \
+        -I$(LIB_SRC)/meshTools/lnInclude
+    #};
+    codeLibs 
+    #{
+        -lmeshTools \
+        -lfiniteVolume 
+    #};
+    localCode
+    #{
+        static double calcPermeability(const scalar maxK, scalar minY, scalar y)
+        {
+            return (maxK*exp((y-minY)/434.3)); 
+        }
+    #};
+    code 
+    #{
+        const IOdictionary& d = static_cast<const IOdictionary&>(dict);
+        const fvMesh& mesh = refCast<const fvMesh>(d.db());
+        scalarField permeability(mesh.nCells(), 1e-14);
+        scalar maxK = 1e-14;
+        vector maxC = Foam::gMax(mesh.C());
+        vector minC = Foam::gMin(mesh.C());
+        scalar minY = minC[1], maxY = maxC[1];
+
+        forAll(permeability, i)
+        {
+            const scalar y = mesh.C()[i][1];
+            permeability[i]=calcPermeability(maxK,minY, y);
+        }
+
+        writeEntry(os, "", permeability); //
+    #};
+};
+
+boundaryField
+{
+    left
+    {
+        type            zeroGradient;
+    }
+    right
+    {
+        type            zeroGradient;
+    }
+    top
+    {
+        type            zeroGradient;
+    }
+    bottom
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

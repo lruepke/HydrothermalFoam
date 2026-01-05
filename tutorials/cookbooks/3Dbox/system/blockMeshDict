@@ -1,0 +1,83 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+xmin 0;
+xmax 2000;    //variable definition
+ymin -3000;
+ymax -2000;
+zmin 0;
+zmax 2000;
+vertices    //vertices definition
+(
+    ($xmin      $ymin   $zmin)  //coordinate of vertex 0
+    ($xmax    $ymin   $zmin)  //coordinate of vertex 1
+    ($xmax    $ymax   $zmin)  //coordinate of vertex 2
+    ($xmin      $ymax   $zmin)  //coordinate of vertex 3
+    ($xmin      $ymin   $zmax)//coordinate of vertex 4
+    ($xmax    $ymin   $zmax)//coordinate of vertex 5
+    ($xmax    $ymax   $zmax)//coordinate of vertex 6
+    ($xmin      $ymax   $zmax)//coordinate of vertex 7
+);
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (100 50 100) simpleGrading (1 1 1)
+);
+boundary
+(
+    left    //patch name
+    {
+        type patch ;
+        faces   //face list
+        (
+            (0 4 7 3)
+        );
+    }
+    right
+    {
+        type patch;
+        faces
+        (
+            (2 6 5 1)
+        );
+    }
+    top
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+    bottom
+    {
+        type patch;
+        faces
+        (
+            (1 5 4 0)
+        );
+    }
+    frontAndBack    //patch name
+    {
+        type patch; 
+        faces //face list
+        (
+            (0 3 2 1)   //back face
+            (4 5 6 7)   //front face
+        );
+    }
+);
+// ************************************************************************* //

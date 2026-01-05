@@ -1,0 +1,96 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+//internalField   uniform 278.15;     //278.15 K = 5 C
+internalField #codeStream
+{
+    codeInclude
+    #{
+        #include "fvCFD.H"
+    #};
+    codeOptions
+    #{
+        -I$(LIB_SRC)/finiteVolume/lnInclude \
+        -I$(LIB_SRC)/meshTools/lnInclude
+    #};
+    codeLibs 
+    #{
+        -lmeshTools \
+        -lfiniteVolume 
+    #};
+    localCode
+    #{
+    #};
+    code 
+    #{
+        const IOdictionary& d = static_cast<const IOdictionary&>(dict);
+        const fvMesh& mesh = refCast<const fvMesh>(d.db());
+        scalarField Temperature(mesh.nCells(), 278.15);
+        word cellSetName = "layer2B";
+        label zoneID = mesh.cellZones().findZoneID(cellSetName);
+        //Check if the zone exists
+        if (zoneID == -1)
+        {
+            FatalErrorInFunction
+                << "Cannot find cellZone " << cellSetName
+                << "Valid cellZones are " << mesh.cellZones().names()
+                << abort(FatalError);
+        }
+        const labelList& cells = mesh.cellZones()[zoneID];
+        forAll(cells, i)
+        {
+            const label cell = cells[i];
+            Temperature[cell]=578.15;
+        }
+        writeEntry(os, "", Temperature); //This is the syntax of OF-7
+    #};
+};
+
+boundaryField
+{
+    left
+    {
+        type            zeroGradient;
+    }
+    right
+    {
+        type            zeroGradient;
+    }
+    top
+    {
+        type            inletOutlet;
+        phi                     phi;
+        inletValue      uniform 278.15;
+        value           278.15;
+    }
+    bottom
+    {
+        type            fixedValue;
+        value           uniform 673.15;
+    }
+    wall
+    {
+        type            zeroGradient;
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

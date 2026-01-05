@@ -1,0 +1,59 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeatureExtractDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+writeObj yes;
+porous.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+inlet.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+outlet.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+top.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+bottom.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+front.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+back.stl
+{
+    extractionMethod    extractFromSurface;
+    extractFromSurfaceCoeffs{includedAngle   150;}
+    writeObj                $writeObj;
+}
+// ************************************************************************* //

@@ -1,0 +1,47 @@
+**Matrix algebra->deviatoric and hydrostatic part**
+
+Each matrix :math:`\mathbf{A}` can be split into a deviatoric :math:`\mathbf{A}^{dev}` and hydrostatic :math:`\mathbf{A}^{hyd}` part:
+
+.. math::
+    :label: :eq:matrix:dev_hyd
+
+    \mathbf{A} = \mathbf{A}^{hyd} + \mathbf{A}^{dev}
+
+The hydrostatic part can be expressed as scalar or matrix. The scalar definition is given by: 
+
+.. math::
+
+    A^{hyd} = \frac{1}{3}\text{tr}(\mathbf{A}) = \frac{1}{3}\sum\limits_{i=1}^{n} (a_{ii})
+
+The operator :code:`tr` denotes the trace operator and is applied on the matrix. This operator is simply the sum of the diagonal elements. The matrix notation of the hydrostatic part is:
+
+.. math::
+    :label: eq:matrix:hyd
+
+    \mathbf{A}^{hyd} = A^{hyd} \mathbf{I} = \frac{1}{3}\text{tr}(\mathbf{A}) \mathbf{I} = \frac{1}{3}\sum\limits_{i=1}^{n} (a_{ii}) \mathbf{I}
+
+The deviatoric part :math:`\mathbf{A}^{dev}` is given as:
+
+.. math::
+    :label: eq:matrix:dev
+
+    \mathbf{A}^{dev} = \mathbf{A} - \mathbf{A}^{hyd} = \mathbf{A} - \frac{1}{3}\text{tr}(\mathbf{A}) \mathbf{I}
+
+**Divergence shear rate tensor**
+
+This can be written as two parts, one is Laplacian term and the other is divergence term.
+
+.. math:: 
+
+    \begin{align}
+    \nabla \cdot \tau = & \nabla \cdot \left ( \mu \left[ \nabla \otimes \vec{U} + (\nabla \otimes \vec{U})^T\right] - \frac{2}{3} \mu (\nabla \cdot \vec{U}\mathbf{I}) \right) \\
+     = & \nabla \cdot \left ( \mu (\nabla \otimes \vec{U} \right) + \nabla \cdot \left( \mu  \left[ (\nabla \otimes \vec{U})^T - \frac{2}{3}(\nabla \cdot \vec{U})\mathbf{I} \right] \right) \\
+     = & \nabla \cdot \left ( \mu (\nabla \otimes \vec{U} \right) + \nabla \cdot \left( \mu  \left[ \color{red}{(\nabla \otimes \vec{U})^T} - \frac{2}{3}\text{tr}(\color{red}{(\nabla \otimes \vec{U})^T})\mathbf{I} \right] \right) \\
+     =& \boxed{\nabla \cdot \left ( \mu (\nabla \otimes \vec{U} \right) + \nabla \cdot \left( \mu (\nabla \otimes \vec{U})^{dev2} \right)}
+    \end{align}
+
+where the operator :code:`dev2` is defined as :math:`\mathbf{A}^{dev2} = \mathbf{A} - \frac{2}{3}\text{tr}(\mathbf{A})\mathbf{I}`
+
+.. tip::
+
+    The trace of matrix :math:`\mathbf{\nabla \otimes \vec{U}}` can also be written as :math:`\text{tr}(\nabla \otimes \vec{U}) = \nabla \cdot \vec{U}`

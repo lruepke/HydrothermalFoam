@@ -1,0 +1,23 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      xThermoProperties;
+}
+
+fluid H2O-NaCl; //H2O, H2O-NaCl
+backend IAPS84; //IAPS84, IAPWS95, IAPWS95_CoolProp
+
+H2O-NaCl
+{
+    constX 0.0;
+}

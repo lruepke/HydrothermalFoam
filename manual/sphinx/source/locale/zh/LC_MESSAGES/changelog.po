@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020, Zhikui Guo
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-06 11:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/changelog.rst:5
+msgid "Change Log"
+msgstr ""
+
+#: ../../source/changelog.rst:7
+msgid ""
+"This document records all notable changes to `HydrothermalFoam "
+"<https://www.hydrothermalfoam.info>`_."
+msgstr ""
+
+#: ../../source/changelog.rst:12
+msgid "`1.0.5`_ (2020-11-05)"
+msgstr ""
+
+#: ../../source/changelog.rst:14
+msgid "Added support for OpenFOAM-8 (`1.0.5`_)."
+msgstr ""
+

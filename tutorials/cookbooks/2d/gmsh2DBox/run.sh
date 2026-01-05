@@ -1,0 +1,15 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=`getApplication`
+
+./clean.sh
+# gmsh -3 mesh.geo
+gmshToFoam gmsh/box.msh
+python setEmptyPatch.py frontAndBack
+# runApplication setFields
+runApplication $application
+# paraFoam

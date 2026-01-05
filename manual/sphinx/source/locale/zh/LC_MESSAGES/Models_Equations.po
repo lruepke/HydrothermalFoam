@@ -1,0 +1,1335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Zhikui Guo, Lars Ruepke
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-06 11:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:9
+msgid "Multiphase Darcy flow model"
+msgstr "多相达西流模型"
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:13
+msgid "Pure water"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:16
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:13
+msgid "Governing equations"
+msgstr "控制方程组"
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:18
+msgid ""
+"The subscript of :math:`l, v` in the governing equations denote **pure "
+"liquid** phase and **pure vapour** phase, or **liquid-like superfluid** "
+"and **vapour-like superfluid**, respectively. And all symbols are defined"
+" in :numref:`tab:symbols:multiphase`."
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:22
+msgid "Darcy's Law"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:24
+msgid ""
+"\\vec{U_i} = - k \\frac{k_{ri}}{\\mu_i} (\\nabla p -\\rho_i \\vec{g}), i "
+"= \\{v, l}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:29
+msgid "Conservation of fluid mass"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:31
+msgid ""
+"\\frac{\\partial ( \\varepsilon ( S_l\\rho_l + S_v \\rho_v) )}{\\partial "
+"t} = - \\nabla \\cdot (\\vec{U_l} \\rho_l) - \\nabla \\cdot (\\vec{U_v} "
+"\\rho_v) - \\nabla \\cdot (\\vec{U_s} \\rho_s) + Q_{H_2O}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:36
+msgid "The relation of saturation of each phase is :math:`S_l + S_v =1`."
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:38
+msgid "Conservation of energy"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:40
+msgid ""
+"\\frac{\\partial E}{\\partial t}  = & \\frac{\\partial [\\varepsilon ( "
+"S_l \\rho_l h_l + S_v \\rho_v h_v + S_s \\rho_s h_s) + "
+"(1-\\varepsilon)\\rho_r C_{pr} T]}{\\partial t} \\\\ = & \\nabla \\cdot "
+"(\\lambda_r \\nabla T) - \\nabla \\cdot (\\rho_l \\vec{U_l} h_l) - "
+"\\nabla \\cdot (\\rho_v \\vec{U_v} h_v) - \\nabla \\cdot (\\rho_s "
+"\\vec{U_s} h_s) + \\\\ & \\frac{\\mu_f}{k} \\parallel \\vec{U} \\parallel"
+" ^2 - \\left( \\frac{\\partial ln \\rho_f}{\\partial ln T} \\right)_p "
+"\\frac{Dp}{Dt}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:48
+msgid "Implementation"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:51
+#, fuzzy
+msgid "Pressure equation"
+msgstr "控制方程组"
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:53
+msgid ""
+"Subtituting equation :eq:`eq:darcy:multiphase` into equation "
+":eq:`eq:conti:multiphase`, we can get the pressure equation,"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:55
+msgid ""
+"\\frac{\\partial ( \\varepsilon \\rho_f )}{\\partial t} = \\nabla \\cdot "
+"\\left[( {\\color{red}{\\rho_l k \\frac{k_{rl}}{\\mu_l}}} +  "
+"{\\color{red}{ \\rho_v k \\frac{k_{rv}}{\\mu_v}}}) \\nabla p \\right] - "
+"\\nabla \\cdot \\left[({\\color{blue}{\\rho_l^2 k "
+"\\frac{k_{rl}}{\\mu_l}}} + {\\color{blue}{\\rho_v^2 k "
+"\\frac{k_{rv}}{\\mu_v}}}) \\vec{g} \\right]+ Q_{H_2O}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:60
+msgid ""
+"To simplify the formulation, we define phase mobility :math:`M_i` and "
+"gravitational contribution :math:`L_i` as follows:"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:62
+msgid ""
+"M_i &= {\\color{red}{\\rho_i k \\frac{k_{ri}}{\\mu_i}}} \\\\ L_i &= "
+"{\\color{blue}{\\rho_i^2 k \\frac{k_{ri}}{\\mu_i}}}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:68
+msgid "we can define two kinds of flux on each face of the compputational grid:"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:70
+msgid ""
+"\\begin{aligned}   \\phi_p &= ( M_l + M_v) \\nabla p \\cdot \\vec{n} \\\\"
+"   \\phi_g &= ( L_l + L_v) \\vec{g} \\cdot \\vec{n} \\\\   \\phi &= "
+"\\phi_p + \\phi_g \\end{aligned}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:79
+msgid ""
+"and the flux of liquid phase can be expressed as :eq:`eq:flux_l:flux_v` "
+"(see eq. 20 in :cite:`horgue2015open` )"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:81
+msgid ""
+"\\phi_l = \\frac{M_l}{M_l + M_v} \\phi_p + \\frac{L_l}{L_l + L_v}\\phi_g "
+"\\\\ \\phi_v = \\frac{M_v}{M_l + M_v} \\phi_p + \\frac{L_v}{L_l + "
+"L_v}\\phi_g"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:87
+msgid ""
+"In OpenFOAM, solving pressure equation of multiphase problem is similar "
+"to the single phase problem. :math:`\\phi_p` can be reconstructed from "
+"pressure equation after solving it. And velocity of liquid and vapour "
+"phase can be reconstructed from :math:`\\phi_l` and :math:`\\phi_v`, "
+"respectively."
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:93
+msgid ""
+"How to set value for :math:`\\mu_l` in vapour region and :math:`\\mu_v` "
+"in liquid region ? They are set to :code:`inf` at the moment, and "
+"variable, e.g. :code:`rAU_l` (:math:`k\\frac{k_{rl}}{\\mu_l}`) will be "
+"zero in vapour region. Therefore a tiney value should be add in the "
+"denominator in line 53-54 of :numref:`lst:pEqn:multiphase`. **Is there "
+"any better solution?**"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:97
+msgid "Implementation of pressure equation of multiphase model"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:165
+#, fuzzy
+msgid "Energy equation"
+msgstr "控制方程组"
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:167
+msgid "Implementation of energy equation of multiphase model"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:195
+msgid ""
+"In fluid advection part, we adopt explicit scheme for liquid and vapour "
+"advection, but implicit scheme for transient term."
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:197
+msgid ""
+"When :code:`TEqn_rock, hEqn_liquid` are solved, we can get "
+"energy(:math:`H_r = \\rho_rC_{pr}T`) of rock and energy(:math:`H_f = "
+"\\rho_l h_l + \\rho_v h_v`) in fluid, then we need a function to "
+"calculate thermal equilibrium(**energy redistribution between rock and "
+"fluid to make sure the temperature is equal ?**) to get a new temperature"
+" :code:`T`. For a specific node, we could design a function as below,"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:218
+msgid ""
+"Definitions and values of variables used in the "
+":ref:`model_multiphase_darcy`."
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:222
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:46
+msgid "Symbol"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:223
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:47
+msgid "Definition"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:224
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:48
+msgid "Value"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:225
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:49
+msgid "Unite"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:226
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:50
+msgid "Variable name: OpenFOAM class"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:227
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:51
+msgid ":math:`\\vec{g}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:228
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:52
+msgid "Gravitational acceleration vector"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:229
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:53
+msgid "9.81"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:230
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:54
+msgid ":math:`m\\ s^{-2}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:231
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:55
+msgid ":code:`g: uniformDimensionedVectorField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:232
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:56
+msgid ":math:`T`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:233
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:57
+msgid "Temperature"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:235
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:59
+msgid ":math:`K`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:236
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:60
+msgid ":code:`T: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:237
+msgid ":math:`i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:238
+msgid "Fluid phase index (:math:`i=l, v, s`)"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:242
+msgid ":math:`h_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:243
+msgid "Specific enthalpy"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:245
+msgid ":math:`J\\ kg^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:246
+msgid ":code:`enthalpy_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:247
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:61
+msgid ":math:`p`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:248
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:62
+msgid "Pressure"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:250
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:64
+msgid ":math:`Pa`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:251
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:65
+msgid ":code:`p: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:252
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:66
+msgid ":math:`k`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:253
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:67
+msgid "Permeability"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:255
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:69
+msgid ":math:`m^2`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:256
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:70
+msgid ":code:`permeability: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:257
+msgid ":math:`k_{ri}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:258
+msgid "Relative permeability"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:261
+msgid ":code:`r_permeability_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:262
+msgid ":math:`S_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:263
+msgid "Saturation"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:266
+msgid ":code:`saturation_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:267
+msgid ":math:`\\vec{U_i}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:268
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:72
+msgid "Darcy velocity"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:270
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:74
+msgid ":math:`m\\ s^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:271
+msgid ":code:`U_i: volVectorField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:272
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:76
+msgid ":math:`\\Delta T`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:273
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:77
+msgid "Time step"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:275
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:79
+msgid ":math:`s`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:276
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:80
+msgid ":code:`deltaT_: scalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:277
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:81
+msgid ":math:`C_o`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:278
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:82
+msgid "Courant number"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:281
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:85
+msgid ":code:`CoNum: scalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:282
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:86
+msgid ":math:`C_{\\Delta t}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:283
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:87
+msgid "Coefficient for time-step change"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:286
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:90
+msgid ":code:`maxDeltaTFact: scalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:287
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:91
+msgid ":math:`\\vec{q_h}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:288
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:92
+msgid "Heat flux"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:290
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:94
+msgid ":math:`W\\ m^{-2}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:291
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:95
+msgid ":code:`q_: scalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:292
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:96
+msgid ":math:`\\vec{\\phi_g}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:293
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:97
+msgid "Gravity related flux"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:295
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:99
+msgid ":math:`kg\\ s^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:296
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:100
+msgid ":code:`phig: surfaceScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:297
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:101
+msgid ":math:`\\vec{\\phi_m}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:298
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:102
+msgid "Mass flux"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:300
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:104
+msgid ":math:`kg\\ m^{-2}\\ s^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:301
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:105
+msgid ":code:`phi: surfaceScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:302
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:106
+msgid ":math:`\\vec{n}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:303
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:107
+msgid "Normal vector of face"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:307
+msgid ":math:`\\mu_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:308
+msgid "Dynamic viscosity"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:310
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:119
+msgid ":math:`Pa\\ s`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:311
+msgid ":code:`mu_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:312
+msgid ":math:`\\rho_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:313
+msgid "Density"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:315
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:320
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:340
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:124
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:144
+msgid ":math:`kg\\ m^{-3}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:316
+msgid ":code:`rho_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:317
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:121
+msgid ":math:`\\rho_f`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:318
+msgid "Density of fluid (:math:`\\rho_f = \\sum{S_i\\rho_i}, i=l, v, s`)"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:321
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:125
+msgid ":code:`rho: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:322
+msgid ":math:`\\alpha_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:323
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:127
+msgid "Thermal expansivity"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:325
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:129
+msgid ":math:`K^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:326
+msgid ":code:`alphaP_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:327
+msgid ":math:`\\beta_i`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:328
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:132
+msgid "Compressibility"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:330
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:134
+msgid ":math:`Pa^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:331
+msgid ":code:`betaT_i: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:332
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:136
+msgid ":math:`\\varepsilon`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:333
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:137
+msgid "Porosity of rock"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:334
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:138
+msgid "0.1"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:336
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:140
+msgid ":code:`porosity: dimensionedScalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:337
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:141
+msgid ":math:`\\rho_r`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:338
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:142
+msgid "Density of rock"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:339
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:143
+msgid "2750"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:341
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:145
+msgid ":code:`rho_rock: dimensionedScalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:342
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:146
+msgid ":math:`C_{pr}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:343
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:147
+msgid "Specific heat of rock"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:344
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:148
+msgid "880"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:345
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:149
+msgid ":math:`J\\ kg^{-1}\\ K^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:346
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:150
+msgid ":code:`cp_rock: dimensionedScalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:347
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:151
+msgid ":math:`\\lambda_{r}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:348
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:152
+msgid "Thermal conductivity of rock"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:349
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:153
+msgid "1.5"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:350
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:154
+msgid ":math:`W\\ m^{-1}\\ K^{-1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:351
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:155
+msgid ":code:`kr: dimensionedScalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:352
+msgid ":math:`Q_{H_2O}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:353
+msgid "Source term"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:356
+msgid ":code:`Q_mass: dimensionedScalar`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:358
+msgid "Todo"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalMultiPhaseDarcyFoam.rst:360
+msgid "完善多相流模型的参数表格"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:9
+msgid "Single-phase Darcy flow model"
+msgstr "单相达西流模型"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:15
+msgid ""
+"The solver is named :code:`HydrothermalSinglePhaseDarcyFoam`, which is "
+"designed to resolve fluid flow within submarine hydrothermal circulation "
+"systems. The hydrothermal fluid flow is governed by Darcy's law (Eqn. "
+":eq:`eq:darcy`), mass continuity (Eqn. :eq:`eq:conti`) and energy "
+"conservation (Eqn. :eq:`eq:temperature`) equations shown below,"
+msgstr ""
+"求解器的名字为\\ :code:`HydrothermalSinglePhaseDarcyFoam`\\ "
+"，用于求解海底热液循环系统中热液流体流动的动力学问题。热液流体流动规律的控制方程为：达西定律(方程\\ :eq:`eq:darcy`), "
+"连续性方程 (方程\\ :eq:`eq:conti`) 和能量守恒方程 (方程\\ :eq:`eq:temperature`),"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:20
+msgid "\\vec{U} = - \\frac{k}{\\mu_f} (\\nabla p -\\rho \\vec{g})"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:25
+msgid ""
+"\\varepsilon \\frac{\\partial \\rho_f}{\\partial t} + \\nabla \\cdot "
+"(\\vec{U} \\rho_f) = 0"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:30
+msgid ""
+"\\varepsilon \\rho_f \\left( \\beta_f \\frac{\\partial p}{\\partial t} - "
+"\\alpha_f \\frac{\\partial T}{\\partial t} \\right) = \\nabla \\cdot "
+"\\left( \\rho_f \\frac{k}{\\mu_f} (\\nabla p - \\rho_f \\vec{g}) \\right)"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:35
+msgid ""
+"(\\varepsilon \\rho_f C_{pf} + (1-\\varepsilon)\\rho_r "
+"C_{pr})\\frac{\\partial T}{\\partial t} = \\nabla \\cdot (\\lambda_r "
+"\\nabla T) - \\rho_f C_{pf} \\vec{U}\\cdot \\nabla T + \\frac{\\mu_f}{k} "
+"\\parallel \\vec{U} \\parallel ^2 - \\left( \\frac{\\partial ln "
+"\\rho_f}{\\partial ln T} \\right)_p \\frac{Dp}{Dt}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:40
+#, fuzzy
+msgid ""
+"where the pressure equation :eq:`eq:pressure` is derived from continuity "
+"equation :eq:`eq:conti` and Darcy's law :eq:`eq:darcy` (see "
+":cite:`hasenclever2014hybrid`). All symbols are defined in "
+":numref:`tab:symbols` ."
+msgstr ""
+"其中压力方程\\ :eq:`eq:pressure`\\ 是连续性方程\\ :eq:`eq:conti`\\ 与达西定律\\ "
+":eq:`eq:darcy`\\ 结合起来推导得到的。 (见\\ :cite:`hasenclever2014hybrid`)。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:42
+msgid ""
+"Definitions and values of variables used in the "
+":ref:`model_singlephase_darcy`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:71
+msgid ":math:`\\vec{U}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:75
+msgid ":code:`U: volVectorField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:111
+msgid ":math:`C_{pf}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:112
+msgid "Specific heat of fluid"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:114
+msgid ":math:`m^2\\ s^{−2}\\ K^{−1}`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:115
+msgid ":code:`Cp: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:116
+msgid ":math:`\\mu_f`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:117
+msgid "Dynamic viscosity of fluid"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:120
+msgid ":code:`mu: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:122
+msgid "Density of fluid"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:126
+msgid ":math:`\\alpha_f`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:130
+msgid ":code:`alphaP: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:131
+msgid ":math:`\\beta_f`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:135
+msgid ":code:`betaT: volScalarField`"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:160
+msgid "Boundary conditions"
+msgstr "边界条件"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:162
+msgid ""
+"The available boundary conditions (BCs) of temperature and pressure for "
+":code:`HydrothermalSinglePhaseDarcyFoam` are presented below."
+msgstr "求解器\\ :code:`HydrothermalSinglePhaseDarcyFoam`\\ 可用的边界条件列举如下。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:165
+msgid ""
+"Syntax of all the input files of OpenFOAM, thus of |foam| is C++ style. "
+"The basic form of a boundary condition can be written as following "
+"dictionary structure,"
+msgstr ""
+"OpenFOAM所有的输入文件的语法格式都是类似于C++的，当然\\ |foam|\\ 也继承了这种特性。 "
+"边界条件的定义是一种字典类型，其基本格式如下"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:178
+msgid ""
+"where :code:`type` and :code:`value` are always compulsive keys, and "
+"sometime the :code:`value` key is just a placeholder but have to be "
+"there. :code:`option*` represents some optional parameters for a special "
+"boundary condition, e.g. :code:`qmax` for :code:`HydrothermalHeatFlux` "
+"shown blow."
+msgstr ""
+"其中\\ :code:`type`\\ 和\\ :code:`value`\\ 是必须给出的关键词，并且有时候\\ :code:`value`\\"
+" 关键词后面的量并不会有实际用处，但是必须给出，作为一个占位符。\\ :code:`option*`\\ "
+"表示一些可选的参数，用于一些特殊的边界条件的定义，比如\\ :code:`HydrothermalHeatFlux`\\ 边界条件中的\\ "
+":code:`qmax`\\ 参数。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:184
+msgid "Basic boundary conditions"
+msgstr "基本边界条件"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:189
+msgid "Empty BC: :code:`empty`"
+msgstr "空边界条件：\\ :code:`empty`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:191
+msgid ""
+"The empty BC is used and only applied on non-computed patches for one-"
+"dimensional and two-dimensional models. See :numref:`lst:BC_empty` for "
+"example."
+msgstr "空边界条件一般用于一维和二维情况下，用于指定没有参与计算的边界。示例见\\ :numref:`lst:BC_empty`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:193
+msgid "Example of empty BC for a 2D model"
+msgstr "一个二维模型中的空边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:205
+msgid "Fixed value BC: :code:`fixedValue`"
+msgstr "固定值边界条件：\\ :code:`fixedValue`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:207
+msgid ""
+"This is the basic and commonly used Dirichlet BC in OpenFOAM, "
+":math:`f=f_0\\ on\\ \\partial \\Omega`, where :math:`f` denotes some "
+"field and :math:`\\Omega` represents a boundary patch (*same meaning as "
+"belows*). See :numref:`lst:BC_fixedValue` for example."
+msgstr ""
+"这是OpenFOAM中最基本也是最常用的第一类边界条件之一，\\ :math:`f=f_0\\ 对于边界\\ \\partial "
+"\\Omega`, 其中\\ :math:`f`\\ 表示某个场，而\\ :math:`\\Omega`\\ 表示某个边界(*下同*)示例见\\ "
+":numref:`lst:BC_fixedValue`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:211
+msgid "Example of fixedValue BC"
+msgstr "固定值边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:224
+msgid "Fixed gradient: :code:`fixedGradient`"
+msgstr "固定梯度边界条件: :code:`fixedGradient`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:226
+msgid ""
+"Just like its name, fixedGradient specify a Neumann boundary condition on"
+" a patch. :math:`\\nabla f=g_0\\ on\\ \\partial \\Omega`. See "
+":numref:`lst:BC_fixedGradient` for example."
+msgstr ""
+"从其名字中就可以很容易看出, 固定梯度边界条件是用来指定一个边界上的第二类边界条件值的：\\ :math:`\\nabla f=g_0\\ "
+"对于边界\\ \\partial \\Omega`\\ 。示例见\\ :numref:`lst:BC_fixedGradient`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:230
+msgid "Example of fixedGradient BC."
+msgstr "固定梯度边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:243
+msgid "Zero gradient: :code:`zeroGradient`"
+msgstr "零梯度边界条件: :code:`zeroGradient`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:245
+msgid ""
+"It is a special case of :code:`fixedGradient`. :math:`\\nabla f=0\\ on\\ "
+"\\partial \\Omega`. See :numref:`lst:BC_zeroGradient` for example."
+msgstr ""
+"这是一种特殊的固定梯度边界条件\\ :math:`\\nabla f=0\\ 对于边界\\ \\partial \\Omega`\\ 。示例见\\"
+" :numref:`lst:BC_zeroGradient` \\。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:249
+msgid "Example of zeroGradient BC for temperature."
+msgstr "零梯度边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:259
+msgid ""
+":code:`zeroGradient` **is always applied for permeability**. Because "
+"permeability is not a primary variable and thus dont't need to solve it. "
+"But we have to regard it as a field variable just like temperature to "
+"initialize the field value, because permeability in our model is not "
+"always uniform distribution. Therefore we have to specify a boundary "
+"condition for permeability."
+msgstr ""
+"**渗透率(permeability)通常都使用零梯度边界条件**：\\ :code:`zeroGradient`\\ "
+"。有两个原因：（1）求解器中并没有渗透率的控制方程，即不用求解以渗透率为变量的偏微分方程，实际上不需要给渗透率指定边界条件。（2）在实际的热液循环模拟中，渗透率往往不是一个固定值，而是与温度场类似也可以看做是一个长，是空间的函数有时候或者还是时间的函数。所以需要向温度和压力一样给出输入文件，给出其初始场分布。而对于OpenFOAM的输入场数据文件，必须指定边界条件，就像上面讲到的边界条件字典中的占位符一样。所以，为了不影响渗透率在边界上的值，其边界条件总是建议设置为零梯度。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:267
+msgid "Fixed flux pressure: :code:`fixedFluxPressure`"
+msgstr "固定物质通量边界条件\\ :code:`fixedFluxPressure`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:269
+msgid ""
+"This boundary condition sets the pressure gradient to the provided value "
+"such that the flux on the boundary is that specified by the velocity "
+"boundary condition. This :code:`fixedFluxPressure` BC for pressure "
+":code:`p` is commonly combined with :code:`fixedValue` BC for velocity "
+":code:`U`, and of course the velocity field :code:`U` have to be set in "
+":code:`0` folder even though :code:`U` is not a primary variable. see "
+":numref:`lst:BC_fixedFluxPressure` for example."
+msgstr ""
+"此边界条件是针对压力场给定的，其实给压力指定一个第二类边界条件。示例见\\ "
+":numref:`lst:BC_fixedFluxPressure`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:275
+msgid ""
+"We highly recommend the new defined :code:`noFlux` or "
+":code:`hydrothermalMassFluxPressure` (see :numref:`sec:BC_pressure`, "
+":numref:`sec:BC_hydrothermalMassFluxPressure`) for Neumann boundary "
+"condition of pressure."
+msgstr ""
+"如果为压力场指定第二类边界条件，我们推荐使用\\ :code:`noFlux` 或\\ "
+":code:`hydrothermalMassFluxPressure` (见\\ :numref:`sec:BC_pressure`, "
+":numref:`sec:BC_hydrothermalMassFluxPressure`)。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:277
+msgid "Example of fixedFluxPressure BC"
+msgstr "固定物质通量边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:289
+msgid "Inlet and outlet BC: :code:`inletOutlet`"
+msgstr "入口和出口边界条件：\\ :code:`inletOutlet`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:291
+msgid ""
+"This is a generic outflow boundary condition and is commonly applied to "
+"temperature :code:`T` at seafloor boundary. It is a mixed boundary "
+"condition that using :code:`zeroGradient` BC when fluid flow out of the "
+"boundary and using a :code:`fixedValue` BC when fluid flow into the "
+"boundary. See :numref:`lst:BC_inletOutlet` for example and options."
+msgstr ""
+"这是OpenFOAM的一个内置的边界条件，用于描述流体出口（海底喷口）热液流体温度的。这是一个混合边界条件，即如果高温热液流体流出海底则用\\ "
+":code:`zeroGradient`\\ 边界条件，如果是冷的海水从海底流入热液系统，则用\\ :code:`fixedValue`\\ "
+"边界条件。二者的切换是通过流体的速度方向确定的。示例见\\ :numref:`lst:BC_inletOutlet`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:295
+msgid "Example of inletOutlet BC"
+msgstr "入口出口边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:310
+msgid "Customized boundary conditions for pressure"
+msgstr "自定义压力边界条件"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:312
+msgid ""
+"The following customized boundary conditions of pressure :code:`p` are "
+"designed for seafloor hydrothermal models."
+msgstr "下面列出了为海底热液循环模型中的压力场\\ :code:`p`\\ 设计的自定义边界条件。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:317
+msgid "Zero mass flux BC: :code:`noFlux`"
+msgstr "零通量边界条件：\\ :code:`noFlux`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:319
+msgid ""
+"This boundary condition is always applied on impermeable insulating "
+"boundary, e.g. side wall. See :numref:`lst:BC_noFlux` for example and "
+"options."
+msgstr ""
+"此边界条件通常用于绝热费渗透性的边界，比如一个模型的两侧，或者物质通量为零的底部边界。示例见\\ "
+":numref:`lst:BC_noFlux`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:322
+msgid "Example of noFlux BC"
+msgstr "零通量边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:338
+msgid "Seafloor BC: :code:`submarinePressure`"
+msgstr "海底压力边界条件：\\ :code:`submarinePressure`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:340
+msgid ""
+"This is a spatial coordinate dependent Dirichlet BC and is derived from "
+":code:`fixedValue` BC. The pressure boundary value is the hydrostatic "
+"pressure on the boundary patch, which is calculated from coordinate "
+":math:`y` of the patch. This is designed for seafloor boundary. See "
+":numref:`lst:BC_submarinePressure` for example."
+msgstr ""
+"这是一个与海底深度有关的压力第一类边界条件，从固定值边界条件\\ :code:`fixedValue`\\ "
+"导出的，是一种非均匀固定值边界条件。通常海底地形是不平整的，而海底的压力一般认为是静水压。此边界条件就能通过边界面上的\\ :math:`y`\\"
+" 坐标值计算静水压。这个边界条件通常应用于对应于海底的边界面。实例见\\ :numref:`lst:BC_submarinePressure`\\"
+" 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:346
+msgid "Example of submarinePressure BC"
+msgstr "海底压力边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:358
+msgid "Mass flux BC: :code:`hydrothermalMassFluxPressure`"
+msgstr "物质通量边界条件：\\ :code:`hydrothermalMassFluxPressure`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:360
+msgid ""
+"According Darcy's law :eq:`eq:darcy`, gradient of pressure can be "
+"expressed by velocity, thus expressed by mass flux. See "
+":numref:`lst:BC_hydrothermalMassFluxPressure` for example."
+msgstr ""
+"根据达西定律\\ :eq:`eq:darcy`\\ ，压力的梯度可以用速度表示，因此可以用物质通量来表示。示例见\\ "
+":numref:`lst:BC_hydrothermalMassFluxPressure`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:364
+msgid "Example of hydrothermalMassFluxPressure BC"
+msgstr "物质通量边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:374
+msgid ""
+"where :code:`q` in the dictionary denotes mass flux value with unit of "
+":math:`kg/m^2/s`. If mass flux represents inflow through the boundary, "
+"the value is negative, otherwist is positive."
+msgstr ""
+"其中边界条件字典中的\\ :code:`q`\\ 关键词就是表示物质通量，单位为\\ :math:`kg/m^2/s`\\ "
+"。如果物质通量通过边界流向网格内部，则数值为负；反之为正。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:379
+msgid "Customized boundary conditions for temperature"
+msgstr "自定义温度边界条件"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:384
+msgid "Heat flux BC: :code:`hydrothermalHeatFlux`"
+msgstr "热通量边界条件：:code:`hydrothermalHeatFlux`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:386
+msgid ""
+"A commonly used Neumann boundary condition of temperature :code:`T` in "
+"hydrothermal modeling is heat flux (:math:`W/m^2`) BC. For example, it is"
+" applied on bottom boundary representing heat source. A basic example is "
+"shown in :numref:`lst:BC_hydrothermalHeatFlux`, heat flux on the boundary"
+" patch (named :code:`heatsource`) is a constant equal to :math:`5\\ "
+"W/m^2`."
+msgstr ""
+"在热液循环模拟中，对于温度场\\ :code:`T`\\ "
+"，常用的第二类边界条件就是热通量(:math:`W/m^2`)边界条件。例如，在模型底部通过热通量来指定热源的情况。一个基本的使用示例见\\ "
+":numref:`lst:BC_hydrothermalHeatFlux`\\ ，底部边界(命名为\\ "
+":code:`heatsource`)的热通量为\\ :math:`5\\ W/m^2`\\ ，表示热液系统的驱动热源。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:391
+msgid "Example of hydrothermalHeatFlux BC"
+msgstr "热通量边界条件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:403
+msgid ""
+"The :code:`hydrothermalHeatFlux` also support Gaussian shape heat flux, "
+"see equation :eq:`eq:gauss_hf` and :numref:`fig:gauss_hf`."
+msgstr ""
+"热通量边界条件\\ :code:`hydrothermalHeatFlux`\\ 也支持常用的高斯型热通量分布，见公式\\ "
+":eq:`eq:gauss_hf`\\ 和\\ :numref:`fig:gauss_hf`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:405
+msgid ""
+"q_h(x,z) = q_{min} + (q_{max}-q_{min})e^{-\\frac{(x-x_0)^2 + "
+"(y-z_0)^2}{2c^2}}"
+msgstr ""
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:410
+msgid ""
+"See :numref:`lst:BC_hydrothermalHeatFlux_2D` and "
+":numref:`lst:BC_hydrothermalHeatFlux_3D` for 2D and 3D example, "
+"respectively."
+msgstr ""
+"高斯型分布的热通量边界条件在二维和三维情况下的使用示例分别见\\ "
+":numref:`lst:BC_hydrothermalHeatFlux_2D`\\ 和\\ "
+":numref:`lst:BC_hydrothermalHeatFlux_3D`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:412
+msgid ""
+"Example of Gaussian shape heat flux BC for 2D model (see also "
+":numref:`fig:gauss_hf`)"
+msgstr "高斯型分布的热通量边界条件的二维使用示例(见\\ :numref:`fig:gauss_hf`)"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:433
+msgid ""
+"Gaussian shape heat flux curve corresponding to "
+":numref:`lst:BC_hydrothermalHeatFlux_2D`."
+msgstr "与\\ :numref:`lst:BC_hydrothermalHeatFlux_2D`\\ 指定的热通量边界条件的热通量沿着边界的变化曲线。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:435
+msgid "Example of Gaussian shape heat flux BC for 3D model"
+msgstr "高斯型热通量边界条件在三维模型中的使用实例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:453
+msgid "Coded boundary conditions"
+msgstr "代码定义边界条件"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:455
+msgid ""
+"The :code:`fixedValue` BC metioned above basiclly specifys a constant "
+"boundary condition value. OpenFOAM provided a so-called dynamic compiling"
+" mechanism which allown user define a customized fixed value boundary "
+"condition, e.g. a coordinate dependent :code:`fixedValue` BC."
+msgstr ""
+"上面提到的\\ :code:`fixedValue`\\ "
+"只是指定了一个常数边界条件值。OpenFOAM提供了一种所谓的动态编译机制，可以通过代码在运行时自定义固定值边界条件。比如与坐标有关的固定值边界条件。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:458
+msgid "**Coded fixed value BC**: :code:`codedFixedValue`"
+msgstr "代码自定义固定值边界条件：\\ :code:`codedFixedValue`"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:461
+msgid ""
+"Some programing experience of OpenFOAM, at least C++ is required to use "
+"this boundary condition."
+msgstr "使用此边界条件需要OpenFOAM编程基础，至少需要具备C++的编程经验。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:463
+msgid ""
+"An example of a Gaussian shape fixed temperature boundary condition is "
+"shown in :numref:`lst:BC_codedFixedValue`."
+msgstr ""
+"与上面讲到的高斯型热通量边界条件类似，我们也可以用代码在运行时动态定义一个高斯型的固定值温度边界条件，见\\ "
+":numref:`lst:BC_codedFixedValue`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:465
+msgid "Example of Gaussian shape fixed temperature (:code:`T`) BC of a 2D model."
+msgstr "代码自定义高斯型固定值温度(:code:`T`)边界条件在二维模型中的使用实例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:486
+msgid ""
+"The code shown in :numref:`lst:BC_codedFixedValue` implements a Dirichlet"
+" boundary condition for temperature :code:`T` which varies along "
+"**bottom** boundary with coordinate :math:`x`, the temperature "
+"distribution curve is shown in :numref:`fig:gauss_T`. In addition, there "
+"is also a :code:`codedMixed` BC available for dynamic compiled mixed "
+"boundary condition, see `OpenFOAM documentation <https://openfoam.org>`_ "
+"for more details."
+msgstr ""
+":numref:`lst:BC_codedFixedValue`\\ "
+"所示的代码实现了温度场的非均匀分布的第一类边界条件。意味着温度值沿着**bottom**边界，温度随\\ :math:`x`\\ "
+"坐标值变化，变化曲线见\\ :numref:`fig:gauss_T`\\ 。此外，OpenFOAM还提供了\\ "
+":code:`codedMixed`\\ 边界条件用于在运行时动态编译/自定义混合边界条件。更多细节见\\ `OpenFOAM "
+"documentation <https://openfoam.org>`_\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:494
+msgid ""
+"Gaussian shape temperature curve corresponding to "
+":numref:`lst:BC_codedFixedValue`."
+msgstr "与\\ :numref:`lst:BC_codedFixedValue`\\ 对应的温度边界条件变化曲线"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:497
+msgid "Properties"
+msgstr "属性"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:499
+msgid ""
+"The parameters in the governing equations can be classified as transport "
+"and thermophysical properties."
+msgstr "控制方程中的参数可以分为与运输有关的属性和与热物理有关的属性，分别称之为运输属性和热物理属性。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:504
+msgid "Transport properties"
+msgstr "运输属性"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:506
+msgid ""
+"The transport properties in |foam| are :code:`porosity`, thermal "
+"conductivity :code:`kr` of rock, specific heat capacity :code:`cp_rock` "
+"of rock, density :code:`rho_rock` of rock. All the transport properties "
+"are stored in :code:`constant/transportProperties` file, see "
+":numref:`lst:transportProperties` for example."
+msgstr ""
+"|foam|\\ 中的运输属性有岩石的\\ :code:`porosity`\\ 、热传导系数\\ :code:`kr`\\ ， 比热\\ "
+":code:`cp_rock`\\ 以及密度\\ :code:`rho_rock`\\ 。所有的运输属性都存储在\\ "
+":code:`constant/transportProperties`\\ 字典文件中，见\\ "
+":numref:`lst:transportProperties`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:511
+msgid "Example of transport properties."
+msgstr "运输属性字典文件示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:533
+msgid ""
+"The head (line 1-8 in :numref:`lst:transportProperties`) of the "
+"transportProperties file always keep the same, users just need to modify "
+"the transport properties (line 10-13 in "
+":numref:`lst:transportProperties`) for a specific hydrothermal system."
+msgstr ""
+"运输属性的字典文件头(:numref:`lst:transportProperties`\\ "
+"中的1-8行)通常都是保持不变的，不建议用户去修改。用户只需要根据自己研究问题的实际情况修改属性值即可(:numref:`lst:transportProperties`\\"
+" 中的10-13行)。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:538
+msgid "Thermophysical properties"
+msgstr "热物理属性"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:540
+msgid ""
+"The thermophysical properties describe the equation of state (EOS) and "
+"thermodynamic properties of a specific fluid, e.g. water. For single "
+"phase hydrothermal circulation modeling, we developed a `OpenFOAM "
+"thermophysical model <https://cfd.direct/openfoam/user-"
+"guide/v6-thermophysical/>`_ (named :code:`htHydroThermo`) of water based "
+"on IAPWS-IF97_ and `freesteam-2.1`_ project. Similar as other `OpenFOAM "
+"thermophysical model <https://cfd.direct/openfoam/user-"
+"guide/v6-thermophysical/>`_ for other specific solvers, the usage of "
+"water :code:`htHydroThermo` is shown in "
+":numref:`lst:thermophysicalProperties`."
+msgstr ""
+"热物理属性描述了某种特定流体（比如，水）的状态方程及其热力学性质。对于单相热液循环模拟，我们开发了\\ `OpenFOAM 热物理模型 "
+"<https://cfd.direct/openfoam/user-guide/v6-thermophysical/>`_ (命名为\\ "
+":code:`htHydroThermo`)用于描述水的状态方程和热力学性质，此热物理模型的开发是基于\\ IAPWS-IF97_\\ 和\\ "
+"`freesteam-2.1`_\\ 项目。与OpenFOAM中其他求解器中的\\ `热物理模型 "
+"<https://cfd.direct/openfoam/user-guide/v6-thermophysical/>`_\\ 类似, "
+"水的热物理模型\\ :code:`htHydroThermo`\\ 的用法见\\ "
+":numref:`lst:thermophysicalProperties`\\ 。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:546
+msgid "Usage of thermophysical model of :code:`htHydroThermo`."
+msgstr "热物理模型\\ :code:`htHydroThermo`\\ 的用法示例"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:581
+msgid ""
+":code:`htHydroThermo` is the unique support thermophysical model for "
+"solver of :code:`HydrothermalSinglePhaseDarcyFoam` so far. Therefore, "
+"**please always copy** :numref:`lst:thermophysicalProperties` **and save "
+"it in file of** :code:`constant/thermophysicalProperties`."
+msgstr ""
+"目前，\\ :code:`htHydroThermo`\\ 是求解器\\ "
+":code:`HydrothermalSinglePhaseDarcyFoam`\\ 唯一支持的热物理模型。因此，**请直接拷贝** "
+":numref:`lst:thermophysicalProperties` **并保存在字典文件** "
+":code:`constant/thermophysicalProperties`\\ 中。"
+
+#: ../../source/Models_Equations/HydrothermalSinglePhaseDarcyFoam.rst:585
+msgid ""
+"The temperature and pressure limitation of :code:`htHydroThermo` are "
+":math:`[273.15, 1073.15]\\ K` and :math:`[10^5, 10^8]\\ Pa`, "
+"respectively. Please make sure the temperature and pressure field value "
+"are in the valid range."
+msgstr ""
+"热物理模型\\ :code:`htHydroThermo`\\ 的温度和压力有效范围分别为\\  :math:`[273.15, "
+"1073.15]\\ K`\\ 和\\ :math:`[10^5, 10^8]\\ Pa`\\ "
+"。所以，在使用过程中必须保证温度和压力在有效范围内。"
+
+#: ../../source/Models_Equations/index.rst:5
+msgid "Model description"
+msgstr "模型描述"
+
+#~ msgid "HydrothermalSinglePhaseDarcyFoam"
+#~ msgstr ""
+
+#~ msgid "<!-- .. math::"
+#~ msgstr ""
+
+#~ msgid "label"
+#~ msgstr ""
+
+#~ msgid "eq:darcy"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "where the pressure equation :eq:`eq:pressure`"
+#~ " is derived from continuity equation "
+#~ ":eq:`eq:conti` and Darcy's law :eq:`eq:darcy`"
+#~ " (see :cite:`hasenclever2014hybrid`). -->"
+#~ msgstr ""
+#~ "其中压力方程\\ :eq:`eq:pressure`\\ 是连续性方程\\ "
+#~ ":eq:`eq:conti`\\ 与达西定律\\ :eq:`eq:darcy`\\ 结合起来推导得到的。"
+#~ " (见\\ :cite:`hasenclever2014hybrid`)。"
+
+#~ msgid "The solver is named :code:`HydrothermalSinglePhaseDarcyFoam`,"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\\varepsilon \\frac{\\partial \\rho_f}{\\partial t}"
+#~ " + \\nabla \\cdot (\\vec{U} \\rho_f)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "see |paper_hydrothermalfoam| for details of"
+#~ " symbols and mathematical model "
+#~ "description."
+#~ msgstr "符号的详细意义及数学模型描述见\\ |paper_hydrothermalfoam|\\ 。"
+
+#~ msgid ""
+#~ "The subscript of :math:`l, v, s` "
+#~ "in the governing equations denote "
+#~ "**liquid** phase, **vapour** phase and "
+#~ "**supercritical fluid**, respectively. And all"
+#~ " symbols are defined in "
+#~ ":numref:`tab:symbols:multiphase`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\\vec{U_i} = - k \\frac{k_{ri}}{\\mu_i} "
+#~ "(\\nabla p -\\rho_i \\vec{g}), i = "
+#~ "\\{v, l, s\\}"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The relation of saturation of each "
+#~ "phase is :math:`S_l + S_v + S_s"
+#~ " =1`. It should be noted that "
+#~ ":math:`S_s=1` and :math:`S_l = S_v = "
+#~ "0` when above critical pressure and "
+#~ "critical temperature, and otherwise :math:`S_s"
+#~ " = 0, S_l + S_v =1`."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Subtituting :numref`eq:darcy:multiphase` into "
+#~ ":numref:`eq:conti:multiphase`, we can get the"
+#~ " pressure equation,"
+#~ msgstr ""
+

@@ -1,0 +1,12 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+set -x
+
+# clean freesteam and gsl
+# ./cleanFreeSteam
+
+# clean boundary conditions library
+wclean BoundaryConditions
+# clean thermophysical model library
+wclean ThermoModels
+

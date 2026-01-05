@@ -1,0 +1,5 @@
+# Map of Triangle boundary marker to boundary patch name. The first column: [boundary marker] behind the segment in .poly file; second column: patch name
+2 top
+4 right
+6 bottom
+8 left

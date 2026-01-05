@@ -1,0 +1,882 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Zhikui Guo, Lars Ruepke
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-14 20:40+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/Tutorial/index.rst:5
+msgid "Tutorial"
+msgstr "教程"
+
+#: ../../source/Tutorial/index.rst:9
+msgid ""
+"Usage of |foam| tool is similar to any other solver of OpenFOAM, see "
+"OpenFOAM :download:`user guide "
+"<http://foam.sourceforge.net/docs/Guides-a4/OpenFOAMUserGuide-A4.pdf>` "
+"for more details. The basic usage of |foam| are shown as below."
+msgstr ""
+"|foam|\\ 的用法与其他的OpenFOAM求解器类似, 详情见OpenFOAM :download:`用户手册 "
+"<http://foam.sourceforge.net/docs/Guides-a4/OpenFOAMUserGuide-A4.pdf>`\\ "
+"。 |foam|\\ 的基本用法展示如下。"
+
+#: ../../source/Tutorial/index.rst:17
+msgid "Mesh generation"
+msgstr "网格划分"
+
+#: ../../source/Tutorial/index.rst:19
+msgid ""
+"The are several ways to generat mesh, including OpenFOAM's built-in "
+":code:`blockMesh` application for generating meshes of simple geometries,"
+" :code:`snappyHexMesh` application for meshing complex geometries and "
+"applications that convert meshes from well known formats into the "
+"OpenFOAM format, e.g. :code:`fluentMeshToFoam`, :code:`gmshToFoam`. see "
+"OpenFOAM user guide-`mesh generation and conversion "
+"<https://cfd.direct/openfoam/user-guide/v7-mesh/>`_ for details."
+msgstr ""
+"网格划分的方式有很多种，不仅包括OpenFOAM内置的\\ :code:`blockMesh`\\ 网格划分程序用于一些简单的网格划分以及\\ "
+":code:`snappyHexMesh`\\ "
+"网格划分程序用于一些复杂的网格划分，OpenFOAM还提供了很多网格转换工具可以将其他主流的网格划分软件划分的网格转换为OpenFOAM的格式。比如，\\"
+" :code:`fluentMeshToFoam`, :code:`gmshToFoam`\\ "
+"。更多细节见OpenFOAM用户手册-`网格划分和转换 <https://cfd.direct/openfoam/user-"
+"guide/v7-mesh/>`_\\ 。"
+
+#: ../../source/Tutorial/index.rst:24
+msgid ""
+"This section we simply present how to use :code:`blockMesh` and "
+":code:`gmshToFoam` for generating mesh and defining boundary patches."
+msgstr "我们将在这一节展示如何使用\\ :code:`blockMesh`\\ 和\\ :code:`gmshToFoam`\\ 生成网格和定义边界条件。"
+
+#: ../../source/Tutorial/index.rst:29
+msgid "Simple mesh generation: :code:`blockMesh`"
+msgstr "简单网格生成：\\ :code:`blockMesh`"
+
+#: ../../source/Tutorial/index.rst:31
+msgid ""
+"The mesh is generated from a dictionary file named :code:`blockMeshDict` "
+"located in the :code:`system` directory of a case. :code:`blockMesh` "
+"reads this dictionary, generates the mesh and writes out the mesh data to"
+" :code:`points` and :code:`faces`, :code:`cells` and :code:`boundary` "
+"files in the :code:`constant/polyMesh` directory (see "
+":numref:`fig:case_structure_main`)."
+msgstr ""
+"模型几何定义、边界定义和拓扑连接等都在字典文件\\ :code:`blockMeshDict`\\ 中定义，位于算例的\\ "
+":code:`system`\\ 目录中。\\ :code:`blockMesh`\\ 读取这个字典文件，然后生成网格并将网格信息存储在\\ "
+":code:`points`, :code:`faces`, :code:`cells`\\ 和\\ :code:`boundary`\\ "
+"文件中，位于\\ :code:`constant/polyMesh`\\ 目录中(见\\ "
+":numref:`fig:case_structure_main`)。"
+
+#: ../../source/Tutorial/index.rst:35
+msgid ""
+":code:`blockMesh` decomposes the domain geometry into a set of 1 or more "
+"three dimensional, hexahedral blocks. Each block of the geometry is "
+"defined by 8 vertices, one at each corner of a hexahedron. An simple "
+"example block and vertices numbering is shown in :numref:`fig:blockMesh`."
+" The vertices are written in a list so that each vertex can be accessed "
+"using its label, remembering that OpenFOAM always uses the C++ convention"
+" that the first element of the list has label ‘0’."
+msgstr ""
+":code:`blockMesh`\\ "
+"将计算域的几何分解成一个1个或多个三维六面体块的集合。每一个块体的几何用8个顶点来定义。一个简单的块体的顶点编号见\\ "
+":numref:`fig:blockMesh`\\ "
+"。将顶点写入一个列表中，这样就可以通过其标签访问每个顶点了。需要记住的一点是：OpenFOAM采用的是C++的习惯，所以元素列表编号中的第一个是“0”。"
+
+#: ../../source/Tutorial/index.rst:47
+msgid ""
+"The coordinate system and vertices numbering of single block for "
+":code:`blockMesh`."
+msgstr ":code:`blockMesh`\\ 支持单个块体的坐标系和顶点编号示意图"
+
+#: ../../source/Tutorial/index.rst:49
+msgid ""
+"An example of :code:`blockMeshDict` for describing a 2D box is shown in "
+":numref:`lst:blockMeshDict`. The key entries are :code:`vertices`, "
+":code:`blocks` and :code:`boundary`."
+msgstr ""
+"用于描述一个二维盒子模型的\\ :code:`blockMeshDict`\\ 字典文件示例见\\ "
+":numref:`lst:blockMeshDict`\\ 。其中的关键条目为\\ :code:`vertices`, "
+":code:`blocks`\\ 和\\ :code:`boundary`\\ 。"
+
+#: ../../source/Tutorial/index.rst:52
+msgid ""
+"**vertices** contains all three-dimension coordinate of each vertex (line"
+" 15-25), e.g. vertex 0 is :code:`(0 $ymin 0)` and the vertex 5 is "
+":code:`($Lx $ymin $Lz)`, the coordinate system is shown in "
+":numref:`fig:blockMesh`."
+msgstr ""
+"**vertices**\\ 包含了每个顶点的三维坐标(15-25行), 比如： 顶点0的坐标为\\ :code:`(0 $ymin "
+"0)`\\，顶点5的坐标为\\ :code:`($Lx $ymin $Lz)`, 坐标系的示意图见\\ "
+":numref:`fig:blockMesh`\\ 。"
+
+#: ../../source/Tutorial/index.rst:54
+msgid ""
+"**blocks** contains vertex connection of a hexahedron, numbers of cells "
+"in each direction and cell expansion ratios. The order of vertex "
+"connection is :code:`(0 1 2 3 4 5 6 7)`. :code:`(100 50 1)` means the "
+"number of cells in :math:`x`, :math:`y` and :math:`z` direction will be "
+"100, 50 and 1 (for 2D case), respectively. :code:`simpleGrading` is "
+"typically set to :code:`(1 1 1)`, see OpenFOAM user gide-`blockMesh "
+"<https://cfd.direct/openfoam/user-guide/v7-blockMesh/>`_ for more "
+"details."
+msgstr ""
+"**blocks**\\ 子字典包含了一个六面体的顶点连接关系、每个方向上的 单元个数及其缩放系数。顶点连接书序为\\ :code:`(0 1 2"
+" 3 4 5 6 7)`\\ 。 :code:`(100 50 1)`\\ 定义了网格在\\ :math:`x`, :math:`y`\\ 和\\"
+" :math:`z`\\ 三个方向上的单元个数分别为100, 50和1 (因为是二维，所以z方向为1)。\\ "
+":code:`simpleGrading`\\ 的典型值一般为\\ :code:`(1 1 1)`, "
+"更多细节见OpenFOAM用户手册-`blockMesh <https://cfd.direct/openfoam/user-"
+"guide/v7-blockMesh/>`_\\ 。"
+
+#: ../../source/Tutorial/index.rst:56
+msgid ""
+"**boundary** contains sub-dictionarys for defining boundary patches. The "
+"name (e.g. :code:`right` or whatever the user like) of the sub-dictionary"
+" is the boundary patch name which will be used in filed data (see "
+":numref:`sec:boundaryConditions`). There are two key entries, "
+":code:`type` and :code:`faces` in each sub-dictionary. The :code:`type` "
+"is typically set to :code:`patch` or :code:`empty` for a non-computing "
+"boundary patch of a non-three-dimensional case. :code:`faces` is a list "
+"of block faces that make up the patch with a user defined name (see lines"
+" 43-46 for :code:`right` patch or lines 67-71 for :code:`frontAndBack` "
+"patch shown as transparent surface in :numref:`fig:blockMesh`)"
+msgstr ""
+"**boundary**\\ 包含了定义每个边界面的子字典。每个子字典的名字即为边界面的名字(比如\\ "
+":code:`right`)，这将在场数据文件中定义边界条件时会用到(见\\ "
+":numref:`sec:boundaryConditions`)。每个子字典中都有两个关键条目需要注意：\\ :code:`type`\\ "
+"和\\ :code:`faces`\\ 。其中\\ :code:`type`\\ 通常定义为\\ :code:`patch`\\ "
+"或对于不参与计算的边界（比如二维情况）定义为\\ :code:`empty`\\ :code:`faces`\\ "
+"是一个列表，定义了组成这个边界面的顶点编号(比如43-46行定义了\\ :code:`right`\\ 边界面，67-71行定义了\\ "
+":code:`frontAndBack`\\ 边界面，如\\ :numref:`fig:blockMesh`\\ 中的两个半透明面所示)。"
+
+#: ../../source/Tutorial/index.rst:58
+msgid "Example of :code:`blockMeshDict` for a 2D box."
+msgstr "二维盒子模型的\\ :code:`blockMeshDict`\\ 字典文件示例"
+
+#: ../../source/Tutorial/index.rst:67
+msgid ""
+"We can also use variable in :code:`blockMeshDict`. For example "
+":code:`ymin -3000;`, it should be noted that there is no :code:`=` "
+"between variable name and value, and :code:`;` is required. In addition, "
+"the :code:`convertToMeters` keyword specifies a scaling factor by which "
+"all vertex coordinates in the mesh description are multiplied, e.g. "
+"`convertToMeters 0.01;` scales to mm."
+msgstr ""
+"我们也可以在\\ :code:`blockMeshDict`\\ 中使用变量来定义模型的几何，这样便于参数的修改。比如\\ :code:`ymin"
+" -3000;`\\ 。需要注意的是变量和数值之间并不需要\\ :code:`=`\\ ，但是结尾必须用\\ :code:`;`\\ "
+"。此外，关键词\\ :code:`convertToMeters`\\ 可以方便的进行坐标的倍数运算。比如\\ `convertToMeters "
+"0.01;`\\ 将m转换为mm。"
+
+#: ../../source/Tutorial/index.rst:72
+msgid ""
+"Then just type :code:`blockMesh` command in the terminal in the root "
+"directory of the case after finishing :code:`blockMeshDict`."
+msgstr ""
+"在\\ :code:`blockMeshDict`\\ 中定义好模型几何之后，只需要在算例目录下运行\\ :code:`blockMesh`\\ "
+"命令即可生成网格。"
+
+#: ../../source/Tutorial/index.rst:77
+msgid "Convert gmsh to OpenFOAM: :code:`gmshToFoam`"
+msgstr "利用\\ :code:`gmshToFoam`\\ 工具将gmsh网格转换为OpenFOAM格式"
+
+#: ../../source/Tutorial/index.rst:79
+msgid ""
+"The OpenFOAM built-in meshing utility, :code:`blockMesh`, can generate "
+"some simple mesh, but it is difficulty to describe complex geometry in "
+":code:`blockMeshDict` dictionary file. In this section, we introduce how "
+"to use gmsh_ to generate mesh and then use :code:`gmshToFoam` convert the"
+" mesh to OpenFOAM format."
+msgstr ""
+"OpenFOAM内置的网格工具\\ :code:`blockMesh`\\ 可以生成简单的网格，但是在\\ "
+":code:`blockMeshDict`\\ 字典文件中很难描述一些复杂模型几何我们将在本节介绍如何用\\ gmsh_\\ 生成网格，然后用\\"
+" :code:`gmshToFoam`\\ 将其转换为OpenFOAM网格格式。"
+
+#: ../../source/Tutorial/index.rst:86
+msgid "Create geometry and define boundary patches"
+msgstr "创建模型几何并定义边界面"
+
+#: ../../source/Tutorial/index.rst:88
+msgid ""
+"Here we present a example for creating 2D and 3D box geometry, and "
+"defining boundary patches. See `gmsh manual "
+"<https://gmsh.info/doc/texinfo/gmsh.html>`_ (:download:`pdf "
+"<https://gmsh.info/doc/texinfo/gmsh.pdf>`) for more details about "
+"geometry definition and mesh generation."
+msgstr ""
+"我们在这里展示了一个二维和三维盒子模型的几何和边界面的定义关于模型几何定义和网格生成的更多细节见\\ `gmsh用户手册 "
+"<https://gmsh.info/doc/texinfo/gmsh.html>`_ (:download:`pdf "
+"<https://gmsh.info/doc/texinfo/gmsh.pdf>`)。"
+
+#: ../../source/Tutorial/index.rst:93
+msgid "**Geometry description**"
+msgstr "几何的描述"
+
+#: ../../source/Tutorial/index.rst:95
+msgid ""
+"The geometry descriptions are stored in a gmsh geometry script file with "
+"extension :code:`.geo`. Gmsh script files support both C and C++ style "
+"comments and the syntax is similar to C/C++ as well. The user can use "
+"gmsh GUI to create a geometry script file, and also can write the "
+"geometry script file directly in your favorive text editor, e.g. `Visual "
+"Stuio Code <https://code.visualstudio.com>`_ with `gmsh extension "
+"<https://marketplace.visualstudio.com/items?itemName=Bertrand-Thierry"
+".vscode-gmsh>`_. An gmsh geometry script file of a 3D box is shown in "
+":numref:`lst:3Dbox_geo` (:download:`box.geo "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/2d/gmsh2DBox/gmsh/box.geo>`)."
+msgstr ""
+"Gmsh的几何描述(定义)信息存储在后缀为\\ :code:`.geo`\\ "
+"的脚本文件中。Gmsh脚本文件的语法格式和命令均与C/C++风格类似甚至相同。当然了用户可以使用gmsh的用户操作界面进行模型几何的创建，也可以是用文本编辑器直接将模型几何的定义命令写入脚本文件,"
+" 比如\\ `Visual Stuio Code <https://code.visualstudio.com>`_\\ "
+"是一个很好的选择，已有\\ `gmsh插件 "
+"<https://marketplace.visualstudio.com/items?itemName=Bertrand-Thierry"
+".vscode-gmsh>`_\\ 支持Gmsh的脚本文件语法高亮，很容易进行编辑。一个简单的三维盒子模型的gmsh几何定义脚本见\\ "
+":numref:`lst:3Dbox_geo` (:download:`box.geo "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/2d/gmsh2DBox/gmsh/box.geo>`)\\"
+" 。"
+
+#: ../../source/Tutorial/index.rst:104
+msgid "Example of gmsh geometry script of a 3D box."
+msgstr "三维盒子模型的gmsh几何定义脚本示例"
+
+#: ../../source/Tutorial/index.rst:112
+msgid ""
+"The geometry script file can be opened and visualized by gmsh GUI, see "
+":numref:`fig:box_geo_gmsh_gui`. Gmsh supports three-dimensional "
+"interactive operation and there are mouse tooltips of number and other "
+"informations for each point, line, surface and volume. Therefor the user "
+"can easily get the number of each boundary patch and volume (cell "
+"region)."
+msgstr ""
+"用文本编辑器编辑的.geo脚本文件可以用gmsh直接打开进行显示，见\\ :numref:`fig:box_geo_gmsh_gui`\\ "
+"。Gmsh也支持三维交互式操作，鼠标移动到点、线、面和体上会有相应的信息提示。 因此用户可以很容易的获得边界面的编号，用于定义边界面。"
+
+#: ../../source/Tutorial/index.rst:121
+msgid "Gmsh GUI display a 2D box geometry."
+msgstr "二维盒子模型几何在Gmsh的用户界面中的显示示例"
+
+#: ../../source/Tutorial/index.rst:123
+msgid "**Boundary patches and cell regions definition**"
+msgstr "**边界面和单元区域的定义**"
+
+#: ../../source/Tutorial/index.rst:125
+msgid ""
+"The user can specify a specific name, e.g. :code:`bottom`, for each "
+":code:`Surface` (gmsh keyword) or a name for boundary patches group, e.g."
+" :code:`frontAndBack`. These boundary patches name will be used to "
+"specify boundary conditions in field data file(see "
+":numref:`sec:boundaryConditions`). In addition, the user can also specify"
+" specific name for each :code:`Volume` (gmsh keyword). This volume name "
+"will be used to set field distribution, e.g. permeability (see "
+":numref:`sec:setFields`). The specification of boundary pathch name and "
+"cell region name can be done by :code:`Physical` keyword, see "
+":numref:`lst:3Dbox_geo_boundary`."
+msgstr ""
+"用户可以给某个面\\ :code:`Surface`(gmsh的关键词)\\ 指定特定的名字，比如\\ :code:`bottom`,  "
+":code:`frontAndBack`\\ 。这些用名字定义的边界面将在场数据文件的边界条件指定中用到。(见\\ "
+":numref:`sec:boundaryConditions`)。不仅如此，用户也可以为体积\\ :code:`Volume` "
+"(gmsh关键词)指定名字。体的名字将在指定区域的场值分布的定义中用到, 比如渗透率(见\\ "
+":numref:`sec:setFields`)。这些面或体的名字可以通过Gmsh的关键词\\ :code:`Physical`\\ "
+"进行定义，见\\ :numref:`lst:3Dbox_geo_boundary`\\ 。"
+
+#: ../../source/Tutorial/index.rst:132
+msgid "Example of boundary patch definition in gmsh geometry script."
+msgstr "在Gmsh的几何描述脚本中定义边界面示例"
+
+#: ../../source/Tutorial/index.rst:140
+msgid ""
+"Gmsh will specify some default colors for every surfaces and volumes. The"
+" user can also set specific color for each pathch and volume (see blow) "
+"to check boundary mesh."
+msgstr "Gmsh默认为面和体分配不同的颜色。不过，用户可以为每个面指定自己喜欢的颜色，用于边界检查。"
+
+#: ../../source/Tutorial/index.rst:149
+msgid "Generate mesh"
+msgstr "生成网格"
+
+#: ../../source/Tutorial/index.rst:155
+msgid "Gmsh GUI display a 2D box mesh."
+msgstr "Gmsh用户操作界面显示一个二维盒子模型的网格"
+
+#: ../../source/Tutorial/index.rst:157
+msgid ""
+"Mesh generation process is pretty easy, the user can do it using gmsh GUI"
+" :guilabel:`Mesh` -> :guilabel:`3D`. The mesh result is shown in "
+":numref:`fig:box_msh_gmsh_gui`. Because :code:`gmshToFoam` in OpenFOAM-7 "
+"can only read gmsh :code:`.msh` file in format of version 2, the user "
+"have to export (:guilabel:`File` -> :guilabel:`Export` -> :guilabel:`Gmsh"
+" MESH`) the mesh file to  **Version 2 ASCII** format (see "
+":numref:`fig:gmsh_save_gui`)."
+msgstr ""
+"Gmsh的网格生成过程很简单。用户可以通过GUI界面进行：\\ :guilabel:`Mesh` -> :guilabel:`3D`\\ "
+"。网格生成结果见\\ :numref:`fig:box_msh_gmsh_gui`\\ 。因为OpenFOAM-7版本中的\\ "
+":code:`gmshToFoam`\\ 工具只能读取2.x版本的\\ :code:`.msh`\\ 文件格式, "
+"所以在网格生成完成之后保存网格文件时必须选择\\ **Version 2 ASCII**\\ 格式。(:guilabel:`File` -> "
+":guilabel:`Export` -> :guilabel:`Gmsh MESH`)，见\\ "
+":numref:`fig:gmsh_save_gui`\\ 。"
+
+#: ../../source/Tutorial/index.rst:167
+msgid "Export msh to Version 2."
+msgstr "将网格导出为 **Version 2 ASCII**"
+
+#: ../../source/Tutorial/index.rst:169
+msgid ""
+"Alternately, the mesh generation and save file can be done by a single "
+"line of command (see :numref:`lst:gmsh_meshing_save`)"
+msgstr "除了GUI生成网格外，也可以用一行简单的命令生成(see :numref:`lst:gmsh_meshing_save`)。"
+
+#: ../../source/Tutorial/index.rst:171
+msgid "Meshing and saving command of gmsh."
+msgstr "Gmsh网格生成和保存命令"
+
+#: ../../source/Tutorial/index.rst:180
+msgid "Convert mesh"
+msgstr "转换网格"
+
+#: ../../source/Tutorial/index.rst:182
+msgid ""
+"If the mesh file is generated successfully, the user can convert the mesh"
+" to OpenFOAM format by running command of :code:`gmshToFoam mymesh.msh` "
+"in the root directory of a case. Then a directory named :code:`polyMesh` "
+"will be generated in :code:`constant` directory. All the defined boundary"
+" patches are converted to :code:`polyMesh/boundary` file (see "
+":numref:`lst:gmsh_convert_boundary`). If the case is three-dimensional, "
+"now the mesh generation process is done. But for 2D case, the user have "
+"to set :code:`empty` boundary pathches by modifying the :code:`boundary` "
+"file directly."
+msgstr ""
+"Gmsh网格生成并成功保存为.msh文件后，用户可以在算例目录下运行类似这样的命令\\ :code:`gmshToFoam "
+"mymesh.msh`\\ 将Gmsh网格转换为OpenFOAM格式。然后就会自动生成一个名为\\ :code:`polyMesh`\\ "
+"的目录，位于\\ :code:`constant`\\ 目录中。所有定义的边界面都会被转换保存到\\ "
+":code:`polyMesh/boundary`\\ 文件中(见\\ "
+":numref:`lst:gmsh_convert_boundary`)。如果是三维模型，到这一步网格转换过程已经完成。但是对于二维或者以为模型，用户必须手动设定空边界类型\\"
+" :code:`empty`\\ ，直接修改\\ :code:`boundary`\\ 文件即可。"
+
+#: ../../source/Tutorial/index.rst:189
+msgid ":code:`polyMesh/boundary` converted by :code:`gmshToFoam`."
+msgstr "通过\\ :code:`gmshToFoam`\\ 转换得到的\\ :code:`polyMesh/boundary`\\ 文件"
+
+#: ../../source/Tutorial/index.rst:234
+msgid ""
+"We provide a python script (:download:`setEmptyPatch.py "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/benchmarks/HydrothermalFoam/2d/setEmptyPatch.py>`)"
+" to modify a boundary patch to :code:`empty` by patch name. For example, "
+"set :code:`frontAndBack` patches to :code:`empty` by running the "
+"following command at case root directory."
+msgstr ""
+"我们提供了一个为二维和以为模型设置空边界类型的Python脚本(:download:`setEmptyPatch.py "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/benchmarks/HydrothermalFoam/2d/setEmptyPatch.py>`)\\"
+" 可以直接通过想要修改的边界面的名字进行。比如，将\\ :code:`frontAndBack`\\ 边界面设置为\\ :code:`empty`"
+" \\ 的命令如下："
+
+#: ../../source/Tutorial/index.rst:244
+msgid "Case setup"
+msgstr "算例设置"
+
+#: ../../source/Tutorial/index.rst:246
+msgid ""
+"A model case of |foam| basically consists of **time directory** (e.g. "
+":code:`0` for initial state), **constant** and **system** directory (see "
+":numref:`fig:case_structure_main`). The sub-directory of **polyMesh** in "
+"**constant** folder consists mesh files, which are generated by meshing "
+"utility, e.g. :code:`blockMesh`, :code:`gmshToFoam`, "
+":code:`snappyHexMesh`,..., see :numref:`sec:meshing`."
+msgstr ""
+"|foam|\\ 的算例目录通常包含\\ **时间目录** (比如表示初始状态的\\ :code:`0`\\ 文件夹), **constant**"
+" 和 **system** 目录 (见\\ :numref:`fig:case_structure_main`)。 **constant** "
+"下的子目录 **polyMesh** 包含了所需的网格文件, 这可以通过OpenFOAM的网格生成工具\\ :code:`blockMesh`\\"
+" 直接生成，也可以通过\\ :code:`gmshToFoam`\\ 工具将Gmsh网格转换得到，或者\\ "
+":code:`snappyHexMesh`,..., 见\\ :numref:`sec:meshing`\\ 。"
+
+#: ../../source/Tutorial/index.rst:259
+msgid "Directory structure of a case of |foam|."
+msgstr "|foam|\\ 的算例目录结构"
+
+#: ../../source/Tutorial/index.rst:264
+msgid "Initial state"
+msgstr "初始状态"
+
+#: ../../source/Tutorial/index.rst:266
+msgid ""
+"The field data files of initial state are commonly stored in :code:`0` "
+"time directory. Of course it can be another time directory, e.g. "
+":code:`1000`, which is specified by key of :code:`startFrom` in "
+":code:`controlDict` in :code:`system` directory (see "
+":numref:`sec:system`). In the initial state directory, the field file of "
+"primary variable :code:`T, p` and :code:`permeability` are compulsive, "
+"and :code:`U` is also required if :code:`fixedFluxPressure` is applied on"
+" a boundary patch for pressure (see :numref:`sec:BC_fixedFluxPressure`). "
+"An example field data file of :code:`T` is shown in :numref:`lst:case_T`,"
+" which is a basic structure of dictionary file of a field data. A field "
+"data file basicly contains its **variable type** (line 5), **object "
+"name** (line 6), **dimension** (line 9), **internal filed** value (line "
+"10) and **boundary field** value (boundary conditions, line 11-42)."
+msgstr ""
+"初始状态的场数据文件通常保存在\\ :code:`0`\\ 目录中。当然也可以保存在其他的时间目录中，比如\\ :code:`1000`, "
+"这是通过\\ :code:`system`\\ 目录下的\\ :code:`controlDict`\\ 字典文件中的关键词\\ "
+":code:`startFrom`\\ 指定的。(见\\ :numref:`sec:system`)。在初始目录中，主要变量\\ "
+":code:`T, p`\\ 和\\ :code:`permeability`\\ 的场数据文件是要必须给出的。如果对压力场使用了\\ "
+":code:`fixedFluxPressure`\\ 边界条件，还必须给出速度场\\ :code:`U`\\ 的数据文件。(见\\ "
+":numref:`sec:BC_fixedFluxPressure`)。温度场\\ :code:`T`\\ 的数据文件示例见\\ "
+":numref:`lst:case_T`\\ ，这是场数据的字典文件的一个基本的结构。一个场数据的字典文件一般包含他的\\ **variable "
+"type** (第5行), 对象名字 **object name** (第6行), 单位 **dimension** (第9行), 内部场值 "
+"**internal filed** (第10行) 和边界场值 **boundary field** (即所谓的\\ **边界条件**\\ , "
+"第11-42行)."
+
+#: ../../source/Tutorial/index.rst:281
+msgid "Example field data of temperature."
+msgstr "温度场数据的字典文件示例"
+
+#: ../../source/Tutorial/index.rst:289
+#, fuzzy
+msgid ""
+"**Variable type** (:code:`class`) and **object name** (:code:`object`). "
+"See |paper_hydrothermalfoam| for variable type and object name index."
+msgstr ""
+"**变量类型** (:code:`class`) 和 **对象名称** (:code:`object`). 关于变量类型和对象名称参见\\ "
+"|paper_hydrothermalfoam|\\ 。"
+
+#: ../../source/Tutorial/index.rst:291
+msgid ""
+"**Internal field** (:code:`internalField`) can be set as uniform (just "
+"like line 10 in :numref:`lst:case_T`) or non-uniform (see "
+":numref:`sec:setFields`)."
+msgstr ""
+"**内部场** (:code:`internalField`) 可以是均匀的 (就像\\ :numref:`lst:case_T`\\ "
+"第10行这样)或者非均匀的(见\\ :numref:`sec:setFields`)。"
+
+#: ../../source/Tutorial/index.rst:293
+msgid ""
+"**Boundary conditions** (:code:`boundaryField`). The boundary patch name,"
+" e.g. :code:`bottom`, is defined in mesh file of "
+"*constant/polyMesh/boundary* (see :numref:`fig:case_structure_main` and "
+":numref:`sec:meshing`). The available boundary conditions and their usage"
+" can be found in :numref:`sec:boundaryConditions`."
+msgstr ""
+"**边界条件** (:code:`boundaryField`). 边界面的名字,比如\\ :code:`bottom`, 是在网格文件\\ "
+"*constant/polyMesh/boundary* (见 :numref:`fig:case_structure_main` and "
+":numref:`sec:meshing`)中定义的。可用的边界条件及其用法见\\ "
+":numref:`sec:boundaryConditions`\\ 。"
+
+#: ../../source/Tutorial/index.rst:296
+msgid ""
+"To avoid making mistakes, user should copy the field data files form any "
+"case in cookbooks_ or benchmarks_ and then make some changes."
+msgstr ""
+"为了避免犯不必要的错误，建议用户将其他算例（比如说明文档那个中提供的算例 cookbooks_ 或 benchmarks_ "
+"）中的数据文件拷贝，然后在其基础上修改。"
+
+#: ../../source/Tutorial/index.rst:301
+msgid "Constant"
+msgstr ""
+
+#: ../../source/Tutorial/index.rst:303
+msgid ""
+"For |foam|, the constant directory always contains three files named "
+":code:`g`, :code:`thermophysicalProperties`, :code:`transportProperties` "
+"respectively, and one folder named :code:`polyMesh` (see "
+":numref:`fig:case_structure_main`)."
+msgstr ""
+"对于\\ |foam|\\ , constant目录总是包含三个文件，分别为\\ :code:`g`, "
+":code:`thermophysicalProperties`\\ 和\\ :code:`transportProperties` "
+"以及一个名为\\ :code:`polyMesh`\\ 的文件夹(见\\ :numref:`fig:case_structure_main`)\\"
+" 。"
+
+#: ../../source/Tutorial/index.rst:305
+msgid ""
+"**g** contains gravitational acceleration constant. It is same for "
+"basically all cases of OpenFOAM-based solvers. Therefor, please just copy"
+" this file from any existed case to a new case."
+msgstr ""
+"**g** "
+"包含了重力加速度常数的数值和单位。对于考虑重力的情况，基本上所有的OpenFOAM求解器的算例都是相同的。因此一般都是直接从其他算例中直接拷贝这个文件。"
+
+#: ../../source/Tutorial/index.rst:307
+msgid ""
+"**thermophysicalProperties** contains thermophysical model. It is the "
+"same for all cases of HydrothermalSinglePhaseDarcyFoam solver, see "
+":numref:`sec:thermophysicalProperties`."
+msgstr ""
+"**thermophysicalProperties** 包含了热物理模型的参数。对于\\ "
+"HydrothermalSinglePhaseDarcyFoam\\ 求解器的算例，都是相同的。见\\ "
+":numref:`sec:thermophysicalProperties`\\ 。"
+
+#: ../../source/Tutorial/index.rst:309
+msgid ""
+"**transportProperties** contains constant parameters about transport, see"
+" :numref:`sec:transportProperties`."
+msgstr ""
+"**transportProperties** 包含了运输属性的参数，见\\ "
+":numref:`sec:transportProperties`\\ 。"
+
+#: ../../source/Tutorial/index.rst:311
+msgid ""
+"**polyMesh** directory contains necessary mesh files which are "
+"automatically generated by meshing utility, e.g. :code:`blockMesh`, "
+":code:`gmshToFoam` (see :numref:`sec:meshing`)."
+msgstr ""
+"**polyMesh** 目录下包含了OpenFOAM格式的网格文件，这些网格文件可以用一些网格剖分或转换的工具生成，比如\\ "
+":code:`blockMesh`, :code:`gmshToFoam` (见\\ :numref:`sec:meshing`)。"
+
+#: ../../source/Tutorial/index.rst:316
+msgid "System"
+msgstr ""
+
+#: ../../source/Tutorial/index.rst:318
+msgid ""
+"As shown in :numref:`fig:case_structure_main`, the **system** directory "
+"contains three compulsive directory files of **controlDict**, "
+"**fvSchemes** and **fvSolution**, and optional dictionary file, e.g. "
+"**blockMeshDict** for OpenFOAM built-in meshing utility "
+":code:`blockMesh`."
+msgstr ""
+"如\\ :numref:`fig:case_structure_main`\\ 所示，\\ **system**\\ "
+"目录包含了三个必须的字典文件，分别为\\ **controlDict**, **fvSchemes** 和 "
+"**fvSolution**,以及一些可选的字典文件，比如\\ **blockMeshDict**\\ 用于\\ "
+":code:`blockMesh`\\ 生成网格。"
+
+#: ../../source/Tutorial/index.rst:324
+msgid "Time and data input/output control"
+msgstr "时间和输入/输出数据控制"
+
+#: ../../source/Tutorial/index.rst:326
+msgid ""
+"The **controlDict** dictionary sets time and data input/output control, "
+"the commonly used entries for *HydrothermalSinglePhaseDarcyFoam* solver "
+"are shown in :numref:`lst:controlDict`. See OpenFOAM user "
+"guide-`controlDict <https://cfd.direct/openfoam/user-"
+"guide/v7-controldict/>`_ for more details of each entry. A few entries "
+"that need to be emphasized are highlighted in the "
+":numref:`lst:controlDict`."
+msgstr ""
+"时间和输入/输出数据的控制是在字典文件\\ **controlDict**\\ 中进行设置的。对于\\ "
+"*HydrothermalSinglePhaseDarcyFoam*\\ 求解器，常用的设置参数见\\ "
+":numref:`lst:controlDict`\\ 。更多的设置参数见\\ OpenFOAM用户手册-`controlDict "
+"<https://cfd.direct/openfoam/user-guide/v7-controldict/>`_\\ 。 "
+"一些需要注意的参数见\\ :numref:`lst:controlDict`\\ 中的高亮显示行。"
+
+#: ../../source/Tutorial/index.rst:331
+msgid ""
+"**application** specifies solver name, which should be "
+"`HydrothermalSinglePhaseDarcyFoam`."
+msgstr "**application** 指定了算例使用的求解器名称：\\ `HydrothermalSinglePhaseDarcyFoam`."
+
+#: ../../source/Tutorial/index.rst:333
+msgid ""
+"**libs** contains some shared libraries using in the case. These three "
+"libraries listed in **lines 46-48** must be inlcuded in **libs** sub-"
+"dictionary for customized thermophysical model and boundary conditions."
+msgstr ""
+"**libs** 包含了一些被用到的动态库名称。\\ **46-48行**\\ 所示的三个动态库是必须要包含的， "
+"这些动态库是边界条件和热物理模型所必须的。"
+
+#: ../../source/Tutorial/index.rst:335
+msgid "Example entries from a :code:`controlDict` dictionary."
+msgstr ":code:`controlDict`\\ 字典的参数示例"
+
+#: ../../source/Tutorial/index.rst:344
+msgid ""
+"There are three options (:code:`firstTime, startTime, latestTime`) "
+"available for the :code:`startFrom` keyword entry. :code:`startTime` "
+"specifies start time for the simulation when :code:`startFrom "
+"startTime;`."
+msgstr ""
+"对于\\ :code:`startFrom`\\ 关键词，有三个可选值(:code:`firstTime, startTime, "
+"latestTime`)，其中用于指定算例从什么状态或从那个时间点开始，从而求解器将从相应的文件夹中读取场数据文件作为模拟的初始状态。"
+
+#: ../../source/Tutorial/index.rst:348
+msgid "Numerical schemes"
+msgstr "数值格式"
+
+#: ../../source/Tutorial/index.rst:350
+msgid ""
+"The :code:`fvSchemes` dictionary in the :code:`system` directory sets the"
+" numerical schemes for terms, such as derivatives in equations, that are "
+"calculated during a simulation. The commonly used entries of "
+":code:`fvSchemes` for :code:`HydrothermalSinglePhaseDarcyFoam` solver are"
+" shown in :numref:`lst:fvSchemes`. See OpenFOAM user guide-`fvSchemes "
+"<https://cfd.direct/openfoam/user-guide/v7-fvSchemes/>`_ for more "
+"available scheme options of each terms."
+msgstr ""
+":code:`system`\\ 目录下的\\ :code:`fvSchemes`\\ "
+"字典文件指定了数值离散格式，比如方程中的散度项。:code:`HydrothermalSinglePhaseDarcyFoam`\\ 的\\ "
+":code:`fvSchemes`\\ 字典的常用关键词见\\ :numref:`lst:fvSchemes`\\ "
+"。更多关于数值格式的选项见OpenFOAM用户手册-`fvSchemes <https://cfd.direct/openfoam/user-"
+"guide/v7-fvSchemes/>`_\\ 。"
+
+#: ../../source/Tutorial/index.rst:355
+msgid ""
+"As shown in :numref:`lst:fvSchemes`, user have to specify numerical "
+"scheme for transient (lines 11-14), gradient of pressure :code:`p` (line "
+"19) and temperature :code:`T` (line 20), laplacian terms (line 33-34), "
+"surface interpolation (lines 37-40), surface gradient (lines 42-45). In "
+"addition, the :code:`fluxRequired` sub-dictionary have to be specified "
+"for reconstructing Darcy velocity from flux after solving pressure. See "
+"**Model development** section in |paper_hydrothermalfoam| or `source code"
+" of the solver "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/solvers/HydrothermalSinglePhaseDarcyFoam>`_"
+" for more detail implementation of each terms."
+msgstr ""
+"如\\ :numref:`lst:fvSchemes`\\ 所示，用户必须给出的数值格式参数包括：时间项(11-14行), 压力\\ "
+":code:`p`\\ 的梯度项(19行)和温度\\ :code:`T`\\ 的梯度项(第20行), 拉普拉斯项(33-34行), "
+"表面插值(37-40行), 表面梯度(42-45行)。此外，为了用通量重组流体的达西速度，\\ :code:`fluxRequired`\\ "
+"子字典也必须给出。控制方程中的每一项的实现细节见\\ |paper_hydrothermalfoam|\\ 中的\\ **Model "
+"development**\\ 小节或者\\ `求解器的源代码 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/solvers/HydrothermalSinglePhaseDarcyFoam>`_\\"
+" 。"
+
+#: ../../source/Tutorial/index.rst:364
+msgid "Example entries from a :code:`fvSchemes` dictionary."
+msgstr ":code:`fvSchemes`\\ 字典文件示例"
+
+#: ../../source/Tutorial/index.rst:373
+msgid ""
+"The basic numerical schemes of :code:`HydrothermalSinglePhaseDarcyFoam` "
+"solver are shown in :numref:`lst:fvSchemes`, user can use other available"
+" schemes of each term (see OpenFOAM-`fvSchemes "
+"<https://cfd.direct/openfoam/user-guide/v7-fvSchemes/>`_), e.g. "
+":code:`Gauss vanLeer` for :code:`div(phi,T)`."
+msgstr ""
+":code:`HydrothermalSinglePhaseDarcyFoam`\\ 求解器的常用数值格式见\\ "
+":numref:`lst:fvSchemes`\\ ，当然了用户也可以使用其他的可用的数值格式(见OpenFOAM-`fvSchemes "
+"<https://cfd.direct/openfoam/user-guide/v7-fvSchemes/>`_), 比如\\ "
+":code:`Gauss vanLeer` 可用于 :code:`div(phi,T)`\\ 。"
+
+#: ../../source/Tutorial/index.rst:378
+msgid "Solution and algorithm control"
+msgstr "算法和解的控制"
+
+#: ../../source/Tutorial/index.rst:380
+msgid ""
+"The equation solvers, tolerances and algorithms are controlled from the "
+":code:`fvSolution` dictionary in the :code:`system` directory. An example"
+" set of entries from the :code:`fvSolution` dictionary required for the "
+":code:`HydrothermalSinglePhaseDarcyFoam` solver is shown in "
+":numref:`lst:fvSolution`. See OpenFOAM user guide-`fvSolution "
+"<https://cfd.direct/openfoam/user-guide/v7-fvSolution/>`_ for more "
+"details of each entry."
+msgstr ""
+"线性方程组的求解器、预条件子、收敛条件以及算法控制都是在位于\ "
+":code:`system`\ 目录下的\ :code:`fvSolution`\ 字典文件中进行设置的。"
+"\ :code:`HydrothermalSinglePhaseDarcyFoam`\ 求解器所需的\ :code:`fvSolution`\ 字典文件示例"
+"见\ "
+":numref:`lst:fvSolution`\ 。更多关于\ :code:`fvSolution`\ 的选项参见OpenFOAM用户手册-`fvSolution "
+"<https://cfd.direct/openfoam/user-guide/v7-fvSolution/>`_\ 。"
+
+#: ../../source/Tutorial/index.rst:386
+msgid ""
+"As shown in :numref:`lst:fvSolution`, user have to specify linear "
+"equations :code:`solver`, :code:`preconditioner`, :code:`tolerance` and "
+":code:`relTol` for pressure  and temperature in sub-dictionary of "
+":code:`p` and :code:`T`, respectively. In addition, a sub-dictionary "
+"named in format of :code:`*Final` is required as well (see lines 20-24 "
+"and 32-36). The prefix of :code:`*` denotes primary variable name, e.g. "
+":code:`p` for pressure. The key entry :code:`relTol` is typically set to "
+"0. For :code:`HydrothermalSinglePhaseDarcyFoam` solver, key entry "
+":code:`PIMPLE` is also required besides :code:`solvers`, because we adopt"
+" :code:`pimple.correctNonOrthogonal()` for non-orthogonal correction. The"
+" key entry :code:`nNonOrthogonalCorrectors` in :code:`PIMPLE` dictionary "
+"specifies repeated solutions of the pressure equation, used to update the"
+" explicit non-orthogonal correction of Laplacian term (see OpenFOAM user "
+"guide-`Surface normal gradient schemes <https://cfd.direct/openfoam/user-"
+"guide/v7-fvSchemes/#x20-1490004.5.4>`_ for more details). "
+":code:`nNonOrthogonalCorrectors` is typically set to 0 or 1."
+msgstr ""
+"如\ :numref:`lst:fvSolution`\ 所示，用户必须为温度和压力场线性方程组指定其\ "
+":code:`solver`, :code:`preconditioner`, :code:`tolerance` 和 "
+":code:`relTol`\ ，分别位于以\ "
+":code:`p` 和 :code:`T`\ 命名的子字典中。此外，"
+"以\ :code:`*Final`\ 格式命名的子字典也是必须的(见20-24行"
+"和32-36行)。 其前缀\ :code:`*`\ 表示主要变量的名字，比如压力为\ "
+":code:`p`\ 。其中关键条目\ :code:`relTol`\ 一般设置为0。"
+"对于\ :code:`HydrothermalSinglePhaseDarcyFoam`\ 求解器，除了\ :code:`solvers`\ 子字典，另一个名为\ "
+":code:`PIMPLE`\ 的子字典也必须给出, 因为我们在求解压力方程时，对于非正交网格，为拉普拉斯项采用了一种非正交修正的算法："
+"\ :code:`pimple.correctNonOrthogonal()`\ 。"
+"\ :code:`PIMPLE`\ 中的关键词\ :code:`nNonOrthogonalCorrectors`\ 指定了"
+"压力方程求解中的非正交修正迭代次数"
+"(详情见OpenFOAM用户手册 "
+"-`Surface normal gradient schemes <https://cfd.direct/openfoam/user-"
+"guide/v7-fvSchemes/#x20-1490004.5.4>`_ )。"
+"\ :code:`nNonOrthogonalCorrectors`\ 一般设置为0或1。"
+
+#: ../../source/Tutorial/index.rst:398
+msgid "Example entries from a :code:`fvSolution` dictionary."
+msgstr ":code:`fvSolution`\ 字典文件示例"
+
+#: ../../source/Tutorial/index.rst:407
+msgid ""
+"The entries and values shown in :numref:`lst:fvSolution` are the "
+"recommended options, it is unnecessary to modify them unless the user "
+"understands the source code of the solver and OpenFOAM and then wants to "
+"test other available parameters of :code:`fvSolution`."
+msgstr ""
+":numref:`lst:fvSolution`\ 中列出的关键词和值是我们所推荐的设置，"
+"一般情况下没必要修改这个字典文件中的选项参数，除非用户已经理解了OpenFOAM中的求解控制参数并且想尝试不同参数的效果。"
+
+#: ../../source/Tutorial/index.rst:413
+msgid "Set fields"
+msgstr "设置场分布"
+
+#: ../../source/Tutorial/index.rst:415
+msgid ""
+"The user can set a specific value for a field(e.g. :code:`permeability`) "
+"in a specific cell region using utility :code:`setFields`, which reads "
+"dictionary file :code:`setFieldsDict` in :code:`system` directory. An "
+"example of :code:`setFieldsDict` is shown in :numref:`lst:setFieldsDict` "
+"(see :numref:`sec:cookbooks_pipe`)."
+msgstr ""
+"用户可以为某个特定的区域设定某个场(比如\ :code:`permeability`)的分布值，"
+"这可以用\ :code:`setFields`\ 工具实现。"
+"此工具读取位于\ :code:`system`\ 目录下的\ :code:`setFieldsDict`\ 字典文件。"
+"\ :code:`setFieldsDict`\ 字典文件的示例见\ :numref:`lst:setFieldsDict` "
+"(也可参见算例\ :numref:`sec:cookbooks_pipe`)."
+
+#: ../../source/Tutorial/index.rst:419
+msgid "Example of :code:`setFieldsDict` file."
+msgstr ":code:`setFieldsDict`\ 字典文件示例"
+
+#: ../../source/Tutorial/index.rst:426
+msgid ""
+"The option (e.g. :code:`layer2A` in line 17) of key entry :code:`name` in"
+" :code:`zoneToCell` sub-dictionary in :numref:`lst:setFieldsDict` is "
+"defined as :code:`Physical Volume(\"xxx\")={...};` in gmsh geometry "
+"(:code:`.geo`) file (see :numref:`sec:gmsh_geometry_boundary`). Another "
+"commonly used key entry is :code:`boxToCell` which sets field value in a "
+"box defined by the two ends of the diagonal, see "
+":numref:`lst:setFieldsDict_boxToCell`."
+msgstr ""
+":numref:`lst:setFieldsDict`\ 所示的\ :code:`zoneToCell`\ 子字典中的关键词\ :code:`name`\ 的选项(比如位于第17行的\ :code:`layer2A`)"
+"通常是在Gmsh的的.geo文件中共定义的，一般格式为"
+"\ :code:`Physical Volume(\"xxx\")={...};`\ "
+"(见\ :numref:`sec:gmsh_geometry_boundary`)。"
+"另一个常用的类似关键词为\ :code:`boxToCell`\ ，通过对角线上的两个顶点"
+"定义一个立方体作为目标区域, 见\ "
+":numref:`lst:setFieldsDict_boxToCell`\ 。"
+
+#: ../../source/Tutorial/index.rst:430
+msgid "Example of :code:`boxToCell` in :code:`setFieldsDict` file."
+msgstr ":code:`setFieldsDict`\ 字典文件中的\ :code:`boxToCell`\ 示例"
+
+#: ../../source/Tutorial/index.rst:450
+msgid "Run Case"
+msgstr "运行算例"
+
+#: ../../source/Tutorial/index.rst:452
+msgid ""
+"The user can run a case just by running command of "
+":code:`HydrothermalSinglePhaseDarcyFoam` in the root directory of a case."
+" But several processes metioned above, e.g. mesh generation and/or mesh "
+"conversion, empty boundary type modification, case setup and initial "
+"field setting, have to be done before running a case. All the pre-"
+"processing steps can be assembled into a bash file, e.g. "
+":download:`run.sh "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/cookbooks/2d/pipe/run.sh>`"
+" shown in :numref:`lst:run.sh`."
+msgstr ""
+"用户可以在算例目录下直接运行求解器（可执行文件）\ "
+":code:`HydrothermalSinglePhaseDarcyFoam`\ 来运行算例。"
+"但是一些前处理过程必须首先得完成，比如网格生成和/或网格转换、空边界设置（一维二维情况需要）、"
+"初始场设置等。"
+"为了方便，可以将一些前处理过程"
+"全部汇总在一个bash脚本文件里面，比如\ "
+":download:`run.sh "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/cookbooks/2d/pipe/run.sh>`\ "
+"见\ :numref:`lst:run.sh`\ 。"
+
+#: ../../source/Tutorial/index.rst:462
+msgid "Example of command set(:code:`run.sh`) to run a case."
+msgstr "运行一个算例的命令集(:code:`run.sh`)示例"
+
+#: ../../source/Tutorial/index.rst:470
+msgid "Example of command set(:code:`clean.sh`) to clean a case."
+msgstr "清空一个算例的命令集(:code:`clean.sh`)示例"
+
+#: ../../source/Tutorial/index.rst:479
+msgid ""
+"If the user want to run a case in parallel, just need to comment line 20 "
+"in :numref:`lst:run.sh` and uncomment lines 23-25 in "
+":numref:`lst:run.sh`. In addition, the user have to setup the "
+":download:`decomposeParDict "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/cookbooks/2d/pipe/system/decomposeParDict.orig>`"
+" dictionary file in :code:`system` directory (see "
+":numref:`lst:decomposeParDict` for example). See `OpenFOAM user guide "
+"<https://cfd.direct/openfoam/user-guide/v6-running-applications-"
+"parallel/>`_ for more details about parallel computing."
+msgstr ""
+"如果用户想并行运行算例，则只需要将\ :numref:`lst:run.sh` \ 中的第20行注释"
+"并取消\ :numref:`lst:run.sh` \ 中的23-25的注释即可。"
+"此外，用户还必须在\ :code:`system`\ 目录下给出名为\ "
+":download:`decomposeParDict "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/cookbooks/2d/pipe/system/decomposeParDict.orig>`\ "
+"的字典文件(例如\ "
+":numref:`lst:decomposeParDict`)。更多关于并行计算的细节参见\ `OpenFOAM用户手册 "
+"<https://cfd.direct/openfoam/user-guide/v6-running-applications-"
+"parallel/>`_\ 。"
+
+#: ../../source/Tutorial/index.rst:484
+msgid "Example of :code:`decomposeParDict` dictionary file."
+msgstr ":code:`decomposeParDict`\ 字典文件示例"
+
+#: ../../source/Tutorial/index.rst:493
+msgid ""
+"It is of course possible to set up input files for cases completely from "
+"scratch. However, in practice, it is often simpler to go through the list"
+" of cookbooks_ already provided and find one that comes close to what you"
+" want to do. You would then modify this cookbook until it does what you "
+"want to do. The advantage is that you can start with something you "
+"already know works, and you can inspect how each change you make – "
+"changing the details of the geometry, changing the boundary conditons, or"
+" changing initial field distribution – affects what you get."
+msgstr ""
+"当然可以从0开始设置一个算例，但是"
+"实际上并不推荐这么做。用户可以在\ "
+"cookbooks_\ 中找到与自己的问题接近的算例，然后在其基础上进行修改。"
+
+#: ../../source/Tutorial/index.rst:506
+msgid "Post-processing and visualization"
+msgstr "后处理和可视化"
+
+#: ../../source/Tutorial/index.rst:508
+msgid ""
+"The commonly used post-processing tool is ParaView_. There is a built-in "
+"utility :code:`paraFoam`, which is based on ParaView, can read and render"
+" generic results of OpenFOAM case. The user can run the :code:`paraFoam` "
+"command in the root directory of case direction, or run command of "
+":code:`paraFoam -case <caseDir>` in any other directory."
+msgstr ""
+"最常用的后处理工具是\ ParaView_\ 。 OpenFOAM有一个内置的工具为\ "
+":code:`paraFoam`, 这是一个基于Paraview的可视化工具。"
+"用户可以直接在算例目录下运行\ :code:`paraFoam`\ 命令即可自动打开Paraview显示所有的计算结果。"
+"当然也可以再其他目录下运行此命令并指定算例的目录：\ "
+":code:`paraFoam -case <caseDir>`\ 。"
+
+#: ../../source/Tutorial/index.rst:515
+msgid ""
+"The new version (e.g. 5.5.0) of ParaView_ has OpenFOAM case reader which "
+"will read a file with extension of :code:`.foam` in the root directory of"
+" a case. Therefore, if the user install OpenFOAM or HydrothermalFoam tool"
+" via Docker (see :numref:`sec:install_docker` and `video "
+"<https://youtu.be/6czcxC90gp0>`_), the results can be visualized in host "
+"through the shared folder. The results will saved in the shared folder "
+"when running a case in the container, and then create a empty file with "
+"extension of :code:`.foam`, e.g. :code:`results.foam`, in the shared "
+"folder. The user can open file :code:`results.foam` in the shared folder "
+"in host by ParaView to display the results."
+msgstr ""
+"新版(比如5.5.0)的\ ParaView_\ 已经有了读取OpenFOAM算例结果的功能，"
+"默认读取位于算例目录下的后缀名为\ :code:`.foam`\ 的一个空的文件。"
+"因此，如果用户是通过Docker安装的OpenFOAM或HydrothermalFoam"
+"(见\ :numref:`sec:install_docker` 和 `video "
+"<https://youtu.be/6czcxC90gp0>`_)\ ，模拟结果则可以通过这种方式在主机中可视化。"
+"只需要在主机的共享目录中的算例目录下新建一个\ :code:`.foam`\ 文件，比如\ :code:`results.foam`\ ，"
+"然后用Paraview打开\ :code:`results.foam`\ 文件，即可显示此算例的模拟结果。"

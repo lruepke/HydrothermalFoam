@@ -1,0 +1,50 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 278.15;     //10 C
+
+boundaryField
+{
+    sides
+    {
+        type            zeroGradient;
+    }
+    top
+    {
+        //type            inletOutlet;
+        //phi                     phi;
+        //inletValue      uniform 283.15;
+        //value           $internalField;
+        type        fixedValue;
+        value       uniform 278.15;
+    }
+    bottom
+    {
+        type              hydrothermalHeatFlux;
+        q                 uniform 0.05;
+        value             uniform 0;
+        shape             gaussian3d;
+        x0                0;
+        z0                0;
+        qmax              5;
+        qmin              0.05;
+        c                 500;
+    }
+}
+
+// ************************************************************************* //
