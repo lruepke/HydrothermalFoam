@@ -1,0 +1,103 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application HydrothermalSinglePhaseDarcyFoam;
+
+startFrom latestTime;
+
+startTime 0;
+
+stopAt endTime;
+
+endTime 15768000000;
+
+deltaT 864000;
+
+adjustTimeStep yes;
+maxCo           0.8; 
+maxDeltaT       157680000; 
+
+writeInterval 15768000;
+
+writeControl adjustableRunTime;
+
+purgeWrite 0;
+
+writeFormat ascii;
+
+writePrecision 8;
+
+writeCompression off;
+
+timeFormat general;
+
+timePrecision 14;
+
+runTimeModifiable true;
+
+libs 
+( 
+    "libHydrothermalBoundaryConditions.so"
+    "libHydroThermoPhysicalModels.so"
+);
+functions
+{
+    changePermeability
+    {
+        libs                ("libutilityFunctionObjects.so");
+        type                coded;
+        enabled             true;
+        writeControl        runTime;
+        writeInterval       86400000;
+        name                changePermeability;
+        codeWrite
+        #{
+            // const IOdictionary& d = static_cast<const IOdictionary&>(dict);
+            // const fvMesh& mesh = refCast<const fvMesh>(d.db());
+            //1. Get simulation time
+            double time=mesh().time().value();
+            //2. Get modifiable pointer of a field variable by name
+            volScalarField& perm_ = const_cast<volScalarField&>(mesh().lookupObject<volScalarField>("permeability"));
+            //3. Increase permeability from 1e-14 to 1e-13 after 500 years in region of y>-2400 m, 
+            double year2sec=86400*365;
+            double t0=500*year2sec;     // 500 years
+            double wGauss=100*year2sec; // 300 years
+            double kmax=14, kmin=13;
+            double y0=-2400;
+            word cellSetName = "layer2A";
+            label zoneID = mesh().cellZones().findZoneID(cellSetName);
+            //Check if the zone exists
+            if (zoneID == -1)
+            {
+                FatalErrorInFunction
+                    << "Cannot find cellZone " << cellSetName
+                    << "Valid cellZones are " << mesh().cellZones().names()
+                    << abort(FatalError);
+            }
+            const labelList& cells = mesh().cellZones()[zoneID];
+            
+            if(time>15768000*3)
+            {
+                // double k = kmin+(kmax-kmin)*exp(-(time-t0)*(time-t0)/(2*wGauss*wGauss));
+                forAll(cells, i)
+                {
+                    const label cell = cells[i];
+                    perm_[cell]=1e-15;
+                }
+            }
+        #};
+    }
+}

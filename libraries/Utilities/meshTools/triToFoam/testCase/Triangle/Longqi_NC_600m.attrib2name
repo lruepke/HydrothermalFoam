@@ -1,0 +1,6 @@
+# define map from attribute of element(in .ele file) to cell zone name of polyMesh
+1 crust_left
+2 df1
+3 crust_center
+4 df2
+5 crust_right

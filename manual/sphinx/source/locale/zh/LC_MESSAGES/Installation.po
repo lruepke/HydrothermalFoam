@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Zhikui Guo, Lars Ruepke
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-06 11:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/Installation/index.rst:6
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/Installation/index.rst:12
+msgid ""
+"We provide a 5-minutes quick start video (on Mac OS) that can be accessed"
+" here `https://youtu.be/6czcxC90gp0 <https://youtu.be/6czcxC90gp0>`_."
+msgstr ""
+"我们提供了一个在Mac OS系统下如何开始使用 |foam| 的视频教程， 链接为：\\ "
+"`腾讯视频: https://v.qq.com/x/page/p09599iy5yt.html <https://v.qq.com/x/page/p09599iy5yt.html>`_."
+
+
+#: ../../source/Installation/index.rst:15
+msgid ""
+"There are two ways to install |foam|. The easiest way is intalling via "
+"Docker image, see :numref:`sec:install_docker`. Another way is building "
+"from source code if user has experience of OpenFOAM installation, see "
+"section of `Build from source`_."
+msgstr ""
+"有两种方式安装\\ |foam|. 最快捷最容易的方式是通过Docker镜像, 见\\ :numref:`sec:install_docker` "
+"；另一种方式是通过编译源码进行安装 对于有使用OpenFOAM经验的用户推荐这种方式, 见\\ `Build from source`_."
+
+#: ../../source/Installation/index.rst:23
+msgid "Docker image"
+msgstr "Docker镜像"
+
+#: ../../source/Installation/index.rst:24
+msgid ""
+"In order to quick start to use |foam| for non-Ubuntu users, we provided a"
+" pre-compiled docker image which can be found on `Docker Hub "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_ "
+"repository, named `zguo/hydrothermalfoam "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_. It's "
+"pretty simple to install |foam| via Docker, all the steps are summarized "
+"below,"
+msgstr ""
+"为了让非Ubuntu用户快速入门使用\\ |foam|, 我们提供了一个 预编译的docker镜像，可以在\\ `Docker Hub "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_\\ "
+"仓库中下载, 其名字为\\ `zguo/hydrothermalfoam "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_ 。 "
+"通过Docker安装 |foam| 非常容易, 所有的步骤总结如下,"
+
+#: ../../source/Installation/index.rst:29
+msgid ""
+"**Install** `Docker desktop <https://www.docker.com/products/docker-"
+"desktop>`_ and keep it running."
+msgstr ""
+"**安装**\\ `Docker桌面应用程序 <https://www.docker.com/products/docker-desktop>`_"
+" 并保持其为运行状态."
+
+#: ../../source/Installation/index.rst:31
+msgid ""
+"**Pull** the docker image of |foam| by running command of :code:`docker "
+"pull zguo/hydrothermalfoam`."
+msgstr ""
+"**拉取**\\ |foam|\\ 的Docker镜像，可使用命令：\\ :code:`docker pull "
+"zguo/hydrothermalfoam`."
+
+#: ../../source/Installation/index.rst:33
+msgid ""
+"**Install a container** from the docker image by running shell script "
+"which can be fond in source code directory of `docker "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/docker>`_ "
+"(see also :numref:`lst_docker_mac` and :numref:`lst_docker_win`). The "
+":code:`HydrothermalFoam_runs` directory is a shared folder between the "
+"container and host machine."
+msgstr ""
+"用上一步拉取的镜像 **安装一个容器** ，可以运行一段shell脚本来完成。shell脚本文件可以在源代码的\\ `docker "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/docker>`_ "
+"路径中找到(也可之间参考 :numref:`lst_docker_mac` 和 :numref:`lst_docker_win`)。其中 "
+":code:`HydrothermalFoam_runs`\\目录是容器和主机之间的共享目录。"
+
+#: ../../source/Installation/index.rst:35
+msgid ""
+"Script for Mac OS (`installMacHydrothermalFoam.sh "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/docker/installMacHydrothermalFoam.sh>`_)"
+msgstr ""
+"Mac OS系统下的安装Docker容器的脚本 (`installMacHydrothermalFoam.sh "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/docker/installMacHydrothermalFoam.sh>`_)"
+
+#: ../../source/Installation/index.rst:43
+msgid ""
+"Script for Windows (`installWindowsHydrothermalFoam.ps1 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/docker/installWindowsHydrothermalFoam.ps1>`_)"
+msgstr ""
+"Windows系统下的Power Shell脚本 (`installWindowsHydrothermalFoam.ps1 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/docker/installWindowsHydrothermalFoam.ps1>`_)"
+
+#: ../../source/Installation/index.rst:51
+msgid ""
+"**Start the container** by running command of :code:`docker start "
+"hydrothermalfoam`."
+msgstr "**开始运行容器**：运行命令\\ :code:`docker start hydrothermalfoam`。"
+
+#: ../../source/Installation/index.rst:53
+msgid ""
+"**Attach the container** by running command of :code:`docker attach "
+"hydrothermalfoam`."
+msgstr "**进入容器**：运行命令\\ :code:`docker attach hydrothermalfoam`。"
+
+#: ../../source/Installation/index.rst:55
+msgid ""
+"The user now in a Ubuntu linux environment with precompiled "
+"HydrothermalFoam tools which located at directory of "
+":code:`~/HydrothermalFoam`. We recommend user run HydrothermalFoam cases "
+"in the directory of :code:`HydrothermalFoam_runs` in the container, and "
+"then the results are synchronized in the shared directory in the host, "
+"and thus can be visualized by ParaView_, Tecplot_ or other CFD post-"
+"processing software."
+msgstr ""
+"通过上面的几个步骤，用户现在已经进入了HydrothermalFoam的Docker镜像所创建的容器中，这个环境其实就跟Ubuntu系统没什么区别。用户可以暂且认为自己是在一个Ubuntu"
+" linux子系统中。HydrothermalFoam的所有文件所在目录为\\ :code:`~/HydrothermalFoam`。 "
+"我们建议用户在\\ "
+":code:`HydrothermalFoam_runs`\\目录中运行HydrothermalFoam的算例。如此以来，在Docker容器中运行的算例结果会通过共享目录同步到主机中，即可以在主机中访问这些运算结果。也就是说，用户可以在主机的共享目录中用\\"
+" ParaView_, Tecplot_ 或者其他的CFD后处理软件进行结果可视化或进一步分析。"
+
+#: ../../source/Installation/index.rst:62
+msgid "Build from source"
+msgstr "从源码编译"
+
+#: ../../source/Installation/index.rst:65
+msgid "Install OpenFOAM"
+msgstr "安装OpenFOAM"
+
+#: ../../source/Installation/index.rst:67
+msgid ""
+"The |foam| v1.0 is developed based on OpenFOAM-7, which can be installed "
+"according to the installation instructions "
+"(https://openfoam.org/download/) given by the development team for "
+"`Ubuntu Linux <https://openfoam.org/download/7-ubuntu/>`_, `Other Linux "
+"<https://openfoam.org/download/7-linux/>`_, `macOS "
+"<https://openfoam.org/download/7-macos/>`_ and `Windows "
+"<https://openfoam.org/download/windows-10/>`_ platform, respectively."
+msgstr ""
+"因为\\ |foam| v1.0 是基于OpenFOAM-7开发的, 而OpenFOAM可以通过其官方网站的安装步骤 "
+"(https://openfoam.org/download/) 进行安装。涵盖\\ `Ubuntu Linux "
+"<https://openfoam.org/download/7-ubuntu/>`_, `Other Linux "
+"<https://openfoam.org/download/7-linux/>`_, `macOS "
+"<https://openfoam.org/download/7-macos/>`_\\ 和\\ `Windows "
+"<https://openfoam.org/download/windows-10/>`_\\ 平台"
+
+#: ../../source/Installation/index.rst:73
+msgid "Build HydrothermalFoam"
+msgstr "编译HydrothermalFoam"
+
+#: ../../source/Installation/index.rst:75
+msgid ""
+"Once OpenFOAM is built successfully, the source code of |foam| be "
+"downloaded from `Zenodo <https://doi.org/10.5281/zenodo.3755648>`_ or "
+"from `GitLab repository "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam>`_. The directory "
+"structure and components ofHydrothermalFoamare shown in "
+":numref:`fig_file_structure_main` and the components canbe built follow "
+"three steps below,"
+msgstr ""
+"只要成功安装OpenFOAM, 可以从\\ `Zenodo "
+"<https://doi.org/10.5281/zenodo.3755648>`_\\ 或\\ `GitLab仓库 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam>`_\\ 中下载\\ |foam|\\ "
+"源代码。源代码中的文件和目录结构如\\ :numref:`fig_file_structure_main`\\ "
+"所示，然后可以根据如下的三个步骤进行编译："
+
+#: ../../source/Installation/index.rst:86
+msgid "Structure and components of the |foam| toolbox."
+msgstr "|foam|\\ 的文件结构示意图。"
+
+#: ../../source/Installation/index.rst:90
+msgid ""
+"The following steps are only proper for Mac OS and Linux systems, we do "
+"not yet build HydrothermalFoam on Windows system directly. If users using"
+" ubuntu sub-system on Windows 10, the following steps could work in the "
+"sub-system."
+msgstr ""
+"下列的步骤只适用于Mac OS或Linux系统, "
+"我们并没有提供在Windows系统下的编译HydrothermalFoam的方式，比如用Visual "
+"Studio之类的。如果用户当前的系统是Windows "
+"10则可以通过开启Ubuntu子系统后，在子系统下编译HydrothermalFoam，下列的步骤可能可以达到目的。"
+
+#: ../../source/Installation/index.rst:95
+msgid ""
+"**Build freesteam-2.1 library**. The freesteam project is constructed by "
+"scons_, which is a open source software constructiontool dependent on "
+"`python 2`_, and based on GSL_ (GNUScientificLibrary). Therefore python "
+"2, scons and GSL have to be installed firstly, then change directory to "
+"freesteam-2.1 in HydrothermalFoam source code and type command of "
+":code:`scons INSTALL_PREFIX=$FOAM_USER_LIBBIN install` to compile "
+"freesteam library named :code:`libfreesteam.so`. See home page of "
+"freesteam-2.1_ project for more details."
+msgstr ""
+"**编译freesteam-2.1动态库**： freesteam项目是用\\ scons_\\ （一个类似于cmake的工具）构建的，依赖于\\"
+" `python 2`_\\ 。而且freesteam中的算法用到了\\ GSL_ (GNU Scientific "
+"Library)。因此必须首先安装python 2、scons和GSL库。然后进入源代码中的freesteam-2.1目录，运行命令：\\ "
+":code:`scons INSTALL_PREFIX=$FOAM_USER_LIBBIN install`\\ "
+"编译freesteam动态库，编译成功后会生成名为\\ :code:`libfreesteam.so`\\ "
+"的动态库文件。关于更多编译freesteam的细节可以参考其官方主页中的说明：freesteam-2.1_\\ 。"
+
+#: ../../source/Installation/index.rst:97
+msgid ""
+"**Build libraries of customized boundary conditions and thermo-physical "
+"model**. Change directory to libraries and type command of "
+":code:`./Allmake` to compile the libraries named "
+":code:`libHydroThermoPhysicalModels.so, "
+"libHydrothermalBoundaryConditions.so`."
+msgstr ""
+"**编译自定义边界条件和热物理模型库**： 进入源代码中的libraries目录， 然后运行命令\\ :code:`./Allmake`\\ "
+"编译相应的动态库，最后会生成名为\\ :code:`libHydroThermoPhysicalModels.so, "
+"libHydrothermalBoundaryConditions.so`\\ 的动态库文件。位于\\ "
+":code:`$FOAM_USER_LIBBIN`\\ 目录中。"
+
+#: ../../source/Installation/index.rst:101
+msgid ""
+"It should be noted that if you are using OpenFOAM-8, you have to run "
+"`./Allmake-8` to compile thermo-physical model to compatible with "
+"OpenFOAM-8. And of course the `Allmake` script is designed for "
+"OpenFOAM-7. **This is the only difference between version 7 and version "
+"8.**"
+msgstr ""
+"需要注意的是，如果你用的是OpenFOAM-8版本，则需要在这里运行 "
+"`./Allmake-8` 脚本编译与OpenFOAM-8兼容的热物理模型."
+"当然了， `Allmake` 脚本是用于编译与OpenFOAM-7版本对应的热物理模型。 "
+"**这也是HydrothermalFoam在OpenFOAM-7与OpenFOAM-8版本之间的唯一区别 "
+"。**"
+
+#: ../../source/Installation/index.rst:103
+msgid ""
+"**Build solver of HydrothermalSinglePhaseDarcyFoam**. Change directory to"
+" HydrothermalSinglePhaseDarcyFoam and type command of :code:`wmake` to "
+"compile the solver named :code:`HydrothermalSinglePhaseDarcyFoam`."
+msgstr ""
+"**编译求解器HydrothermalSinglePhaseDarcyFoam**：切换目录到solvers/HydrothermalSinglePhaseDarcyFoam目录中，然后运行命令\\"
+" :code:`wmake`\\ 进行编译，最后会生成一个名为\\ "
+":code:`HydrothermalSinglePhaseDarcyFoam`\\ 可执行文件，即为求解器应用程序。位于\\ "
+":code:`$FOAM_USER_APPBIN`\\ 目录中。"
+
+#: ../../source/Installation/index.rst:107
+msgid ""
+"All the library files and executable application (solver) file will be "
+"generated in directories defined by OpenFOAM’s path variables of "
+":code:`FOAM_USER_LIBBIN` and :code:`FOAM_USER_APPBIN`, respectively. If "
+"build HydrothermalFoam in Mac OS, the extension of the library files is "
+":code:`.dylib`, please make a symbolic links. For example, see following "
+"command for :code:`libHydroThermoPhysicalModels.dylib`"
+msgstr ""
+"所有的OpenFOAM相关的动态库和可执行文件都分别保存在目录\\ :code:`FOAM_USER_LIBBIN`\\ 和\\ "
+":code:`FOAM_USER_APPBIN`\\ 中。Mac OS系统中的动态库文件的后缀名是\\ :code:`.dylib`\\ "
+"，可以使用\\ :code:`ln`\\ 命令创建一个软连接为.so的动态库文件，这样可以保持多平台的动态库调用时候的文件名一致性。"
+

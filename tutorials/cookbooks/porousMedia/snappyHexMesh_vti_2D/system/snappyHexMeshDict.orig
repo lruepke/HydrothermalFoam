@@ -1,0 +1,219 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Which of the steps to run
+castellatedMesh true;
+snap            true;
+addLayers       true;
+
+geometry
+{
+    porous.stl{ type triSurfaceMesh; name fixedWalls;}
+    inlet.stl{ type triSurfaceMesh; name inlet;}
+    outlet.stl{ type triSurfaceMesh; name outlet;}
+    top.stl{ type triSurfaceMesh; name top;}
+    bottom.stl{ type triSurfaceMesh; name bottom;}
+    front.stl{ type triSurfaceMesh; name front;}
+    back.stl{ type triSurfaceMesh; name back;}
+};
+
+// Settings for the castellatedMesh generation.
+castellatedMeshControls
+{
+
+    // Refinement parameters
+    // ~~~~~~~~~~~~~~~~~~~~~
+    maxLocalCells 100000;
+    maxGlobalCells 2000000;
+    minRefinementCells 0;
+    maxLoadUnbalance 0.10;
+    nCellsBetweenLevels 2;
+
+    // Explicit feature edge refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    features
+    (
+        {
+            file "porous.eMesh";
+            level 2; //important!!! should be greater than 1, in case of narrow connection
+          //level 4;
+        }
+        {file "inlet.eMesh"; level 1; }
+        {file "outlet.eMesh"; level 1; }
+        {file "top.eMesh"; level 1; }
+        {file "bottom.eMesh"; level 1; }
+        {file "front.eMesh"; level 1; }
+        {file "back.eMesh"; level 1; }
+    );
+
+    // Surface based refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~~~
+    refinementSurfaces
+    {
+        fixedWalls
+        {
+            level (1 2);
+        }
+    }
+
+    // Feature angle:
+    //resolveFeatureAngle 30;		//default
+      resolveFeatureAngle 30;		//To avoid too much refinement with curvature			
+
+    //- Optional increment (on top of max level) in small gaps
+    //gapLevelIncrement 2;
+
+    planarAngle 30;
+
+    // Region-wise refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~
+
+    refinementRegions
+    {
+
+    }
+
+    // Mesh selection
+    // ~~~~~~~~~~~~~~
+
+    locationInMesh (832.333313	102.333336	5.192896);
+
+    allowFreeStandingZoneFaces false;
+}
+
+// Settings for the snapping.
+snapControls
+{
+    // Number of patch smoothing iterations before finding correspondence
+    // to surface
+    nSmoothPatch 3;	//default
+    //nSmoothPatch 10;	//improved
+
+    tolerance 2.0;
+    //tolerance 1.0;
+
+    // Number of mesh displacement relaxation iterations.
+    //nSolveIter 30;    //dedault
+    nSolveIter 100;	//improved
+
+    // Maximum number of snapping relaxation iterations. Should stop
+    // before upon reaching a correct mesh.
+    //nRelaxIter 5;	//default
+    nRelaxIter 10;	//improved
+
+    // Feature snapping
+
+        nFeatureSnapIter 10;
+        implicitFeatureSnap false;
+        explicitFeatureSnap true;
+        multiRegionFeatureSnap false;
+}
+
+// Settings for the layer addition.
+addLayersControls
+{
+    relativeSizes true;
+
+        // Expansion factor for layer mesh
+        expansionRatio 1.2;
+        finalLayerThickness 0.5;
+        //firstLayerThickness 0.1;
+        //thickness 0.5
+
+    //minThickness 0.25;
+    minThickness 0.1;
+
+    layers
+    {
+        fixedWalls 
+        {
+            nSurfaceLayers 3;
+        }
+        inlet 
+        {
+            nSurfaceLayers 3;
+        }
+        outlet 
+        {
+            nSurfaceLayers 3;
+        }
+        top 
+        {
+            nSurfaceLayers 3;
+        }
+        bottom 
+        {
+            nSurfaceLayers 3;
+        }
+    }
+
+    nGrow 0;
+
+    // Static analysis of starting mesh
+
+        //featureAngle 0;			//no inflation
+          featureAngle 130;		//default
+        //featureAngle 180;
+        //featureAngle 270;
+
+        maxFaceThicknessRatio 0.5;
+        nSmoothSurfaceNormals 1;
+        nSmoothThickness 10;
+        minMedialAxisAngle 90;
+        minMedianAxisAngle 90;
+        maxThicknessToMedialRatio 0.3;
+        nSmoothNormals 3;
+        slipFeatureAngle 30;
+        nRelaxIter 5;
+        nBufferCellsNoExtrude 0;
+        nLayerIter 50;
+        nRelaxedIter 20;
+}
+
+// Generic mesh quality settings. At any undoable phase these determine
+// where to undo.
+meshQualityControls
+{
+    #include "meshQualityDict"
+
+    relaxed
+    {
+        // Maximum non-orthogonality allowed. Set to 180 to disable.
+        maxNonOrtho 75;
+    }
+
+        // Number of error distribution iterations
+        nSmoothScale 4;
+        // amount to scale back displacement at error points
+        errorReduction 0.75;
+}
+
+//
+//// Write flags
+
+writeFlags
+(
+    scalarLevels    // write volScalarField with cellLevel for postprocessing
+    layerSets       // write cellSets, faceSets of faces in layer
+    layerFields     // write volScalarField for layer coverage
+);
+
+// Merge tolerance. Is fraction of overall bounding box of initial mesh.
+// Note: the write tolerance needs to be higher than this.
+mergeTolerance 1e-6;
+
+// ************************************************************************* //

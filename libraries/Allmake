@@ -1,0 +1,13 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+set -x
+
+# build freesteam
+# ./makeFreeSteam
+
+# build customized boundary conditions 
+wmake BoundaryConditions
+
+# build new defined thermophysical models 
+#wmake ThermoModels
+

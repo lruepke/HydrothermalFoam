@@ -1,0 +1,84 @@
+.. include:: /include.rst_
+
+.. _sec_cookbook_pipe_3D:
+
+Three-dimensional pipe
+------------------------
+
+All the input files can be found in |pipe_3D| directory.
+
+.. only:: html
+
+    The three-dimensional pipe model, illustrated below, is the result of a two-dimensional model(see :numref:`sec_cookbook_pipe_2D`) rotating around the central axis.
+    Of course one can extrude mesh of :ref:`sec_cookbook_pipe_2D` model to get a three-dimensional pipe model(see below).
+
+    .. tab:: Mesh
+
+        .. figure:: /_figures/pipe_3D_mesh_gmsh.png
+            :align: center
+
+            Mesh and boundary condions of the 3D pipe model.
+
+    .. tab:: Interactive
+
+        Mesh and boundary condions of the 3D pipe model.
+
+        .. raw:: html
+            
+            <iframe src="../../_static/vtk_js/index.html?fileURL=https://raw.githubusercontent.com/zguoch/HydrothermalFoam_static/master/vtk_js/pipe_3D_mesh.vtkjs" width="100%" height="500px"></iframe>
+    .. tab:: Mesh2
+
+        .. figure:: /_figures/pipe_3D_mesh2_gmsh.png
+            :align: center
+
+            Mesh and boundary condions of the 3D pipe model.
+
+    .. tab:: Interactive
+
+        Mesh and boundary condions of the 3D pipe model.
+
+        .. raw:: html
+            
+            <iframe src="../../_static/vtk_js/index.html?fileURL=https://raw.githubusercontent.com/zguoch/HydrothermalFoam_static/master/vtk_js/pipe_3D_mesh2.vtkjs" width="100%" height="500px"></iframe>
+
+.. only:: latex
+
+    The three-dimensional pipe model, illustrated in :numref:`fig:pipe_3D:mesh`, is the result of a two-dimensional model(see :numref:`sec_cookbook_pipe_2D`) rotating around the central axis.
+    Of course one can extrude mesh of :ref:`sec_cookbook_pipe_2D` model to get a three-dimensional pipe model(see :numref:`fig:pipe_3D:mesh2`).
+
+    .. figure:: /_figures/pipe_3D_mesh_gmsh.png
+        :align: center
+        :name: fig:pipe_3D:mesh
+
+        Mesh of the 3D pipe model.
+
+    .. figure:: /_figures/pipe_3D_mesh2_gmsh.png
+        :align: center
+        :name: fig:pipe_3D:mesh2
+
+        Alternative mesh of the 3D pipe model.
+
+.. note::
+
+    The boundary conditions setup is similar to the :ref:`sec_cookbook_pipe_2D` model. 
+    One can also run this example in parallel, see :numref:`sec:convection_3Dbox_par`.
+    The result is shown below.
+
+.. only:: html
+
+    The isothermal surface (red) of 200 |degC| , flow arrows and stream lines of the 3D pipe simulation at 80 year are shown below.
+
+    .. raw:: html
+                
+        <iframe src="../../_static/vtk_js/index.html?fileURL=https://raw.githubusercontent.com/zguoch/HydrothermalFoam_static/master/vtk_js/pipe_3D_result.vtkjs" width="100%" height="500px"></iframe>
+
+.. only:: latex
+
+    The isothermal surface of 200 |degC| , flow arrows and stream lines are shown in :numref:`fig:pipe_3D:result`.
+
+    .. figure:: /_figures/pipe_3D_results.png
+        :align: center
+        :name: fig:pipe_3D:result
+
+        The isothermal surface (red) of 200 |degC| = 473.15 K, flow arrows and stream lines of the 3D pipe simulation at 80 year. The unit of temperature in this figure is K.
+

@@ -1,0 +1,5 @@
+# boundary markers(in .edge file: segment sections) to patches names
+2 bottom
+4 right
+6 top
+8 left
