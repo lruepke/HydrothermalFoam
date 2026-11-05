@@ -1,0 +1,13 @@
+name: py313_htf
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13.* #hugo needs <4.0
+  - ipykernel
+  - pip  # pip must be mentioned explicitly, or conda-lock will fail
+  - poetry  # or 1.1.*, or no version at all -- as you want
+  - conda-lock
+  - pandoc #somehow poetry install fails (cannot find pandoc) without this // 23.4.2024 LHR

@@ -1,0 +1,8 @@
+FoamFile { version 2.0; format ascii; class dictionary; object fvSolution; }
+solvers {
+p {solver GAMG; tolerance 1e-10; relTol 0; smoother DICGaussSeidel;}
+T {solver PBiCGStab; preconditioner DILU; tolerance 1e-10; relTol 0;}
+}
+PIMPLE {nOuterCorrectors 1; nCorrectors 1; nNonOrthogonalCorrectors 0;}
+INIT {maxIterations 40; nCorrectors 1; maxDeltaP .01;}
+PTCOUPLING {tightCouplingIters 8;}

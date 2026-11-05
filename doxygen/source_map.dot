@@ -1,0 +1,76 @@
+digraph graphviz{
+    // 定义图属性
+    graph [bgcolor="#FFFFFF", style="rounded", color="#1c1c1c", penwidth="0.5",
+    fontname="Arial", fontcolor=darkgray, fontsize=16,
+    labelloc=t, labeljust=c,
+    compound=true]
+
+    label = "Navigation map of the source code documentation"
+
+    // 定义共用节点属性
+    node [shape="cds", color="#1c1c1c", penwidth="0.5", style="filled",
+    fixedsize=true, width=3, height=0.5, fontname="Arial", fontsize=10]
+    // 定义公用边属性
+    edge [color="#cccccc", style="dashed", arrowhead=vee, arrowsize=0.75, penwidth="0.75"]
+
+    // solver
+    {
+        rank = same
+        Solver [fillcolor="#dfc1c1", label="Solver", href="dir_65b24c28d0f232e494405d4f9f0c5236.html"]
+        BoundaryConditions [fillcolor="#c1dfc1", label="Boundary conditions", href="dir_4ab83f223c559e666225e68e87f42df6.html"]
+        ThermophysicalModel [fillcolor="#c1c1df", label="Thermophysical model", href="dir_f8387866c68a5e95be5a2ed602ceb52c.html"]
+        Manual [fillcolor=lightblue, label="Manual", href="https://gmdpapers.gitlab.io/hydrothermalfoam/manual/index.html"]
+        // 步骤
+        Solver -> BoundaryConditions -> ThermophysicalModel -> Manual
+    }
+
+    node [shape="box", style="rounded,filled", color="#aaaaaa", width=2.75, height=0.4]
+    edge [color="#222222", style="dotted"]
+
+    subgraph cluster_solvers {
+        graph [bgcolor="#dfc1c1", fontsize=12, labelloc=b]
+
+        label = "Solver"
+
+        p_HydrothermalSinglePhaseDarcyFoam [label="HydrothermalSinglePhaseDarcyFoam", color="orange", href="dir_8a6b4a16ecb04e3383a362345eb7f798.html"]
+        p_HydrothermalMultiPhaseDarcyFoam [label="HydrothermalMultiPhaseDarcyFoam", color="orange", href="dir_3c0203d0f404468481db64338bdd8581.html"]
+        // p_install -> p_layout -> p_format -> p_cmd -> p_tools
+    }
+    subgraph cluster_BCs {
+        graph [bgcolor="#c1dfc1", fontsize=12, labelloc=b]
+
+        label = "Boundary conditions"
+
+        d_HydrothermalHeatFlux [label="HydrothermalHeatFlux", href="dir_2f9a238f5b76cfca12c28eac18a17ce1.html"]
+        d_HydrothermalMassFluxPressure [label="HydrothermalMassFluxPressure", href="dir_3c805e2f80a77200aa2b3c46fea198ee.html"]
+        d_SubmarinePressure [label="SubmarinePressure", href="dir_1ffd717392ab85bb63a80d0775d7fc3a.html"]
+        d_noFlux [label="noFlux",href="dir_e27ee99dc75750799b392bd9dcc869b3.html"]
+
+        d_HydrothermalHeatFlux->d_HydrothermalMassFluxPressure->d_SubmarinePressure->d_noFlux
+    }
+    subgraph cluster_thermo {
+        graph [bgcolor="#c1c1df", fontsize=12, labelloc=b]
+        edge [style="invis"]
+
+        label = "Thermophysical models"
+
+        t_water [label="IAPWS-IF97", color="#ff4444", href="dir_b36d2865ebd3aace18af5fb770d1989c.html"]
+    }
+
+    subgraph cluster_manual {
+        graph [bgcolor=lightblue, fontsize=12, labelloc=b]
+        edge [style="invis"]
+
+        label = "Thermophysical models"
+
+        m_web [label="Onloine", color="#ff4444", href="https://gmdpapers.gitlab.io/hydrothermalfoam/manual/index.html"]
+        m_pdf [label="pdf version", href=""]
+        m_web -> m_pdf
+    }
+
+    edge [dir=none, color="#000000"]
+    Solver -> p_HydrothermalSinglePhaseDarcyFoam->p_HydrothermalMultiPhaseDarcyFoam [lhead=cluster_solvers]
+    BoundaryConditions -> d_HydrothermalHeatFlux [lhead=cluster_BCs]
+    ThermophysicalModel -> t_water [lhead=cluster_thermo]
+    Manual -> m_web [lhead=cluster_manual]
+}

@@ -1,0 +1,158 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Zhikui Guo, Lars Ruepke
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-08 15:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/Introduction/index.rst:5
+msgid "Introduction"
+msgstr "简介"
+
+#: ../../source/Introduction/index.rst:9
+msgid ""
+"HydrothermalFoam —combination of **hydrothermal** and **OpenFOAM** — a "
+"three dimensional hydro-thermo-transport model designed to resolvefluid "
+"flow within submarine hydrothermal circulation systems. HydrothermalFoam "
+"has been developed on the OpenFOAM platform, which is a Finite Volume "
+"based C++ toolbox for fluid-dynamic simulations and for developing "
+"customized numerical solvers that provides access to state-of-the-art "
+"parallelized solvers and to a wide range of pre- and post-processing "
+"tools. We have implemented a porous media Darcy-flow model with "
+"associated boundary conditions designed to facilitate numerical "
+"simulations of submarine hydrothermal systems. The current implementation"
+" is valid for single-phase fluid states and uses a pure water equation-"
+"of-state (IAPWS-97). We here present the model formulation, OpenFOAM "
+"implementation details, and a sequence of 1-D, 2-D and 3-D benchmark "
+"tests. The source code repository further includes a number of tutorials "
+"that canbe used as starting points for building specialized hydrothermal "
+"flow models."
+msgstr ""
+"|foam| 是一系列热液循环动力学数值模拟工具的合集，主要用于求解海底热液循环系统流体流动的三维模拟。HydrothermalFoam是基于 "
+"**OpenFOAM** ( **Open** Source **F**\\ield **O**\\peration **a**\\nd "
+"**M**\\anipulation)开发的。因此其名字由 **Hydrothermal** (热液)和 **Foam** "
+"组合而成，表示热液流体动力学的模拟，而且继承了OpenFOAM的所有特性，即 **FOAM** 家族。但为什么没有用 "
+"**HydrothermalFOAM** 命名，因为(1) OpenFOAM的中的 **FOAM** "
+"全部是大写，我们不能超越平台也用全大写；(2) 整个OpenFOAM社区中，其衍生产品都是用 **Foam** "
+"命名的惯例。我们针对海底热液循环系统开发了孔隙介质中热液流动模型求解器。目前的求解器只适用于单相流体，并且流体的热力学用纯水的状态方程"
+"(IAPWS-"
+"IF97)计算得到。我们在论文中论述了模型的控制方程、OpenFOAM的植入细节和一系列一维、二维和三维模型基准测试，验证方法的可靠性和准确性。源代码仓库中也包含了一些使用教程和可以作为构建一个特定的热液循环模型的出发点。"
+
+#: ../../source/Introduction/index.rst:23
+msgid "Features"
+msgstr "特性"
+
+#: ../../source/Introduction/index.rst:24
+msgid "Features of the |foam| are summarized as following:"
+msgstr "|foam| 的特性总结如下:"
+
+#: ../../source/Introduction/index.rst:26
+msgid ""
+"**Original characteristics of OpenFOAM**: |foam| keeps all the original "
+"characteristics of OpenFoam, for example, file structure of case, syntax "
+"of all the input files and output files, mesh, utilities, even part of "
+"varable names in the source code are kept the same. This principle has "
+"two advantages, one is that it is easy to understand and to use |foam| if"
+" you are a OpenFoam user. The other is that it is easy to compar and "
+"understand |foam| solver and the other standard solvers in OpenFoam."
+msgstr ""
+"**OpenFOAM原本的特性：** |foam| "
+"继承了OpenFOAM一般求解器所具有的所有特性。比如，文件结构、输入/输出文件的格式、网格划分、工具、甚至变量名称都与OpenFOAM的习惯保持一致。这样有两个优势：（1）如果你是OpenFOAM用户，那么就很容易理解和使用"
+" |foam| ; (2) 将 |foam| 与其他的OpenFOAM标准求解器对比学习和使用较为容易。"
+
+#: ../../source/Introduction/index.rst:28
+msgid ""
+"**Mesh**: HydrothermalFoam supports both structured regular mesh and "
+"unsructured mesh. The internal structured regular mesh tool, "
+":code:`blockMesh`, is recommended for new users. While Gmsh_ is also an "
+"excellent open source unstuctured mesh generator, and there is a utility "
+"named :code:`gmshToFoam` can transfoam gmsh to OpenFoam mesh."
+msgstr ""
+"**网格划分:** |foam| "
+"既支持规则的正交网格，也支持非结构化的非正交网格(如三角网）。对于初学者，我们推荐OpenFOAM自带的网格划分工具 "
+":code:`blockMesh`.另一个优秀的三维网格划分工具是 Gmsh_ ，而OpenFOAM提供了一个工具 "
+"(:code:`gmshToFoam`) 可以将 Gmsh 生成的网格文件转换为OpenFOAM的格式。"
+
+#: ../../source/Introduction/index.rst:30
+msgid ""
+"**Boundary conditions**: even though OpenFoam has a lot of build-in "
+"boundary conditions, we also developed some specific boundary conditions,"
+" e.g. :code:`noFlux`, :code:`HydrothermalHeatFlux` for the specific "
+"problem — Hydrothermal system."
+msgstr ""
+"**边界条件:** "
+"即使OpenFOAM已经有了很多内置的边界条件，但是针对海底热液循环模型，依然有一些无法满足要求。我们开发了一些特定的边界条件，比如，:code:`noFlux`"
+" 和 :code:`HydrothermalHeatFlux` 。"
+
+#: ../../source/Introduction/index.rst:34
+msgid "Information"
+msgstr "信息"
+
+#: ../../source/Introduction/index.rst:36
+msgid ""
+"License: `GNU GeneralPublic License v3.0 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/LICENSE>`_"
+msgstr ""
+"许可证: `GNU GeneralPublic License v3.0 "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/blob/master/LICENSE>`_"
+
+#: ../../source/Introduction/index.rst:38
+msgid ""
+"Software doi: `10.5281/zenodo.3755648 "
+"<https://doi.org/10.5281/zenodo.3755648>`_"
+msgstr "软件 doi: `10.5281/zenodo.3755648 <https://doi.org/10.5281/zenodo.3755648>`_"
+
+#: ../../source/Introduction/index.rst:40
+msgid ""
+"GitLab repository: `https://gitlab.com/gmdpapers/hydrothermalfoam "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam>`_"
+msgstr ""
+"GitLab 仓库: `https://gitlab.com/gmdpapers/hydrothermalfoam "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam>`_"
+
+#: ../../source/Introduction/index.rst:42
+msgid ""
+"Docker Hub repository: `zguo/hydrothermalfoam "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_"
+msgstr ""
+"Docker Hub 仓库: `zguo/hydrothermalfoam "
+"<https://hub.docker.com/repository/docker/zguo/hydrothermalfoam>`_"
+
+#: ../../source/Introduction/index.rst:45
+msgid "Dependent package"
+msgstr "软件依赖包"
+
+#: ../../source/Introduction/index.rst:47
+msgid "OpenFOAM_"
+msgstr "OpenFOAM_"
+
+#: ../../source/Introduction/index.rst:49
+msgid "freesteam_"
+msgstr "freesteam_"
+
+#: ../../source/Introduction/index.rst:51
+msgid "Gmsh_"
+msgstr "Gmsh_"
+
+#~ msgid ""
+#~ "Development team: `Zhikui Guo "
+#~ "<https://orcid.org/0000-0002-0604-0455>`_ , `Lars "
+#~ "Rüpke <https://orcid.org/0000-0001-7025-4362>`_"
+#~ msgstr ""
+#~ "开发者团队: `郭志馗 <https://orcid.org/0000-0002-0604-0455>`_ "
+#~ ", `Lars Rüpke "
+#~ "<https://orcid.org/0000-0001-7025-4362>`_"
+

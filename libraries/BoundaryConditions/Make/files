@@ -1,0 +1,6 @@
+HydrothermalMassFluxPressure/HydrothermalMassFluxPressureFvPatchScalarField.C
+HydrothermalHeatFlux/HydrothermalHeatFluxFvPatchScalarField.C
+SubmarinePressure/submarinePressureFvPatchScalarField.C
+noFlux/noFluxFvPatchScalarField.C
+
+LIB=$(FOAM_USER_LIBBIN)/libHydrothermalBoundaryConditions

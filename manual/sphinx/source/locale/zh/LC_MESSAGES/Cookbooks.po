@@ -1,0 +1,1245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Zhikui Guo, Lars Ruepke
+# This file is distributed under the same license as the HydrothermalFoam
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: HydrothermalFoam 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-06 11:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:8
+msgid "3D box"
+msgstr "三维盒子"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:10
+msgid "All the input files can be found in |3Dbox| directory."
+msgstr "所有的输入文件均可在\\ |3Dbox|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:12
+msgid ""
+"This example is based on models in "
+":numref:`cookbook_nonUniformFixedValueBC` and :numref:`cookbook_gmsh`. We"
+" just to make the following three changes to make a 3D box model,"
+msgstr ""
+"此例子是基于\\ :numref:`cookbook_nonUniformFixedValueBC`\\ 和\\ "
+":numref:`cookbook_gmsh`\\ 中的离子。我们只需要做出如下所示的三个修改就可以得到一个三维盒子模型的算例。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:15
+msgid ""
+"For mesh generation, we just need to change :code:`zmax=xmax;` and change"
+" the extrude layers to a number greater than 1, e.g. 40, see line 7 and "
+"line 28 in :numref:`lst:gmsh:box.geo`."
+msgstr ""
+"对于网格生成，我们只需要修改\\ :code:`zmax=xmax;`\\ 并且将延伸层数改为大于1（比如40）即可, 见\\ "
+":numref:`lst:gmsh:box.geo`\\ 中的第7行和第28行。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:17
+msgid ""
+"For boundary conditions, we just need to change :code:`type` of "
+":code:`frontAndBack` boundary to be consistent with the :code:`left` and "
+":code:`right` boundary, rather than :code:`empty`. And then change "
+":code:`bottom` boundary condition of :code:`T` similar to example "
+":numref:`cookbook_nonUniformFixedValueBC`, see :numref:`lst:3Dbox:BC_T`."
+msgstr ""
+"对于边界条件, 我们只需要将\\ :code:`frontAndBack`\\ 的\\ :code:`type`\\ 改为与\\ "
+":code:`left`\\ 和\\ :code:`right`\\ 边界相同即可。然后将\\ :code:`bottom`\\ 边界的温度\\ "
+":code:`T`\\ 边界条件改为与\\ :numref:`cookbook_nonUniformFixedValueBC`\\ 中的类似即可,"
+" 见\\ :numref:`lst:3Dbox:BC_T`\\ 。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:19
+msgid ""
+"Unlike 2D model, we don't need to set :code:`frontAndBack` to empty patch"
+" in :code:`polyMesh/boundary` file. See :numref:`sec:convertGmsh` for "
+"empty boundary of 2D model."
+msgstr ""
+"与二维模型不同，我们并不需要将\\ :code:`polyMesh/boundary`\\ 文件中的\\ "
+":code:`frontAndBack`\\ 边界的类型设置为\\ :code:`empty`\\ 。二维模型的空边界条件类型设置见\\ "
+":numref:`sec:convertGmsh`\\ 。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:21
+msgid "Bottom boundary condition of :code:`T` of the 3D box model."
+msgstr "三维盒子模型的温度场\\ :code:`T`\\ 的边界条件"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:47
+msgid ""
+"The mesh and bottom boundary condition of temperature are shown in the "
+"following static figure and interactive vtk scene."
+msgstr "网格和温度的底部边界条件分别显示为下面的 静态图片和交互式的VTK场景。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:51
+#: ../../source/Cookbooks/box/parallelComputing.rst:44
+#: ../../source/Cookbooks/pipe/2D.rst:16 ../../source/Cookbooks/pipe/3D.rst:17
+msgid "Mesh"
+msgstr "网格"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:56
+#: ../../source/Cookbooks/box/3Dbox.rst:81
+msgid "The screenshot of mesh of 3D box model."
+msgstr "三维盒子模型的网格"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:58
+msgid "BC"
+msgstr "边界条件"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:63
+#: ../../source/Cookbooks/box/3Dbox.rst:87
+msgid "The bottom boundary condition of temperature of the 3D box model."
+msgstr "三维盒子模型的温度底部边界条件"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:65
+#: ../../source/Cookbooks/box/parallelComputing.rst:51
+#: ../../source/Cookbooks/pipe/2D.rst:23 ../../source/Cookbooks/pipe/3D.rst:24
+#: ../../source/Cookbooks/pipe/3D.rst:38
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:53
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:134
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:290
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:388
+msgid "Interactive"
+msgstr "交互式"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:67
+msgid "Mesh and bottom boundary condition of temperature."
+msgstr "网格和温度的底部边界条件"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:75
+msgid ""
+"The mesh is shown in :numref:`fig:3Dbox:mesh` and the bottom boundary "
+"condition of temperature is shown in :numref:`fig:3Dbox:bcT`."
+msgstr "网格见\\ :numref:`fig:3Dbox:mesh`\\ ，温度的底部边界条件见\\ :numref:`fig:3Dbox:bcT`\\ 。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:92
+#: ../../source/Cookbooks/box/3Dbox.rst:100
+msgid ""
+"The isothermal surface of 300 |degC| , flow arrows and stream lines are "
+"shown below."
+msgstr "300 |degC|\\ 等温面、流场箭头和流线显示如下。"
+
+#: ../../source/Cookbooks/box/3Dbox.rst:106
+msgid ""
+"The isothermal surface of 300 |degC| = 573.15 K, flow arrows and stream "
+"lines of the 3D box simulation at 265 year. The unit of temperature in "
+"this figure is K."
+msgstr "三维盒子模型在265年的模拟结果：300 |degC| = 573.15 K 等温面、流场箭头和流线图中的温度单位为K（开尔文）"
+
+#: ../../source/Cookbooks/box/gmsh.rst:6
+msgid "Gmsh"
+msgstr ""
+
+#: ../../source/Cookbooks/box/gmsh.rst:8
+msgid "All the input files can be found in |gmsh| directory."
+msgstr "所有的输入文件均可在\\ |gmsh|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:10
+msgid ""
+"This example is based on :ref:`cookbook_helloworld`, the only difference "
+"is the mesh generation. We use Gmsh_ to generate an unstructured "
+"triangular mesh. The gmsh script :download:`box.geo "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/gmsh/gmsh/box.geo>`"
+" is shown in :numref:`lst:gmsh:box.geo`."
+msgstr ""
+"此例是基于\\ :ref:`cookbook_helloworld`\\ ，唯一的不同就是网格生成过程。我们这里使用\\ Gmsh_\\ "
+"生成非结构化三角网。模型描述脚本为\\ :download:`box.geo "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/gmsh/gmsh/box.geo>`\\"
+" 见\\ :numref:`lst:gmsh:box.geo`\\ 。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:15
+msgid "Gmsh geometry script of the :ref:`cookbook_gmsh` model."
+msgstr ":ref:`cookbook_gmsh`\\ 模型的Gmsh几何描述脚本"
+
+#: ../../source/Cookbooks/box/gmsh.rst:25
+msgid ""
+"The Gmsh_ can generate regular mesh as well, see lines 23-24 in "
+":numref:`lst:gmsh:box.geo`."
+msgstr "Gmsh_\\ 也可以生成规则网格，见\\ :numref:`lst:gmsh:box.geo`\\ 中的第23-24行。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:27
+msgid ""
+"The model geometry, boundary conditions and mesh structure are shown in "
+":numref:`fig:gmsh`."
+msgstr "模型的几何结构、边界条件和网格结构见\\ :numref:`fig:gmsh`\\ 。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:33
+msgid ""
+"The geometry, boundary conditions and mesh structure of the "
+":ref:`cookbook_gmsh` model."
+msgstr ":ref:`cookbook_gmsh`\\ 模型的几何结构、边界条件和网格结构。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:37
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:30
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:38
+msgid "The temperature evolution is shown below."
+msgstr "温度演化显示如下"
+
+#: ../../source/Cookbooks/box/gmsh.rst:49
+msgid "The temperature result is shown in :numref:`fig:gmsh:result_T`"
+msgstr "温度场的模拟结果见\\ :numref:`fig:gmsh:result_T`\\ 。"
+
+#: ../../source/Cookbooks/box/gmsh.rst:55
+msgid "Temperature result of the :ref:`cookbook_gmsh` model."
+msgstr ":ref:`cookbook_gmsh`\\ 模型的温度场模拟结果"
+
+#: ../../source/Cookbooks/box/helloworld.rst:8
+msgid "Hello World: 2D box"
+msgstr "Hello World: 二维盒子"
+
+#: ../../source/Cookbooks/box/helloworld.rst:10
+msgid "All the input files can be found in |helloworld| directory."
+msgstr "所有的输入文件均可在\\ |helloworld|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:12
+msgid ""
+"This is the firs simplest example to show the basic steps to run a case. "
+"The geometry and boundary conditions are shown in figure "
+":numref:`fig:geometry_2Dbox`. The following steps present how to setup a "
+"case from scratch, see `helloworld "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/helloworld>`_"
+" case."
+msgstr ""
+"这是第一个最简单的例子，用于展示设置算例的基本步骤。模型几何结构和边界条件见\\ :numref:`fig:geometry_2Dbox`\\ "
+"。下列的步骤展示如何从0开始设置一个模型算例。输入文件见\\ `helloworld "
+"<https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/helloworld>`_\\"
+" 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:21
+msgid "The geometry and boundary conditions of the 2D box model."
+msgstr "二维盒子模型的几何结构和边界条件"
+
+#: ../../source/Cookbooks/box/helloworld.rst:24
+msgid "Step 1: create :code:`controlDict` file"
+msgstr "第一步：创建\\ :code:`controlDict`\\ 文件"
+
+#: ../../source/Cookbooks/box/helloworld.rst:26
+msgid ""
+"First thing we have to do is create a case directory, e.g. named "
+":code:`helloworld`, and sub-directory :code:`system` (see "
+":numref:`lst:createCaseDir`)."
+msgstr ""
+"我们需要做的第一件事就是创建一个算例目录，比如\\ :code:`helloworld`, 以及一个子目录\\ :code:`system` "
+"(见\\ :numref:`lst:createCaseDir`)。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:28
+msgid "Create case directory."
+msgstr "创建算例目录"
+
+#: ../../source/Cookbooks/box/helloworld.rst:37
+msgid ""
+"The :code:`controlDict` file is the first and most important file, which "
+"is located at :code:`system` directory. Create :code:`controlDict` file "
+"in :code:`system` directory with script shown in "
+":numref:`lst:helloworld:controlDict`."
+msgstr ""
+":code:`controlDict`\\ 字典文件是第一个需要创建的文件也是最重要的一个, 位于\\ :code:`system`\\ "
+"目录。其内容见\\ :numref:`lst:helloworld:controlDict`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:40
+msgid ":code:`controlDict`."
+msgstr ""
+
+#: ../../source/Cookbooks/box/helloworld.rst:49
+msgid ""
+"The key entry :code:`application` has to be set to "
+":code:`HydrothermalSinglePhaseDarcyFoam` which is the solver name."
+msgstr ""
+"其中的\\ :code:`application`\\ 关键词必须设置为\\ "
+":code:`HydrothermalSinglePhaseDarcyFoam`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:52
+msgid "Step 2: mesh generation"
+msgstr "第二步：网格生成"
+
+#: ../../source/Cookbooks/box/helloworld.rst:54
+msgid ""
+"In this step we create dictionary :code:`blockMeshDict` (just copy "
+":numref:`lst:blockMeshDict`) in :code:`system` to setup geometry of the "
+"2D box. Then we just run command :code:`blockMesh` to generate mesh (see "
+":numref:`fig:geometry_2Dbox`). The directory :code:`constant` will be "
+"created automatically and the mesh files will be generated in "
+":code:`polyMesh` directory."
+msgstr ""
+"在这一步我们需要在\\ :code:`system`\\ 目录下创建一个 :code:`blockMeshDict`\\ 字典文件(只需要将\\ "
+":numref:`lst:blockMeshDict`\\ "
+"中的内容拷贝过来就行)，此文件定义了二维盒子模型的几何结构及网格划分信息。然后在算例目录下运行\\ :code:`blockMesh`\\ "
+"命令生成网格(见\\ :numref:`fig:geometry_2Dbox`)。然后就自动生成一个名为\\ :code:`constant`\\"
+" 子文件夹，并且网格文件都保存在其下的\\ :code:`polyMesh`\\ 目录中了。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:61
+msgid ""
+"After step 2, the mesh is basically generated and we can display using "
+":code:`paraFoam` utility default or using ParaView for Docker user. The "
+"mesh result is shown in :numref:`fig:helloworld:mesh_PV`."
+msgstr ""
+"第二步之后，网格就已经生成了，这时候我们可以用\\ :code:`paraFoam`\\ "
+"工具在Paraview中显示我们生成的网格了，显示结果的截图见\\ :numref:`fig:helloworld:mesh_PV`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:68
+msgid "The screenshot of 2D box mesh in ParaView."
+msgstr "二维盒子模型的网格在Paraview中的显示截图"
+
+#: ../../source/Cookbooks/box/helloworld.rst:71
+msgid "Step 3: field data in :code:`0` folder"
+msgstr "第三步：创建\\ :code:`0`\\ 目录下的场数据文件"
+
+#: ../../source/Cookbooks/box/helloworld.rst:73
+msgid ""
+"In this step, we need to create I/O data files of field :code:`p`, "
+":code:`T` and :code:`permeability` in :code:`0` time directory. This "
+"three files are shown in :code:`lst:helloworld:p`, "
+":code:`lst:helloworld:T` and :code:`lst:helloworld:permeability`, "
+"respectively."
+msgstr ""
+"在这一步，我们需要在\\ :code:`0`\\ 时间目录中创建场数据\\ :code:`p`, :code:`T` 和 "
+":code:`permeability`\\ 的输入文件。这三个文件的内容分别显示为\\ :code:`lst:helloworld:p`, "
+":code:`lst:helloworld:T` 和 :code:`lst:helloworld:permeability`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:76
+msgid "Data field :code:`p`."
+msgstr "压力场：\\ :code:`p`"
+
+#: ../../source/Cookbooks/box/helloworld.rst:83
+msgid "Data field :code:`T`."
+msgstr "温度场：\\ :code:`T`"
+
+#: ../../source/Cookbooks/box/helloworld.rst:90
+msgid "Data field :code:`permeability`."
+msgstr "渗透率：\\ :code:`permeability`"
+
+#: ../../source/Cookbooks/box/helloworld.rst:99
+msgid ""
+"Now we can display the initial filed of :code:`p`, :code:`T` and "
+":code:`permeability` using ParaView. Screenshot of field :code:`T` is "
+"shown in :numref:`fig:helloworld:initial_T_PV`. In order to view the "
+"initial filed, the user have to uncheck the checkbox of :code:`Skip Zero "
+"Time` (see red rectangle in the figure)"
+msgstr ""
+"现在我们可以使用Paraview显示\\ :code:`p`, :code:`T` 和 :code:`permeability`\\ "
+"的初始场了。\\ :code:`T`\\ 的显示结果截图见\\ :numref:`fig:helloworld:initial_T_PV`\\ "
+"。为了显示初始场，必须将Paraview中的\\ :code:`Skip Zero Time`\\ 复选框取消选中(如图中的红色方框所示)"
+
+#: ../../source/Cookbooks/box/helloworld.rst:107
+msgid "The screenshot of field :code:`T` in ParaView."
+msgstr "温度场\\ :code:`T`\\ 的初始场在Paraview中的显示截图"
+
+#: ../../source/Cookbooks/box/helloworld.rst:111
+msgid "Step 4: constant property files"
+msgstr "第四步：属性文件"
+
+#: ../../source/Cookbooks/box/helloworld.rst:113
+msgid ""
+"In this step we need to copy three constant files :code:`g` (shown in "
+":numref:`lst:helloworld:g`), :code:`thermophysicalProperties` "
+"(:numref:`lst:thermophysicalProperties`) and :code:`transportProperties` "
+"(:numref:`lst:transportProperties`) into the :code:`constant` directory."
+msgstr ""
+"这一步，我们需要将三个常数/属性文件\\ :code:`g` (见\\ :numref:`lst:helloworld:g`), "
+":code:`thermophysicalProperties` "
+"(:numref:`lst:thermophysicalProperties`)和\\ :code:`transportProperties` "
+"(:numref:`lst:transportProperties`)拷贝到\\ :code:`constant`\\ 目录下。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:119
+msgid "Constant property file :code:`g`."
+msgstr "常数\\ :code:`g`\\ 的字典文件"
+
+#: ../../source/Cookbooks/box/helloworld.rst:128
+msgid ""
+"The user can change some propertie values in :code:`transportProperties`,"
+" e.g. :code:`porosity`, accroding to a specific modeling problem."
+msgstr ""
+"用户可以根据自己的研究问题修改\\ :code:`transportProperties`\\ 文件中的一些参数，比如\\ "
+":code:`porosity`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:132
+msgid "Step 5: setup numerical schemes and solution control"
+msgstr "第五步：设置数值格式和求解控制"
+
+#: ../../source/Cookbooks/box/helloworld.rst:134
+msgid ""
+"In this step we will create numerical schemes and solution control "
+"dictionary file :code:`fvSchemes` and :code:`fvSolution` in "
+":code:`system` directory. These two files can be found in "
+":numref:`lst:fvSchemes` and :numref:`lst:fvSolution` in "
+":numref:`sec:system`."
+msgstr ""
+"这一步我们需要在\\ :code:`system`\\ 目录下创建两个文件，分别为: :code:`fvSchemes`\\ 和\\ "
+":code:`fvSolution`\\ 这两个文件的内容分别见\\ :numref:`sec:system`\\ 中的\\ "
+":numref:`lst:fvSchemes`\\ 和\\ :numref:`lst:fvSolution`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:139
+msgid "Step 6: run the case"
+msgstr "第六步：运行算例"
+
+#: ../../source/Cookbooks/box/helloworld.rst:141
+msgid ""
+"Now the simple case setup or pre-processing has been completed. The we "
+"just run the following simple command (:numref:`lst:helloworld:run`) to "
+"run the case."
+msgstr "到此为止，这个简单的算例以设置完毕。只需要在算例目录下运行两行简单的命令(:numref:`lst:helloworld:run`)即可运行算例。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:144
+msgid "Command of running the 2D box case."
+msgstr "运行二维盒子模型的命令"
+
+#: ../../source/Cookbooks/box/helloworld.rst:153
+msgid "Step 7: display results"
+msgstr "第七步：显示结果"
+
+#: ../../source/Cookbooks/box/helloworld.rst:157
+msgid ""
+"We can use :code:`paraFoam` or ParaView (just like step 3) to display "
+"results which saved in time directories. The time directories name is "
+"dependent on key entries :code:`writeInterval`, :code:`purgeWrite` and "
+":code:`timePrecision`. The temperature evolution is shown below."
+msgstr ""
+"我们可以使用\\ :code:`paraFoam`\\ "
+"工具或者直接使用ParaView显示模拟结果。其中模拟结果中的时间文件夹名称取决于关键词\\ :code:`writeInterval`, "
+":code:`purgeWrite` 和 :code:`timePrecision`\\ 。此二维模型的温度演化显示如下。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:171
+msgid ""
+"We can use :code:`paraFoam` or ParaView (just like step 3) to display "
+"results which saved in time directories. The time directories name is "
+"dependent on key entries :code:`writeInterval`, :code:`purgeWrite` and "
+":code:`timePrecision`. The temperature is shown in figure "
+":numref:`fig:helloworld:result_T`."
+msgstr ""
+"我们可以使用\\ :code:`paraFoam`\\ "
+"工具或者直接使用ParaView显示模拟结果。其中模拟结果中的时间文件夹名称取决于关键词\\ :code:`writeInterval`, "
+":code:`purgeWrite` 和 :code:`timePrecision`\\ 。此二维模型的温度模拟结果见\\ "
+":numref:`fig:helloworld:result_T`\\ 。"
+
+#: ../../source/Cookbooks/box/helloworld.rst:180
+msgid "Temperature result of the **hello world** model."
+msgstr "**hello world**\\ 模型的温度结果"
+
+#: ../../source/Cookbooks/box/helloworld.rst:186
+msgid ""
+"If users want to run a case for a long time, there is an excellent tool "
+"named tmux_ , which is a terminal multiplexer. It lets you switch easily "
+"between several programs in one terminal, detach them (they keep running "
+"in the background) and reattach them to a different terminal."
+msgstr ""
+"如果用户想长时间在后台运行算例，推荐一个优秀的终端控制工具\\ tmux_ , "
+"可以方便的在多个终端中切换，并且可以让一个终端命令在后台运行，即使关闭终端窗口也不会影响程序运行。而且还可以在此进入到挂起的终端中。详情见其官网。"
+
+#: ../../source/Cookbooks/box/index.rst:6
+msgid "Convection in a box"
+msgstr "盒子中的热液对流"
+
+#: ../../source/Cookbooks/box/index.rst:9
+msgid ""
+"In this first example, let us consider a simple situation: a 2d box that "
+"is heated from below, insulated at the side walls, and cooled from the "
+"top. We will start from a 2D box example and then make some changes to "
+"show its features."
+msgstr "作为第一个例子，我们考虑一个简单的情况：有一个二维的盒子，从底部加热，两侧是绝热非渗透性的，并且流体可以在顶部自由出入，从顶部进入的流体是冷的，出去的是热的。我们将从这个简单的二维模型开始，然后一步一步做一些修改得到新的模型算例，在此过程中展示本软件的一些特性。"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:6
+msgid "Nonuniform fixed temperature BC"
+msgstr "非均匀的固定值温度边界条件"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:8
+msgid "All the input files can be found in |nonUniformFixedValueBC| directory."
+msgstr "所有的输入文件均可在\\ |nonUniformFixedValueBC|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:10
+msgid ""
+"This exmple, based on :ref:`cookbook_helloworld`, presents how to set a "
+"nonuniform fixed boundary condition by using :code:`codedFixedValue` BC "
+"type (see :numref:`lst:nonUniformFixedValueBC:T`)"
+msgstr ""
+"此例子基于\\ :ref:`cookbook_helloworld`\\ ，用来展示如何设置使用\\ "
+":code:`codedFixedValue`\\ 边界条件类型设置非均匀的固定值边界条件。(见 "
+":numref:`lst:nonUniformFixedValueBC:T`)"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:12
+msgid "Example of nonuniform boundary condition: :code:`codedFixedValue`."
+msgstr "非均匀固定值边界条件:\\ :code:`codedFixedValue`\\ 示例"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:20
+msgid ""
+"The model geometry and boundary conditions are shown in "
+":numref:`fig:nonUniformFixedValueBC`."
+msgstr "模型的几何结构和边界条件见\\ :numref:`fig:nonUniformFixedValueBC`\\ 。"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:26
+msgid ""
+"The geometry and boundary conditions of the "
+":ref:`cookbook_nonUniformFixedValueBC` model."
+msgstr ":ref:`cookbook_nonUniformFixedValueBC`\\ 模型的几何结构和边界条件。"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:42
+msgid ""
+"The temperature result is shown in "
+":numref:`fig:nonUniformFixedValueBC:result_T`"
+msgstr "温度结果见\\ :numref:`fig:nonUniformFixedValueBC:result_T`"
+
+#: ../../source/Cookbooks/box/nonuniformFixedValueBC.rst:48
+msgid "Temperature result of the :ref:`cookbook_nonUniformFixedValueBC` model."
+msgstr ":ref:`cookbook_nonUniformFixedValueBC`\\ 模型的温度结果"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:7
+msgid "Parallel computing"
+msgstr "并行计算"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:9
+msgid "All the input files can be found in |3Dbox_par| directory."
+msgstr "所有的输入文件均可在\\ |3Dbox_par|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:11
+msgid ""
+"Parallel computing is one of features of OpenFOAM, and the |foam| fully "
+"inherits this feature. There are two steps to run a case in Parallel,"
+msgstr "并行计算时OpenFOAM特点之一，而\\ |foam|\\ 完全继承了这一特点。只需要如下的两个步骤即可并行运算一个算例,"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:14
+msgid ""
+"Add :code:`decomposeParDict` dictionary file into :code:`system` "
+"directory (see :numref:`lst:decomposeParDict`)."
+msgstr ""
+"向\\ :code:`system`\\ 目录中添加\\ :code:`decomposeParDict`\\ 字典文件(见 "
+":numref:`lst:decomposeParDict`)。"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:16
+msgid "Decomposition of mesh and initial field data."
+msgstr "分解网格和初始场数据"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:18
+msgid ""
+"Replace :code:`runApplication $application` with :code:`runParallel "
+"$application`"
+msgstr ""
+"将\\ :code:`runApplication $application`\\ 替换为\\ :code:`runParallel "
+"$application`"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:20
+msgid "Reconstructing mesh and data."
+msgstr "重组网格和数据"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:22
+msgid ""
+"The last three steps can be assembled in :code:`run.sh` which is "
+"highlighed in :numref:`lst:3Dbox_par:run`"
+msgstr ""
+"最后这三个步骤用到的命令可以汇总到\\ :code:`run.sh`\\ 脚本中，如\\ "
+":numref:`lst:3Dbox_par:run`\\ 中的高亮显示行所示。"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:24
+msgid "Command set of running a case in parallel."
+msgstr "并行运行一个算例的命令集脚本"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:32
+msgid ""
+"The mesh will be decomposed into multiple connected regions, the "
+"decomposed region number is defined in :code:`decomposeParDict` file. The"
+" mesh of this example, which is based on 3D box model in  "
+":numref:`sec:convection_3Dbox`, is decomposed into 4 regions by using "
+":code:`decomposePar` command in step 2."
+msgstr ""
+"网格被分解为多个相互连接的区域, 分解区域的个数在\\ :code:`decomposeParDict`\\ 字典文件中定义。此例是基于\\ "
+":numref:`sec:convection_3Dbox`\\ 中的三维盒子模型。在第二步中使用\\ "
+":code:`decomposePar`\\ 命令将网格分解为四个区域"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:40
+msgid ""
+"The decomposed mesh of the 3D box model is shown in the following static "
+"figure and interactive vtk scene."
+msgstr "被分解的三维盒子模型的网格如下面的静态图片和交互式VTK场景所示。"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:49
+#: ../../source/Cookbooks/box/parallelComputing.rst:53
+#: ../../source/Cookbooks/box/parallelComputing.rst:67
+msgid "The decomposed mesh of the 3D box."
+msgstr "被分解的三维盒子模型的网格"
+
+#: ../../source/Cookbooks/box/parallelComputing.rst:61
+msgid ""
+"The decomposed mesh of the 3D box model is shown in "
+":numref:`fig:3Dbox_par:mesh`."
+msgstr "被分解的三维盒子模型的网格见\\ :numref:`fig:3Dbox_par:mesh`\\ 。"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:8
+msgid "Time-dependent permeability"
+msgstr "随时间变化的渗透率"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:10
+msgid "All the input files can be found in |timeDependentPerm| directory."
+msgstr "所有的输入文件均可在\\ |timeDependentPerm|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:12
+msgid ""
+"The change of permeability over time, e.g. due to mineral precipitation, "
+"is an important process real hydrothermal systems. This exmple, based on "
+":ref:`cookbook_helloworld`, presents how to set time-dependent "
+"permeability at run time in |foam| tools. This can be reached using "
+":code:`function` sub-dictionary in :code:`controlDict` file (see "
+":numref:`lst:timeDependentPerm:controlDict`)."
+msgstr ""
+"热液系统中岩石（或洋壳）的渗透率随时间变化是一个非常重要的过程，比如可能又矿物沉淀或溶解造成的。此例子基于\\ "
+":ref:`cookbook_helloworld`\\ ，展示如何使用\\ |foam|\\ 模拟随渗透率随时间变化的问题。这可以使用\\ "
+":code:`controlDict`\\ 字典文件中的\\ :code:`function`\\ 子字典来实现(见\\ "
+":numref:`lst:timeDependentPerm:controlDict`)。"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:19
+msgid "Change permeability at run time: :code:`controlDict`."
+msgstr "在运行时改变渗透率：:code:`controlDict`"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:27
+msgid ""
+"The model geometry and boundary conditions are shown in "
+":numref:`fig:timeDependentPerm`, the permeability in shallow region "
+"(depth < 2.4 km) will be increase after 500 years (the inset curve)."
+msgstr ""
+"模型的几何结构和边界条件见\\ :numref:`fig:timeDependentPerm`, 浅部区域(深度 < 2.4 "
+"km)的渗透率在500年后增加(如图中的曲线所示)。"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:34
+msgid ""
+"The geometry, BCs and permeability of the "
+":ref:`cookbook_timeDependentPerm` model."
+msgstr ":ref:`cookbook_timeDependentPerm`\\ 模型的几何结构、边界条件和渗透率。"
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:49
+msgid ""
+"The temperature and permeability results are shown in "
+":numref:`fig:timeDependentPerm:result_T`."
+msgstr "温度和渗透率结果见\\ :numref:`fig:timeDependentPerm:result_T`."
+
+#: ../../source/Cookbooks/box/timeDependentPerm.rst:55
+msgid ""
+"Temperature and permeability result of the "
+":ref:`cookbook_timeDependentPerm` model."
+msgstr ":ref:`cookbook_timeDependentPerm`\\ 模型的温度和渗透率结果"
+
+#: ../../source/Cookbooks/index.rst:5
+msgid "Cookbooks"
+msgstr "算例集"
+
+#: ../../source/Cookbooks/index.rst:11
+msgid "**Connections between tutorial programs**"
+msgstr "算例集的连接关系"
+
+#: ../../source/Cookbooks/index.rst:13
+msgid ""
+"The following graph shows the connections between cookbook cases. Click "
+"on any of the boxes to go to one of the cases. If you hover your mouse "
+"pointer over a box, a brief description of the cookbook example should "
+"appear. And if you click a box, it links to the GitLab repository of the "
+"cookbook case."
+msgstr "下面的图表示每个算例之间的连接关系。点击每个算例方框将转到Github仓库中该算例的文件夹。将鼠标移动到某个算例的方框上，则会显示相应的提示信息。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:6
+msgid "Two-dimensional pipe"
+msgstr "二维管道模型"
+
+#: ../../source/Cookbooks/pipe/2D.rst:8
+msgid "All the input files can be found in |pipe| directory."
+msgstr "所有的输入文件均可在\\ |pipe|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:12
+msgid ""
+"The pipe model, illustrated below, could mimic a simplified scenario of "
+"hydrothermal circulation in oceanic crust."
+msgstr "下图所示的管道模型可以近似模拟洋壳中热液循环的简单情形。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:21 ../../source/Cookbooks/pipe/2D.rst:25
+#: ../../source/Cookbooks/pipe/2D.rst:39
+msgid "Mesh and boundary condions of the pipe model."
+msgstr "管道模型的网格和边界条件"
+
+#: ../../source/Cookbooks/pipe/2D.rst:33
+msgid ""
+"The pipe model, illustrated in :numref:`fig:pipe:mesh`, could mimic a "
+"simplified scenario of hydrothermal circulation in oceanic crust."
+msgstr ":numref:`fig:pipe:mesh`\\ 所示的管道模型可以近似模拟洋壳中热液循环的简单情形。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:41
+msgid "There are five highlights in the pipe model."
+msgstr "管道模型中将展示五个亮点。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:43
+msgid ""
+"To simulate a focused upflow zone in the deeper crust (e.g. layer 2B) "
+"where permeability is sufficiently low (:math:`k=10^{-15}\\ m^2`) to "
+"allow for high-temperature fluid flow, a "
+":code:`hydrothermalMassFluxPressure` (:math:`\\phi=1\\ g/m^2/s`) boundary"
+" condition for puressure and :code:`fixedValue` (:math:`T_{bot} = 400\\ "
+"^{\\circ}\\text{C}`) boundary condition for temperature are applied on "
+"the pipe bottom."
+msgstr ""
+"为了模拟深部洋壳(比如 layer 2B)的热液集中喷流，对压力使用\\ :code:`hydrothermalMassFluxPressure`"
+" (:math:`\\phi=1\\ g/m^2/s`)边界条件以及对温度使用\\ :code:`fixedValue` "
+"(:math:`T_{bot} = 400\\ ^{\\circ}\\text{C}`)边界条件。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:45
+msgid ""
+"Hybrid mesh, triangular mesh and regular mesh, is generated by gmsh_ . "
+"The mesh in the central zone is regular."
+msgstr "用\\ gmsh_\\ 生成三角网和规则网混合的网格，流体主要对流的中心区域使用规则网。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:47
+msgid "Different resolution of mesh is set by gmsh_ ."
+msgstr "利用\\ gmsh_\\ 设置不同区域不同网格分辨率。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:49
+msgid ""
+"Permeability field is specified with different value for layer 2A and "
+"layer 2B by :code:`zoneToCell` keyword in :code:`setFieldDict` file."
+msgstr ""
+"不同区域设置不同的渗透率，通过\\ :code:`setFieldDict`\\ 文件中的\\ :code:`zoneToCell`\\ "
+"关键词来实现。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:51
+msgid ""
+"To simulate hydrothermal flow discharge out of seafloor, a "
+":code:`inletOutlet` boundary condition of temperature is applied on the "
+"pipe top."
+msgstr "为了模拟热液在海底喷发的情况，在管道模型的顶部对温度使用\\ :code:`inletOutlet`\\ 边界条件。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:56
+msgid ""
+"The temperature evolution and streamlines of the "
+":ref:`sec_cookbook_pipe_2D` model are shown below."
+msgstr ":ref:`sec_cookbook_pipe_2D`\\ 模型的温度演化和流线显示如下。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:60
+#: ../../source/Cookbooks/singlePass/index.rst:52
+#: ../../source/Cookbooks/singlePass/index.rst:106
+#: ../../source/Cookbooks/singlePass/index.rst:151
+msgid "Temperature evolution"
+msgstr "温度演化"
+
+#: ../../source/Cookbooks/pipe/2D.rst:69
+#: ../../source/Cookbooks/singlePass/index.rst:61
+#: ../../source/Cookbooks/singlePass/index.rst:115
+#: ../../source/Cookbooks/singlePass/index.rst:160
+msgid "Streamlines and velocity arrows"
+msgstr "流线和速度场箭头"
+
+#: ../../source/Cookbooks/pipe/2D.rst:71
+#: ../../source/Cookbooks/singlePass/index.rst:63
+#: ../../source/Cookbooks/singlePass/index.rst:117
+#: ../../source/Cookbooks/singlePass/index.rst:162
+msgid "This is a interactive vtk scense."
+msgstr "这是一个交互式的VTK场景"
+
+#: ../../source/Cookbooks/pipe/2D.rst:79
+msgid "The temperature result is shown in :numref:`fig:pipe:result_T`."
+msgstr "温度结果见\\ :numref:`fig:pipe:result_T`\\ 。"
+
+#: ../../source/Cookbooks/pipe/2D.rst:85
+msgid "Temperature result of the :ref:`sec_cookbook_pipe_2D` model."
+msgstr ":ref:`sec_cookbook_pipe_2D`\\ 模型的温度模拟结果"
+
+#: ../../source/Cookbooks/pipe/3D.rst:6
+msgid "Three-dimensional pipe"
+msgstr "三维管道模型"
+
+#: ../../source/Cookbooks/pipe/3D.rst:8
+msgid "All the input files can be found in |pipe_3D| directory."
+msgstr "所有的输入文件均可在\\ |pipe_3D|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/pipe/3D.rst:12
+msgid ""
+"The three-dimensional pipe model, illustrated below, is the result of a "
+"two-dimensional model(see :numref:`sec_cookbook_pipe_2D`) rotating around"
+" the central axis. Of course one can extrude mesh of "
+":ref:`sec_cookbook_pipe_2D` model to get a three-dimensional pipe "
+"model(see below)."
+msgstr ""
+"下图所示的三维管道模型可以通过对二维管道模型(见\\ "
+":numref:`sec_cookbook_pipe_2D`)绕中心轴线旋转得到当然也可以将二维管道模型(:ref:`sec_cookbook_pipe_2D`)向第三个方向延伸得到。"
+
+#: ../../source/Cookbooks/pipe/3D.rst:22 ../../source/Cookbooks/pipe/3D.rst:26
+#: ../../source/Cookbooks/pipe/3D.rst:36 ../../source/Cookbooks/pipe/3D.rst:40
+msgid "Mesh and boundary condions of the 3D pipe model."
+msgstr "三维管道模型的网格和边界条件"
+
+#: ../../source/Cookbooks/pipe/3D.rst:31
+msgid "Mesh2"
+msgstr ""
+
+#: ../../source/Cookbooks/pipe/3D.rst:48
+msgid ""
+"The three-dimensional pipe model, illustrated in "
+":numref:`fig:pipe_3D:mesh`, is the result of a two-dimensional model(see "
+":numref:`sec_cookbook_pipe_2D`) rotating around the central axis. Of "
+"course one can extrude mesh of :ref:`sec_cookbook_pipe_2D` model to get a"
+" three-dimensional pipe model(see :numref:`fig:pipe_3D:mesh2`)."
+msgstr ""
+":numref:`fig:pipe_3D:mesh`\\ 所示的三维管道模型可以通过对二维管道模型(见\\ "
+":numref:`sec_cookbook_pipe_2D`)绕中心轴线旋转得到当然也可以将二维管道模型(:ref:`sec_cookbook_pipe_2D`)向第三个方向延伸得到(见\\"
+" :numref:`fig:pipe_3D:mesh2`)。"
+
+#: ../../source/Cookbooks/pipe/3D.rst:55
+msgid "Mesh of the 3D pipe model."
+msgstr "三维管道模型的网格"
+
+#: ../../source/Cookbooks/pipe/3D.rst:61
+msgid "Alternative mesh of the 3D pipe model."
+msgstr "向第三个方向延伸得到的三维管道模型网格"
+
+#: ../../source/Cookbooks/pipe/3D.rst:65
+msgid ""
+"The boundary conditions setup is similar to the "
+":ref:`sec_cookbook_pipe_2D` model. One can also run this example in "
+"parallel, see :numref:`sec:convection_3Dbox_par`. The result is shown "
+"below."
+msgstr ""
+"边界条件的设置与\\ :ref:`sec_cookbook_pipe_2D`\\ 模型相似。用户也可以用并行计算运行此算例，见\\ "
+":numref:`sec:convection_3Dbox_par`\\ 。模拟结果显示如下。"
+
+#: ../../source/Cookbooks/pipe/3D.rst:71
+msgid ""
+"The isothermal surface (red) of 200 |degC| , flow arrows and stream lines"
+" of the 3D pipe simulation at 80 year are shown below."
+msgstr "三维管道模型在80年的模拟结果：200 |degC| 等温面（红色）、流场箭头和流线显示如下"
+
+#: ../../source/Cookbooks/pipe/3D.rst:79
+#, fuzzy
+msgid ""
+"The isothermal surface of 200 |degC| , flow arrows and stream lines are "
+"shown in :numref:`fig:pipe_3D:result`."
+msgstr "200 |degC| 等温面、流场箭头和流线见\\ :numref:`fig:pipe_3D:result`\\ 。"
+
+#: ../../source/Cookbooks/pipe/3D.rst:85
+msgid ""
+"The isothermal surface (red) of 200 |degC| = 473.15 K, flow arrows and "
+"stream lines of the 3D pipe simulation at 80 year. The unit of "
+"temperature in this figure is K."
+msgstr "三维管道模型在80年的模拟结果：200 |degC| = 473.15 K等温面（红色）、流场和流线。图中的温度单位为开尔文。"
+
+#: ../../source/Cookbooks/pipe/index.rst:7
+msgid "Pipe model"
+msgstr "管道模型"
+
+#: ../../source/Cookbooks/porousMedia/index.rst:7
+msgid "Porous media"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:6
+msgid "Synthetic 2D model"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:8
+#, fuzzy
+msgid "All the input files can be found in |porousMedia2D| directory."
+msgstr "所有的输入文件均可在\\ |pipe|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:10
+msgid ""
+"To explore fluid flow in porous media, we have to get a porous media, "
+"e.g. sandstone. The pore network of a porous media can be scanned by "
+"X-ray. To simplify, we start from a synthetic data which generated by "
+"porespy_."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:16
+msgid "Synthetic data generation"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:18
+msgid ""
+"The following python code (:numref:`lst:porous:synthetic2D:generation`) "
+"can generate a 2D porous network data and then save as vti format."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:20
+#, fuzzy
+msgid "Synthetic 2D porous media generation."
+msgstr "第二步：网格生成"
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:40
+msgid ""
+"For the real case this step is the conversion from scanning slice picture"
+" to vti."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:46
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:127
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:283
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:381
+msgid "Static"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:51
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:65
+msgid "Synthetic porous media with pore space(red) and solid space(blue)."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:68
+msgid "Extract pore network and connectivity"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:70
+msgid ""
+"This step extract surfaces of pore space from the vti file, and "
+"triangulate surfaces of the extracted pore network. Then calculate "
+"connectivity of the pore network. All these processes can be performed by"
+" python API of ParaView_. The used API are listed in "
+":numref:`lst:porous:synthetic2D:vti2vtu`. There are 4 filters are used to"
+" convert vti data to vtu data which will be used in the next step."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:76
+msgid ""
+"**Clip**: remove solid (or grains) space and keep pore space. The scalar "
+"field **im** in the vti file represent pore and solid space. There are "
+"only two values (0 and 1) in the **im** field, 0 denotes solid and 1 "
+"denotes pore space. Therefore here set :code:`ClipType` as :code:`Scalar`"
+" and set :code:`Value` as a value greater than 0, e.g. 0.5. In addition, "
+"if you want to remove pore space and keep solid space, a parameter of "
+":code:`InsideOut` has to be set as :code:`1` (see line 23 in "
+":numref:`lst:porous:synthetic2D:vti2vtu`), the default value is "
+":code:`0`."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:77
+msgid ""
+"**ExtractSurface**: after clipping, the data is still a volume data. "
+"Therefore the :code:`ExtractSurface` filter has to be applied to convert "
+"volume data to a surface data."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:79
+msgid ""
+"**Triangulate**: although the pore space surface has been extracted, but "
+"the surface cell type is not changed and is still :code:`VTK_PIXEL`. In "
+"order to export the pore surfaces to stl or vtu format, the "
+":code:`Triangulate` filter has to be applied. Now we can save data as stl"
+" file which can be used as input file of meshing, e.g. "
+":code:`snappyHexMesh`. However, we need to do more, e.g. get rid of "
+"unconnected pore, find and split inlet/outlet patches out, find a point "
+"in the pore space. In addition, an optional filter named :code:`Decimate`"
+" can also be imposed to make the triangulation mesh coarse if necessary."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:81
+msgid ""
+"**Connectivity**: calculate connectivity of the pore network, append a "
+"field data named :code:`RegionId` which represent the index of each "
+"individual (or unconnected) region."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:83
+msgid ""
+"Then we save the data as vtu format. Note that the argument of "
+":code:`DataMode` has to be specified explicitly, e.g. "
+":code:`DataMode='Binary'`, because the default value of :code:`DataMode` "
+"is :code:`Append`, which will cause issue for vtu file reading of meshio_"
+" package."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:85
+msgid ""
+"Pore network extraction and connectivity calculation (see also "
+"process_paraview.py)."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:121
+msgid ""
+"If you have installed the paraview software, then the python API can be "
+"accessed by python script with a magic comment, e.g. "
+":code:`#!/Applications/ParaView-5.4.0.app/Contents/bin/pvpython`, which "
+"specify where the python interpreter of paraview. Of course you can also "
+"use command of :code:`chmod 775 process_paraview.py` to set the python "
+"script with executable permission and then run the script in the terminal"
+" directly, e.g. :code:`./process_paraview.py`."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:132
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:146
+msgid "Extracted pore network with connectivity."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:150
+msgid "Extract patches and save to stl files"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:152
+msgid ""
+"In order to use :code:`snappyHexMesh` to generate mesh for OpenFOAM, we "
+"have to do four things,"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:154
+msgid ""
+"**Remove all invalid regions.** For example, the invalid region is "
+"defined as which is not connected inlet patch or not connected with "
+"outlet patch. Because in this case, the fluid will never flow in or flow "
+"out the region."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:156
+msgid ""
+"**Split all patches from the vtu file and save as stl format which will "
+"be used to define boundary conditions**"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:158
+msgid "**Split all valid regions and remove patches, then save as stl file**"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:160
+msgid "**Provide coordinates (x,y,z) of a point in each valid region**"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:162
+msgid "All the above processes can be performed by the following python script."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:164
+msgid "Extract boundary patches and get point in mesh (see also process_stl.py)."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:288
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:302
+msgid "Boundary patches and valid region of pore network."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:306
+msgid "Meshing"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:308
+msgid ""
+"After the above steps, we get stl files of all boundary patches and valid"
+" pore network walls, and also get coordinates of point in valid regions. "
+"In this step, we will generate mesh of porous media using snappyHexMesh "
+"utility. All the meshing steps can be assembled in a bash script, see "
+":numref:`lst:porous:synthetic2D:meshing`."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:312
+msgid "The required stl files are in the stl folder, e.g. :code:`stl/porous0`."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:314
+msgid ""
+"The blockMeshDict file can be automatically generated by the python "
+"script according to the dimension of the porous network. And save to "
+":code:`stl/porous0` folder as well."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:316
+msgid ""
+"snappyHexMeshDict.orig is predefined and located in the system folder. We"
+" only need to replace :code:`pointInMesh` coordinates by what we "
+"calculate in :numref:`lst:porous:synthetic2D:vtu2stl` (line 71). This "
+"coordinate information is saved in e.g. "
+":code:`stl/porous0/locationInMesh.txt` file (see line 98 in "
+":numref:`lst:porous:synthetic2D:vtu2stl`)."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:318
+msgid "Meshing script."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:386
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:400
+msgid "Mesh of porous network."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:403
+msgid "Fluid flow in porous media"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:405
+msgid ""
+"Now we can perform a fluid flow simulation in the synthetic porous media."
+" All the input files can be found in |porousMedia2D| directory. The "
+"pressure and streamlines are shown below."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:413
+msgid "Static:U"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:418
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:445
+#, fuzzy
+msgid "Streamlines colored by velocity."
+msgstr "流线和速度场箭头"
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:420
+#, fuzzy
+msgid "Interactive:U"
+msgstr "交互式"
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:426
+msgid "Static:p"
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:431
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:451
+msgid "Streamlines colored by pressure."
+msgstr ""
+
+#: ../../source/Cookbooks/porousMedia/synthetic2D.rst:433
+#, fuzzy
+msgid "Interactive:p"
+msgstr "交互式"
+
+#: ../../source/Cookbooks/singlePass/index.rst:7
+msgid "Single pass model"
+msgstr "Single-pass模型"
+
+#: ../../source/Cookbooks/singlePass/index.rst:12
+msgid "Two-dimensional single pass model"
+msgstr "二维Single-pass模型"
+
+#: ../../source/Cookbooks/singlePass/index.rst:14
+msgid "All the input files can be found in |singlepass| directory."
+msgstr "所有的输入文件均可在\\ |singlepass|\\ 目录中找到。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:16
+msgid ""
+"One- and two-limb single-pass models are usually used to determine vent "
+"field characteristics such as mass flow rate :math:`Q`, bulk permeability"
+" in the discharge zone :math:`k_d`, thickness of the conductive boundary "
+"layer at the base of the system :math:`d`, magma replenishment rate, and "
+"residence time in the discharge zone :cite:`lowell2013`."
+msgstr ""
+"单支和双支single-pass常用于估计热液区的一些特征，比如物质流速\\ :math:`Q`, 释放区的总体渗透率\\ "
+":math:`k_d`, 热源传到层的厚度\\ :math:`d`, 岩浆置换速率等\\ :cite:`lowell2013`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:24
+msgid "One-limb classical single pass model"
+msgstr "经典的单支single pass模型"
+
+#: ../../source/Cookbooks/singlePass/index.rst:26
+msgid ""
+"A schematic of the one- and two-limb single-pass model are shown in "
+":numref:`fig:singlepass_Lowell`."
+msgstr "单支和双支single-pass模型示意图见\\ :numref:`fig:singlepass_Lowell`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:32
+msgid ""
+"Schematic of the one-limb (A) and two-limb (B) single-pass model "
+"(reproduced from :cite:`lowell2013`)."
+msgstr "单支(A) 和双支(B) single-pass模型示意图 (依据\\ :cite:`lowell2013`\\ 重新绘制)。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:34
+msgid ""
+"Here we present the one-limb single pass mode simulation using |foam|, "
+"the model geometry, mesh and boundary conditions are shown in "
+":numref:`fig:singlepass:model`."
+msgstr ""
+"我们在这里展示了如何使用\\ |foam|\\ 模拟单支single pass模型, 模型几何结构、网格和边界条件见\\ "
+":numref:`fig:singlepass:model`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:42
+msgid "Model geometry, mesh and boundary conditions of the 2D single pass model."
+msgstr "二维single pass模型的模型几何结构、网格和边界条件"
+
+#: ../../source/Cookbooks/singlePass/index.rst:47
+msgid ""
+"The model setup is similar to :cite:`lowell2007`. The temperature "
+"evolution and streamlines of the :ref:`sec_cookbook_singlepass_2D` are "
+"shown below."
+msgstr ""
+"模型参数设置与\\ :cite:`lowell2007`\\ 类似。\\ :ref:`sec_cookbook_singlepass_2D`\\ "
+"模型的温度演化和流线分布显示如下。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:71
+msgid ""
+"The model setup is similar to :cite:`lowell2007`. The temperature "
+"evolution and streamlines of the :ref:`sec_cookbook_singlepass_2D` are in"
+" :numref:`fig:singlepass:result_T`."
+msgstr ""
+"模型参数设置与\\ :cite:`lowell2007`\\ 类似。\\ :ref:`sec_cookbook_singlepass_2D`\\ "
+"模型的温度演化和流线分布见\\ :numref:`fig:singlepass:result_T`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:78
+#: ../../source/Cookbooks/singlePass/index.rst:131
+#: ../../source/Cookbooks/singlePass/index.rst:176
+msgid "Temperature result of the :ref:`sec_cookbook_singlepass_2D`."
+msgstr ":ref:`sec_cookbook_singlepass_2D`\\ 模型的温度模拟结果"
+
+#: ../../source/Cookbooks/singlePass/index.rst:80
+msgid ""
+"If we consider the recharge zone on the right side in single pass model "
+"shown in :numref:`fig:singlepass:model`, the hydrothermal circulation "
+"pattern would be different, a schematic of the full single pass model is "
+"shown in :numref:`fig:singlepass_Lowell2014:model`."
+msgstr ""
+"如果我们同时考虑pass "
+"model(:numref:`fig:singlepass:model`)右侧也有注水区，这种情况下的热液循环模式可能有所不同。模型示意图见\\ "
+":numref:`fig:singlepass_Lowell2014:model`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:88
+msgid ""
+"Schematic of the full single-pass model (reproduced from "
+":cite:`lowell2014`)."
+msgstr "完整single-pass模型示意图(根据\\ :cite:`lowell2014`\\ 重新绘制)。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:90
+msgid ""
+"Here we present the full single pass mode simulation using |foam|, the "
+"model geometry, mesh and boundary conditions are shown in "
+":numref:`fig:singlepass2:model`."
+msgstr ""
+"我们这里使用\\ |foam|\\ 模拟了完整的single pass模型的热液循环模式,模型的几何结构、网格和边界条件见\\ "
+":numref:`fig:singlepass2:model`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:98
+msgid ""
+"Model geometry, mesh and boundary conditions of the improved 2D single "
+"pass model."
+msgstr "二维完整single pass模型的几何结构、网格和边界条件 "
+
+#: ../../source/Cookbooks/singlePass/index.rst:102
+msgid ""
+"The temperature evolution and streamlines of the full "
+":ref:`sec_cookbook_singlepass_2D` are shown below."
+msgstr ":ref:`sec_cookbook_singlepass_2D`\\ 模型的温度演化和流线显示如下。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:125
+msgid ""
+"The temperature evolution and streamlines of the full "
+":ref:`sec_cookbook_singlepass_2D` are in "
+":numref:`fig:singlepass:result_T`."
+msgstr ""
+":ref:`sec_cookbook_singlepass_2D`\\ 模型的温度演化和流线见\\ "
+":numref:`fig:singlepass:result_T`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:134
+msgid "Two-limb single pass model"
+msgstr "双支single pass模型"
+
+#: ../../source/Cookbooks/singlePass/index.rst:136
+msgid ""
+"All the input files can be found in |singlepass_twolimb| directory. The "
+"model geometry, mesh and boundary conditions are shown in "
+":numref:`fig:singlepass_twolimb:model`"
+msgstr ""
+"所有的输入文件可以在\\ |singlepass_twolimb|\\ 目录中找到。模型的几何结构、网格和边界条件见\\ "
+":numref:`fig:singlepass_twolimb:model`\\ 。"
+
+#: ../../source/Cookbooks/singlePass/index.rst:143
+msgid ""
+"Model geometry, mesh and boundary conditions of the two-dimensional two-"
+"limb single pass model."
+msgstr "二维双支Single pass模型的几何结构、网格和边界条件"
+
+#: ../../source/Cookbooks/singlePass/index.rst:147
+msgid ""
+"The temperature evolution and streamlines of the two-limb single pass "
+"model are shown below."
+msgstr "二维双支Single pass模型的温度演化和流线显示如下"
+
+#: ../../source/Cookbooks/singlePass/index.rst:170
+msgid ""
+"The temperature evolution and streamlines of the two-limb single pass "
+"model are in :numref:`fig:singlepass_twolimb:result_T`."
+msgstr "二维双支Single pass模型的温度演化和流线见\\ :numref:`fig:singlepass_twolimb:result_T`\\ 。"
+

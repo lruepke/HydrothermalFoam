@@ -1,0 +1,33 @@
+Controlled two-layer permeability verification; not a new published reference.
+Based on ../2D_close.input: 9 x 3 km, 90 x 1 x 30 uniform 100 x 1 x 100 m cells.
+Native x=50..8950 m; z=50..2950 m; OpenFOAM y=z-3000.
+Top-down map: 90*-1001, ten rock1 rows, nineteen rock2 rows.
+Rock1 K=1e-14 m2; rock2 K=1e-15 m2; interface y=-1100 m.
+Both: conductivity2 W/(m K), porosity.1, rock density2700 kg/m3, Cp880 J/(kg K),
+zero rock compressibility, gravity981 cm/s2. Basal input5390 W/m thickness.
+Native tcalc.f90 uses harmonic permeability transmissibility.
+
+All top nodes, including corners, use IBC10 (-1001 for rock1): specified
+pressure, associated 5 C inflow enthalpy, free outflow, no external conduction.
+Initial top100m is5 C; remainder10 C. HT uses standard inletOutlet and has
+recharge conduction; these thermal boundary discretizations are not equivalent.
+Exclude upper300m from primary comparison statistics; report full domain too.
+Common external hydrostatic datum: p=30MPa at y=0, rho=1014.19371025668 kg/m3.
+HY top node at -50m prescribes304.974620148809bar; HT face at0 prescribes30MPa.
+Fine180x60 inputs from run.py --refine use50m spacing and302.4873100744045bar
+at-25m, retaining physical material/heater/initial-temperature bands.
+Years=31557600s; eight HT Picard passes, max HT dt1yr; HY balance cadence.5yr.
+No artificial reservoir or internal pressure constraint; no EOS tuning.
+
+Official ZIP SHA256:155a1dd013823507c3be12fee855cfc7d53f0dae74383b15a9a0efa8e44596ab
+Unchanged official executable SHA256:
+64cd0177049e369a2abf629c10debd787f7341bc6432364eca2ae1fc82aca374
+Pinned Linux ARM64 image:
+sha256:25e429c13dbd4a2da0befd5acea9783df6cc43598d403fdbb6704a72c9364fe2
+GNU Fortran11.4: -O2 -ffree-line-length-none; -fno-range-check addresses only
+printopt.f90's disabled-output sentinel. See ../../PROVENANCE.txt for build.
+
+Raw runs, extracted fields and earlier experiments are preserved externally.
+No qualified layered reference is installed automatically; supply explicit CSVs.
+Use native Out_velocity Darcy FACE tables, not nodal Plot_vector mass fluxes.
+Face mass conversion/provenance is described in the matching case README.

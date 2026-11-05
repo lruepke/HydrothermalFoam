@@ -1,0 +1,101 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application HTFoam-review;
+
+startFrom startTime;
+
+startTime 0;
+
+stopAt endTime;
+
+endTime 23668200000;
+
+deltaT 864000.0;
+
+adjustTimeStep yes;
+maxCo           0.8; 
+maxDeltaT       86400000; 
+
+writeControl adjustableRunTime;
+
+writeInterval 23668200000;
+
+purgeWrite 0;
+
+writeFormat ascii;
+
+writePrecision 12;
+
+writeCompression off;
+
+timeFormat general;
+
+timePrecision 14;
+
+runTimeModifiable true;
+
+libs 
+( 
+
+    "libHydrothermalBoundaryConditions.so"
+
+);
+
+functions
+{
+    linesample
+    {
+        type            sets;
+        functionObjectLibs  ("libsampling.so");
+        writeControl        writeTime;
+        outputInterval      1;
+        interpolationScheme     cellPoint;
+        setFormat   raw;
+        sets
+        (
+            data
+            {
+                type    lineUniform;
+                axis    y;
+                start   (0 5 0);
+                end     (0 1995 0);
+                nPoints     1000;
+            }
+        );
+        fields  (T  p);
+    }
+
+    eosMass { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+        writeControl timeStep; writeInterval 1; writeFields false;
+        regionType all; operation volIntegrate; fields (rho); }
+
+    masstop { type surfaceFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+        writeControl timeStep; writeInterval 1; writeFields false; surfaceFormat none;
+        regionType patch; name top; operation sum; fields (phi); }
+
+    massbottom { type surfaceFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+        writeControl timeStep; writeInterval 1; writeFields false; surfaceFormat none;
+        regionType patch; name bottom; operation sum; fields (phi); }
+
+    minFields { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+        writeControl timeStep; writeInterval 1; writeFields false;
+        regionType all; operation min; fields (T p rho mu); }
+
+    maxFields { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+        writeControl timeStep; writeInterval 1; writeFields false;
+        regionType all; operation max; fields (T p rho mu); }
+}

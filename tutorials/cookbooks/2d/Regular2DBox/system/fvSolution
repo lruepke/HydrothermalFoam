@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  10 (modern style)                      |
+|   \\  /    A nd           |                                                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+
+// ------------------------------------------------------------------------- //
+// Linear solvers
+// ------------------------------------------------------------------------- //
+solvers
+{
+    // Pressure
+    p
+    {
+        solver          GAMG;
+        tolerance       1e-10;       // linear solve absolute stop
+        relTol          0.01;        // linear relative reduction (per solve)
+        smoother        DICGaussSeidel;
+    }
+
+    pFinal
+    {
+        $p;
+        tolerance       1e-10;       
+        relTol          0;
+    }
+
+    // Temperature
+    T
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          0.01;
+        smoother        DILUGaussSeidel;
+    }
+
+    TFinal
+    {
+        $T;
+        tolerance       1e-08;
+        relTol          0;
+    }
+}
+// ------------------------------------------------------------------------- //
+// Under-relaxation (steady equations; keep 1.0 for algebraic Darcy U)
+// ------------------------------------------------------------------------- //
+relaxationFactors
+{
+    equations
+    {
+        p 1;
+        T 1;
+    }
+}
+
+PIMPLE
+{
+    nOuterCorrectors         0;        
+    nCorrectors              1;         // Legacy fallback; overridden by INIT.
+    nNonOrthogonalCorrectors 1;
+
+}
+
+PTCOUPLING
+{
+    // Legacy pressure-change target; explicit INIT below preserves skipped startup.
+    maxDeltaP         10;    // [Pa] absolute pressure change
+    // number of iterations in main loop
+    tightCouplingIters 3;    // K: number of mini Picard iterations per time step (0..3 typical)
+
+}
+
+// Preserve the existing nOuterCorrectors=0 startup; no new equilibration.
+INIT { enabled false; maxIterations 0; nCorrectors 1; }

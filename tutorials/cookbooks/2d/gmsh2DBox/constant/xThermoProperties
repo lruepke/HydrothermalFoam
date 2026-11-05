@@ -1,0 +1,4 @@
+FoamFile { version 2.0; format ascii; class dictionary; object xThermoProperties; }
+// Original pure-water fluid, now evaluated by xThermo (not the old freesteam EOS).
+fluid H2O;
+backend IAPS84;

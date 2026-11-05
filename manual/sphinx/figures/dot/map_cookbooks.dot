@@ -1,0 +1,39 @@
+
+  digraph G {
+      // basic 1: hello world
+      basic_1[label="1", tooltip="Hello World", fontname="Arial", fontsize=10, height=.8,width=.8,shape="octagon",style="filled", color=black,fillcolor=lightgreen,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/helloworld",target="_top"];
+      basic_1_1[label="1.1", tooltip="Nonuniform fixed temperature BC",fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled",fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/nonUniformFixedValueBC",target="_top"];
+      basic_1_2[label="1.2", tooltip="Time-dependent permeability", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/timeDependentPerm",target="_top"];
+      basic_1_3[label="1.3", tooltip="Gmsh", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/gmsh",target="_top"];
+      basic_1_4[label="1.4", tooltip="3D box", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/3Dbox",target="_top"];
+      basic_1_5[label="1.5", tooltip="Parallel computing", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/3Dbox_par",target="_top"];
+      
+      basic_1 ->basic_1_1;
+      basic_1 ->basic_1_2;
+      basic_1 ->basic_1_3;
+      basic_1_1 ->basic_1_4;
+      basic_1_3 ->basic_1_4;
+      basic_1_4 ->basic_1_5;
+
+      // basic 2: Pipe Model
+      basic_2[label="2", tooltip="Pipe Model", fontname="Arial", fontsize=10,  height=.8,width=.8,shape="octagon",style="filled", color=black,fillcolor=lightgreen,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/pipe",target="_top"];
+      // basic_2_1[label="2.1", tooltip="Three-dimensional case 1", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/pipe_3D_1",target="_top"];
+      // basic_2_2[label="2.2", tooltip="Three-dimensional case 2", fontname="Arial", fontsize=10, height=.35,width=.35,shape="box",style="filled", fillcolor=orange, color=black,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/pipe_3D_2",target="_top"];
+      // basic_2 ->basic_2_1;
+      // basic_2_1 ->basic_2_2;
+      // basic_1_3 -> basic_2 [color=pink];
+      // basic_1_4 -> basic_2 [color=cyan];
+      // basic 3: single pass model
+      basic_3[label="3", tooltip="single pass model", fontname="Arial", fontsize=10,  height=.8,width=.8,shape="octagon",style="filled", color=black,fillcolor=lightgreen,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/singlePass",target="_top"];
+      // basic_1_3 -> basic_3 [color=pink];
+      // basic_1_4 -> basic_3 [color=cyan];
+
+      // basic 4: 
+      // basic_4[label="4", tooltip="Detachment fault", fontname="Arial", fontsize=10, height=.8,width=.8,shape="octagon",style="filled", color=black,fillcolor=lightgreen,href="https://gitlab.com/gmdpapers/hydrothermalfoam/-/tree/master/cookbooks/detachmentFault",target="_top"];
+      // basic_1_3 -> basic_4 [color=pink];
+      // basic_1_4 -> basic_4 [color=cyan];
+      // connection basic models
+      basic_1 -> basic_2 -> basic_3  [color=green,constraint=false];
+
+      // basic_1_4 ->basic_2_1;
+  }

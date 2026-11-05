@@ -1,0 +1,21 @@
+See also :cite:`carrillo2020multiphase`.
+
+1. Semi-discretization of the momentum equation :eq:`eq:MantleConvectionFoam:momentum` (with successive time levels denoted by :math:`k` and :math:`k + 1`).
+
+.. math:: 
+    :label: eq:MantleConvectionFoam:semi-dis:mom:1
+
+    \begin{align}
+    A_P \vec{U}_P^{k+1} = & ~ \sum\limits_{NP}^{}A_{NP}\vec{U}_{NP}^{k+1} - \nabla p + \rho \vec{g} \\
+    \Rightarrow ~~  \vec{U}_P^{k+1} = & ~ \frac{1}{A_P}\sum\limits_{NP}^{}A_{NP}\vec{U}_{NP}^{k+1} - \frac{1}{A_P}( \nabla p - \rho \vec{g}) \\
+    = & ~ \mathbf{HbyA} - \frac{1}{A_P}( \nabla p - \rho \vec{g})
+    \end{align}
+
+where :math:`A_P` and :math:`A_{NP}` are coefficient matrices. Now we can construct pressure Possion equation according to the continuity equation :eq:`eq:MantleConvectionFoam:conti`,
+
+.. math::
+    :label: eq:MantleConvectionFoam:pEqn
+
+    \nabla \cdot \left( \rho^{k+1} \mathbf{HbyA} - \frac{\rho^{k+1}}{A_P}( \nabla p - \rho \vec{g}) \right) = 0
+
+For incompressable case, just get rid of :math:`\rho` in the above equations.

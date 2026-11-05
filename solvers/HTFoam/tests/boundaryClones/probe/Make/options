@@ -1,0 +1,8 @@
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(CLONE_HEADER_DIR)/../noFlux \
+    -I$(CLONE_HEADER_DIR)/../HydrothermalMassFluxPressure \
+    -I$(CLONE_HEADER_DIR)/../SubmarinePressure
+EXE_LIBS = -lfiniteVolume -lmeshTools \
+    -L$(FOAM_USER_LIBBIN) -lHydrothermalBoundaryConditions $(CLONE_LINK_FLAGS)

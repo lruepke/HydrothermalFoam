@@ -1,0 +1,7 @@
+FoamFile { version 2.0; format ascii; class dictionary; object controlDict; }
+
+application HTFoam-review; startFrom startTime; startTime 0; stopAt endTime; endTime 157788000000;
+deltaT 3155760.0; adjustTimeStep yes; maxCo 0.2; maxDeltaT 31557600;
+writeControl adjustableRunTime; writeInterval 3155760000; purgeWrite 0;
+writeFormat ascii; writePrecision 12; writeCompression off; timeFormat general; timePrecision 14;
+runTimeModifiable false; libs ("libHydrothermalBoundaryConditions.so");

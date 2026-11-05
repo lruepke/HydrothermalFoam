@@ -1,0 +1,55 @@
+HTFoam comparison reference identities
+
+Original .input/.hti and historical h1-h3 reference tables are unchanged.
+Vertical reference.csv and 2D reference-YEARyr.csv are byte-for-byte copies of
+validated output extractions from the independent USGS HYDROTHERM 3.2.0 runs.
+Temperatures are Celsius; the CSVs preserve native coordinates, pressure in bar
+and MPa, and the established mapping to OpenFOAM coordinates. Years are 365.25
+days except the retained h1 compatibility comparison clock (365 days).
+
+Official source: https://volcanoes.usgs.gov/software/hydrotherm/downloads/htsrc-3.2.0.zip
+Source archive SHA256: 155a1dd013823507c3be12fee855cfc7d53f0dae74383b15a9a0efa8e44596ab
+Audited executable SHA256: 64cd0177049e369a2abf629c10debd787f7341bc6432364eca2ae1fc82aca374
+Environment: GNU Fortran 11.4, native Linux ARM64. Production flags were -O2
+-ffree-line-length-none, plus -fno-range-check for printopt.f90's disabled-output
+sentinel only. No official source edits or production floating-point traps.
+The h1-h3 historical profiles have weaker executable/raw-output provenance.
+Neither reference time/grid convergence nor identical EOS implementations is claimed.
+
+The independent build recipe remains available from Git history:
+  git show 2c61360d:benchmarks/HTFoam/USGS_HYDROTHERMAL/reference-review/BUILD.md
+A complete verified pre-simplification source copy is retained locally at:
+  benchmarks/HydrothermalSinglePhaseDarcyFoam/migration4-source-archive-20261031/
+Existing raw results and extraction/provenance records also remain at the old
+ignored benchmark root. Default comparisons need only the frozen tables here.
+
+SHA256  path relative to USGS_HYDROTHERMAL
+41ffe61d8ff21ad5bddacd0e99731dab78d5e5b419473dd695c03d0be4fde310  1d/h1/h1.hti
+21b2797a9d0eec095887070fa03d05ed86f2542258abd5bd5cb265a365b8f1db  1d/h1/h1.input
+f35fe5dda5ac7c3aee5637db803cb270f7cad76c5cfa5e27ccdaae6fffa2d28c  1d/h1/h1_T_p_0.0.txt
+10e386f41e1a640a284f5d055d043a34112d1904b73070f2beae8bbf829db809  1d/h1/h1_T_p_250.0.txt
+25b45aedf874a25c42eb462e4acf36aa2f28355e961369e7de04ab4b8ed284ae  1d/h2/h2.hti
+b4607085a536d9682b520611f2f18cb5c3ccb37d596e3a41f26b939760245fa6  1d/h2/h2.input
+c2b77752c75bd9716e017130da4e2cb81ce9b8e11c6c8b62a9416ad93d0cf98b  1d/h2/h2_T_p_0.0.txt
+e0cfbfd9cc822d17ce989af8364ce4617e1fbcc092f2ee6188852d8ca3d7ba81  1d/h2/h2_T_p_120.0.txt
+609ad93740b4c4539168b35925861619e59fbf2488040c9a18c253da0966ca8b  1d/h3/h3.hti
+6c9b00938a13806fdb8c8442505e0e6eb51ef5acab05b46f95b6ea864087547a  1d/h3/h3.input
+d8f5a2ce1823925aa33768dd27d7c89ceb33d1e096aae5f426b26f25ccc70d16  1d/h3/h3_T_p_0.0.txt
+8cedba14ca53fafd8f4773afad8cc5ea7a11674810c3f33e4d1e8a82e211f497  1d/h3/h3_T_p_1500.0.txt
+f4e5bf866f1b49d9d1f8656b1b300fdec24e29343f2be5045585574b21e0bd54  1d/v1/reference.csv
+e8552e9fcfda5f9b5781a29597a61a3a77d5328e6107d287f0ae2c7f0d4e4d13  1d/v1/v1.hti
+4623a672a48466e8ab133f6fb2a4df593862d39aaa168539f9b6dc6dfe5ee8ef  1d/v1/v1.input
+3c570fd4b8417164ee3a859d63428287128b7026a1619679c9f03fe8ebb35ae4  1d/v2/reference.csv
+1e631ee4818a490f8fa674ac9d1a1640b926a0d96d21f392483ff1163a91f7a1  1d/v2/v2.hti
+6694e79193e880cd0babd3ec5ea4b97b97dc7ff5f57f022e31ddea62ff2a4704  1d/v2/v2.input
+58f75a7001f4bd140bec57831198c86a2d1d424ca0787174ef296065c9c129fc  1d/v3/reference.csv
+267c3ca042fce2f860d41f8acb2828b1603b6d232fad406d095d88235061ba26  1d/v3/v3.hti
+50ccdc65883b422c4501a25824045bf3f3ac0c803cbe3f0a96337fda222b009d  1d/v3/v3.input
+51cecc452bd787be3963b25a86582241c9015a5e3147029c606ee98cde25855a  2d/2D_close.hti
+852f51d6568e2673887b883b96230bdd241433e34eaf949f7ca592a534189fab  2d/2D_close.input
+9c19cfd0f4cf4cac030b23ff97e3459f18c2b33d1e60a193fb8aa6cd24c92ef6  2d/2D_close_Gauss.input
+24364a1f138db8581448f11e390b25e2becf1eb2bbe770fa40fbb60c81a1320b  2d/reference-15000yr.csv
+12cd5b511e4f39d31788fc9cedfa1f180b19f8fbc2fb6b37fada7f847b399bc1  2d/reference-50000yr.csv
+032fe3a6c281665e47973d63609674e52ed428b9337b18d6cef33e77967a53a1  2d/reference-5000yr.csv
+90311a023aa95c82e14bdaeb1a71fc8283e08184a5bcd9498a961dd58b8bf4be  3d/Heterogeneous/gauss.input
+30d7142a2c242c2b58ede3753afb042e1121a9f8119bce17609e05145025ea1b  3d/Homogeneous/gauss.input

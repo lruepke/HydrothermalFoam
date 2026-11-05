@@ -1,0 +1,42 @@
+FoamFile { version 2.0; format ascii; class dictionary; object fvSchemes; }
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+    grad(p)         Gauss linear;
+    grad(T)         Gauss linear;
+}
+
+divSchemes
+{
+    div((phi*interpolate(Cp)),T) Gauss upwind;
+}
+
+laplacianSchemes
+{
+    laplacian(kr,T) Gauss harmonic corrected;
+    laplacian(rhorAUf,p) Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+    // Actual rho*rAU temporary used in both initialization and transient pEqn.
+    interpolate((rho*(permeability|mu))) harmonic;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+fluxRequired
+{
+    default no;
+    p;
+}

@@ -1,0 +1,19 @@
+FoamFile { version 2.0; format ascii; class dictionary; object controlDict; }
+
+application HTFoam-review; startFrom startTime; startTime 0; stopAt endTime; endTime 157788000000;
+deltaT 3155760.0; adjustTimeStep yes; maxCo 0.2; maxDeltaT 315576000;
+writeControl adjustableRunTime; writeInterval 157788000000; purgeWrite 0;
+writeFormat ascii; writePrecision 12; writeCompression off; timeFormat general; timePrecision 14;
+runTimeModifiable false; libs ("libHydrothermalBoundaryConditions.so");
+functions
+{
+ eosMass { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+ writeControl timeStep; writeInterval 1; writeFields false; regionType all; operation volIntegrate; fields (rho); }
+ topMass { type surfaceFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+ writeControl timeStep; writeInterval 1; writeFields false; surfaceFormat none;
+ regionType patch; name top; operation sum; fields (phi); }
+ minFields { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+ writeControl timeStep; writeInterval 1; writeFields false; regionType all; operation min; fields (T p rho); }
+ maxFields { type volFieldValue; libs ("libfieldFunctionObjects.so"); log false;
+ writeControl timeStep; writeInterval 1; writeFields false; regionType all; operation max; fields (T p rho); }
+}
